@@ -302,6 +302,56 @@
   .map-layer-toggle .swatch.titulos{background:#3FCB97; border:1px solid #3FCB97;}
   .map-layer-toggle .swatch.satelite{background:#378ADD; border:1px solid #378ADD;}
   .map-layer-toggle .swatch.ambiental{background:#7F77DD; border:1px solid #7F77DD;}
+  .sic-pin-wrap{background:none !important; border:none !important;}
+  .sic-pin{
+    font-size:30px; line-height:1; cursor:grab; user-select:none;
+    filter:drop-shadow(0 3px 5px rgba(0,0,0,.85));
+    transition:transform .13s ease;
+    text-align:center;
+  }
+  .sic-pin:active{cursor:grabbing;}
+  .sic-pin-wrap:hover .sic-pin{transform:scale(1.18);}
+  .leaflet-marker-draggable{cursor:grab;}
+  .capa-estado{font-size:9px; padding:2px 7px; border-radius:20px; white-space:nowrap;
+    background:var(--bg-tertiary); color:var(--text-tertiary); border:1px solid var(--border-subtle);}
+  .capa-estado.cargando{color:var(--warning-text); border-color:var(--warning-border);}
+  .capa-estado.ok{color:var(--success-text); border-color:var(--success-border);}
+  .capa-estado.error{color:var(--danger-text); border-color:var(--danger-border);}
+  .map-mini-btn{background:var(--bg-tertiary); border:1px solid var(--border-default);
+    color:var(--text-secondary); font-size:9.5px; padding:3px 8px; border-radius:5px;
+    cursor:pointer; font-family:inherit; white-space:nowrap;}
+  .map-mini-btn:hover{background:var(--bg-input); color:var(--text-primary);}
+  /* Ampliado: nativo (:fullscreen) o dentro de la ventana (.mapa-full) */
+  .map-box:fullscreen, .map-box:-webkit-full-screen, .mapa-full{
+    display:flex !important; flex-direction:column; gap:8px;
+    background:var(--bg-base); padding:10px;
+  }
+  .mapa-full{position:fixed !important; inset:0 !important; z-index:3000 !important;}
+  body.con-mapa-full{overflow:hidden;}
+
+  .map-box:fullscreen .map-viewer, .map-box:-webkit-full-screen .map-viewer, .mapa-full .map-viewer{
+    flex:1 1 auto; height:auto !important; min-height:0 !important; border-radius:10px;
+  }
+  .map-box:fullscreen .map-layer-bar, .map-box:-webkit-full-screen .map-layer-bar, .mapa-full .map-layer-bar{
+    flex:0 0 auto; background:var(--bg-elevated); border:1px solid var(--border-default);
+    border-radius:9px; padding:9px 13px; gap:14px; flex-wrap:wrap;
+  }
+  .map-box:fullscreen .map-layer-toggle, .map-box:-webkit-full-screen .map-layer-toggle, .mapa-full .map-layer-toggle{
+    font-size:12.5px; gap:7px;
+  }
+  .map-box:fullscreen .map-layer-toggle input, .map-box:-webkit-full-screen .map-layer-toggle input,
+  .mapa-full .map-layer-toggle input{ width:15px; height:15px; }
+  .map-box:fullscreen .map-layer-toggle .swatch, .map-box:-webkit-full-screen .map-layer-toggle .swatch,
+  .mapa-full .map-layer-toggle .swatch{ width:11px; height:11px; }
+  .map-box:fullscreen .capa-estado, .map-box:-webkit-full-screen .capa-estado, .mapa-full .capa-estado{
+    font-size:11.5px; padding:4px 11px;
+  }
+  .map-box:fullscreen .map-mini-btn, .map-box:-webkit-full-screen .map-mini-btn, .mapa-full .map-mini-btn{
+    font-size:12px; padding:6px 13px;
+  }
+  .map-box:fullscreen .map-legend, .map-box:-webkit-full-screen .map-legend, .mapa-full .map-legend{
+    flex:0 0 auto; font-size:11.5px;
+  }
   .map-viewer{ width:100%; height:230px; background:#1a1a1a; }
   .map-legend{ display:flex; align-items:center; gap:11px; flex-wrap:wrap;
     padding:5px 8px; background:var(--bg-secondary); border-top:0.5px solid var(--border-subtle);
@@ -676,14 +726,14 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
       <div class="form-col">
 
         <!-- DATOS GENERALES -->
-        <div class="card status-complete" id="cardGenerales">
+        <div class="card status-empty" id="cardGenerales">
           <div class="card-head">
             <span class="card-icon">🪪</span>
             <div class="card-title-wrap">
               <span class="card-title">Datos generales</span>
               <span class="card-caption">Cuándo fue y cómo se clasifica</span>
             </div>
-            <span class="status-dot-mini complete"></span>
+            <span class="status-dot-mini"></span>
           </div>
           <div class="card-body">
             <div class="field-grid">
@@ -702,7 +752,7 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
               <div class="field">
                 <label>Tipo de operación <span class="req-star">*</span></label>
                 <div class="chip-select" id="tipoOpSelect">
-                  <div class="chip-option selected tipo-destruccion" onclick="selectChip(this,'tipoOpSelect')">🔥 Destrucción</div>
+                  <div class="chip-option tipo-destruccion" onclick="selectChip(this,'tipoOpSelect')">🔥 Destrucción</div>
                   <div class="chip-option" onclick="selectChip(this,'tipoOpSelect')">📦 Incautación</div>
                   <div class="chip-option" onclick="selectChip(this,'tipoOpSelect')">🔀 Mixta</div>
                 </div>
@@ -710,7 +760,7 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
               <div class="field">
                 <label>Estado <span class="req-star">*</span></label>
                 <div class="chip-select" id="estadoSelect">
-                  <div class="chip-option selected" onclick="selectChip(this,'estadoSelect')">Proyectada</div>
+                  <div class="chip-option" onclick="selectChip(this,'estadoSelect')">Proyectada</div>
                   <div class="chip-option" onclick="selectChip(this,'estadoSelect')">Desarrollo</div>
                   <div class="chip-option" onclick="selectChip(this,'estadoSelect')">Ejecutada</div>
                   <div class="chip-option" onclick="selectChip(this,'estadoSelect')">Cancelada</div>
@@ -766,20 +816,20 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
         </div>
 
         <!-- RECURSO Y ACTIVIDAD -->
-        <div class="card status-complete" id="cardRecurso">
+        <div class="card status-empty" id="cardRecurso">
           <div class="card-head">
             <span class="card-icon">⛏️</span>
             <div class="card-title-wrap">
               <span class="card-title">Recurso y tipo de actividad</span>
               <span class="card-caption">Define qué factores de Parámetros se aplican</span>
             </div>
-            <span class="status-dot-mini complete"></span>
+            <span class="status-dot-mini"></span>
           </div>
           <div class="card-body">
             <div class="field">
               <label>Recurso explotado <span class="req-star">*</span></label>
               <div class="chip-select" id="recursoSelect">
-                <div class="chip-option selected" onclick="selectChip(this,'recursoSelect')">🟡 Oro</div>
+                <div class="chip-option" onclick="selectChip(this,'recursoSelect')">🟡 Oro</div>
                 <div class="chip-option" onclick="selectChip(this,'recursoSelect')">⚫ Carbón</div>
                 <div class="chip-option" onclick="selectChip(this,'recursoSelect')">💎 Esmeraldas</div>
                 <div class="chip-option" onclick="selectChip(this,'recursoSelect')">🟤 Arenas / gravas</div>
@@ -788,7 +838,7 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
             <div class="field">
               <label>Tipo de actividad minera <span class="req-star">*</span></label>
               <div class="chip-select" id="actividadSelect">
-                <div class="chip-option selected" onclick="selectChip(this,'actividadSelect')">Aluvial</div>
+                <div class="chip-option" onclick="selectChip(this,'actividadSelect')">Aluvial</div>
                 <div class="chip-option" onclick="selectChip(this,'actividadSelect')">Subterránea</div>
                 <div class="chip-option" onclick="selectChip(this,'actividadSelect')">Cielo abierto</div>
                 <div class="chip-option" onclick="selectChip(this,'actividadSelect')">Mixta</div>
@@ -797,7 +847,7 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
             <div class="field">
               <label>Cobertura vegetal <span class="opt">(descriptivo)</span></label>
               <div class="chip-select" id="coberturaSelect">
-                <div class="chip-option selected" onclick="selectChip(this,'coberturaSelect')">🌳 Bosque</div>
+                <div class="chip-option" onclick="selectChip(this,'coberturaSelect')">🌳 Bosque</div>
                 <div class="chip-option" onclick="selectChip(this,'coberturaSelect')">🌿 Baja vegetación</div>
                 <div class="chip-option" onclick="selectChip(this,'coberturaSelect')">◻️ Sin vegetación</div>
               </div>
@@ -822,7 +872,7 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
 
           <div class="casual-note" id="dupNote">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
-            <span><strong>Río Plateado</strong> se registró hace 12 días, a ~340 m de aquí.</span>
+            <span>Toca el mapa para marcar el punto, o escribe la coordenada. Puedes arrastrar el marcador.</span>
           </div>
 
           <div class="coord-stack" id="coordList"></div>
@@ -833,28 +883,28 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
           </button>
         </div>
 
-        <div class="card status-complete" id="cardGeoInsumos">
+        <div class="card status-empty" id="cardGeoInsumos">
           <div class="card-head">
             <span class="card-icon">📐</span>
             <div class="card-title-wrap">
               <span class="card-title">Geometría e insumos hallados</span>
               <span class="card-caption">Excavación y lo que se encontró en sitio</span>
             </div>
-            <span class="status-dot-mini complete"></span>
+            <span class="status-dot-mini"></span>
           </div>
           <div class="card-body">
             <div class="field-grid">
               <div class="field">
                 <label>Área aproximada <span class="req-star">*</span></label>
                 <div class="unit-suffix">
-                  <input type="text" id="inputHectareas" placeholder="Ej: 0,6" value="0,6" oninput="checkGeometriaStatus()">
+                  <input type="text" id="inputHectareas" placeholder="Ej: 0,6" oninput="checkGeometriaStatus()">
                   <span class="unit-label">ha</span>
                 </div>
               </div>
               <div class="field">
                 <label>Profundidad / longitud <span class="req-star">*</span></label>
                 <div class="unit-suffix">
-                  <input type="text" id="inputProfundidad" placeholder="Ej: 3" value="3" oninput="checkGeometriaStatus()">
+                  <input type="text" id="inputProfundidad" placeholder="Ej: 3" oninput="checkGeometriaStatus()">
                   <span class="unit-label">m</span>
                 </div>
               </div>
@@ -2572,7 +2622,15 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
             <label class="map-layer-toggle"><input type="checkbox" checked onchange="toggleLayer(${id},'titulos',this.checked)"><span class="swatch titulos"></span>Títulos ANM</label>
             <label class="map-layer-toggle"><input type="checkbox" checked onchange="toggleLayer(${id},'solicitudes',this.checked)"><span class="swatch" style="background:#E0B354"></span>Solicitudes ANM</label>
             <label class="map-layer-toggle"><input type="checkbox" checked onchange="toggleLayer(${id},'satelite',this.checked)"><span class="swatch satelite"></span>Satélite</label>
-            <label class="map-layer-toggle"><input type="checkbox" checked onchange="toggleLayer(${id},'ambiental',this.checked)"><span class="swatch ambiental"></span>Ambiental</label>
+            <label class="map-layer-toggle"><input type="checkbox" checked onchange="toggleLayer(${id},'vias',this.checked)"><span class="swatch" style="background:#E8C87A"></span>Vías</label>
+            <label class="map-layer-toggle"><input type="checkbox" checked onchange="toggleLayer(${id},'lugares',this.checked)"><span class="swatch" style="background:#CFCFCF"></span>Lugares</label>
+            <label class="map-layer-toggle"><input type="checkbox" checked onchange="toggleLayer(${id},'rios',this.checked)"><span class="swatch" style="background:#4FA3D9"></span>Ríos</label>
+            <label class="map-layer-toggle"><input type="checkbox" onchange="toggleLayer(${id},'curvas',this.checked)"><span class="swatch" style="background:#B08A5A"></span>Curvas de nivel</label>
+            <label class="map-layer-toggle"><input type="checkbox" onchange="toggleLayer(${id},'terreno',this.checked)"><span class="swatch" style="background:#9BAF8A"></span>Terreno</label>
+            <span class="capa-estado" id="capaEstado${id}"></span>
+            <span style="flex:1"></span>
+            <button type="button" class="map-mini-btn" onclick="quitarPunto(${id})" title="Quitar el punto">✕ Punto</button>
+            <button type="button" class="map-mini-btn" onclick="pantallaCompleta(${id})" title="Ampliar el mapa">⛶ Ampliar</button>
           </div>
           <div class="map-viewer" id="mapViewer${id}"></div>
           <div class="map-legend">
@@ -2676,93 +2734,191 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
     }, 220);
   }
 
+  const PIN_ICON = L.divIcon({
+    className:'sic-pin-wrap', iconSize:[36,36], iconAnchor:[18,33], popupAnchor:[0,-30],
+    html:'<div class="sic-pin">📍</div>'
+  });
+
+  const ANM_URL = 'https://geo.anm.gov.co/webgis/rest/services/ANM/ServiciosANM/MapServer';
+
+  function anmLayer(idsCapas, opacidad){
+    // f:'image' hace que esri-leaflet arme la URL de exportación y la cargue como
+    // imagen directa. Sin esto el servidor de la ANM no responde y falla en silencio.
+    return L.esri.dynamicMapLayer({
+      url: ANM_URL, layers: idsCapas, f: 'image',
+      opacity: opacidad, format: 'png32', transparent: true
+    });
+  }
+
+  function setEstadoCapa(id, txt, cls){
+    const el = document.getElementById('capaEstado' + id);
+    if(el){ el.textContent = txt; el.className = 'capa-estado ' + (cls||''); }
+  }
+
   function initOrUpdateMap(id, lat, lon, info, colorHex){
     const container = document.getElementById('mapViewer' + id);
     if(!container || typeof L === 'undefined') return;
 
     if(anmMaps[id]){
-      const entry = anmMaps[id];
-      entry.map.setView([lat, lon], entry.map.getZoom());
-      entry.marker.setLatLng([lat, lon]);
-      entry.marker.setStyle({ fillColor: colorHex });
-      entry.marker.setPopupContent(`<strong>${info.label}</strong><br>${info.desc}<br><span style="color:#9BA1A8;">${lat.toFixed(5)}, ${lon.toFixed(5)}</span>`);
-      repositionOverlay(entry, lat, lon, info);
+      const e = anmMaps[id];
+      e.map.setView([lat, lon], e.map.getZoom());
+      e.marker.setLatLng([lat, lon]);
+      e.marker.setPopupContent(popupTxt(lat, lon));
       return;
     }
 
-    const map = L.map(container, { zoomControl:true, attributionControl:true }).setView([lat, lon], 15);
+    const map = L.map(container, { zoomControl:true, attributionControl:true }).setView([lat, lon], 14);
 
-    const satelite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      attribution: 'Esri World Imagery', maxZoom:18
-    }).addTo(map);
+    /* ---- Bases ---- */
+    const satelite = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { attribution:'Esri World Imagery', maxZoom:19 }).addTo(map);
 
-    // #Capa ANM real: Título Vigente (4), Solicitud Vigente (2), Títulos y Solicitudes (0)
-    let tituloPoly, solicitudPoly = null;
+    const terreno = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+      { attribution:'Esri World Topo', maxZoom:19 });
+
+    // Vías y nombres sobre el satélite (capa transparente, no tapa la imagen)
+    const vias = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',
+      { attribution:'Esri Transportation', maxZoom:19 }).addTo(map);
+
+    const lugares = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+      { attribution:'Esri Places', maxZoom:19 }).addTo(map);
+
+    // Curvas de nivel y caminos de trocha
+    const curvas = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+      { attribution:'OpenTopoMap (CC-BY-SA)', maxZoom:17, opacity:0.85,
+        subdomains:['a','b','c'] });
+
+    /* ---- Ríos y drenajes ---- */
+    const rios = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Hydro_Reference_Overlay/MapServer/tile/{z}/{y}/{x}',
+      { attribution:'Esri Hydro Reference', maxZoom:19, opacity:0.9 }).addTo(map);
+
+    /* ---- Capas reales de la ANM ---- */
+    let titulos = null, solicitudes = null;
     if (typeof L.esri !== 'undefined' && L.esri.dynamicMapLayer) {
-      tituloPoly = L.esri.dynamicMapLayer({
-        url: 'https://geo.anm.gov.co/webgis/rest/services/ANM/ServiciosANM/MapServer',
-        layers: [4],
-        opacity: 0.55, useCors: false
-      }).addTo(map);
-      tituloPoly._esriAnm = true;
-      solicitudPoly = L.esri.dynamicMapLayer({
-        url: 'https://geo.anm.gov.co/webgis/rest/services/ANM/ServiciosANM/MapServer',
-        layers: [2],
-        opacity: 0.45, useCors: false
-      }).addTo(map);
-      solicitudPoly._esriAnm = true;
+      setEstadoCapa(id, 'Consultando la ANM…', 'cargando');
+      titulos     = anmLayer([4], 0.60).addTo(map);   // Título Vigente
+      solicitudes = anmLayer([2], 0.50).addTo(map);   // Solicitud Vigente
+
+      let listas = 0, fallo = false;
+      const ok = () => { if(++listas >= 1 && !fallo) setEstadoCapa(id, 'Capas ANM activas', 'ok'); };
+      const err = () => { fallo = true; setEstadoCapa(id, 'La ANM no respondió — reintenta', 'error'); };
+      titulos.on('load', ok);  titulos.on('requesterror', err);
+      solicitudes.on('load', ok); solicitudes.on('requesterror', err);
+      setTimeout(()=>{ if(!listas && !fallo) setEstadoCapa(id, 'La ANM tarda en responder…', 'cargando'); }, 9000);
     } else {
-      // Fallback simulado si el geoservicio de la ANM no está disponible
-      tituloPoly = L.polygon([[lat,lon]], { weight:2, fillOpacity:0.18 }).addTo(map);
+      setEstadoCapa(id, 'No se pudo cargar el visor de la ANM', 'error');
     }
-    const ambientalPoly = L.polygon([[lat,lon]], { color:'#7F77DD', weight:2, fillOpacity:0.16 })
-      .bindPopup('Zona de reserva ambiental cercana (referencia)').addTo(map);
 
-    const marker = L.circleMarker([lat, lon], {
-      radius:9, color:'#0c0d10', weight:2, fillColor:colorHex, fillOpacity:1
-    }).bindPopup(`<strong>${info.label}</strong><br>${info.desc}<br><span style="color:#9BA1A8;">${lat.toFixed(5)}, ${lon.toFixed(5)}</span>`).addTo(map);
+    /* ---- Marcador arrastrable ---- */
+    const marker = L.marker([lat, lon], {
+      draggable:true, autoPan:false, icon:PIN_ICON, riseOnHover:true,
+      title:'Arrástrame para ajustar la coordenada'
+    }).bindPopup(popupTxt(lat, lon), { autoPan:false }).addTo(map);
 
-    anmMaps[id] = { map, marker, layers:{ titulos:tituloPoly, solicitudes:solicitudPoly, satelite, ambiental:ambientalPoly } };
-
-    // #3 — elegir coordenada haciendo clic en el mapa (además de escribirla)
-    map.on('click', (e)=>{
-      const clat = e.latlng.lat, clon = e.latlng.lng;
-      writeCoordFields(id, clat, clon);
-      const info2 = simulateEstadoTitulo(clat, clon);
-      const colorHex2 = { rojo:'#E0524B', amarillo:'#E0B354', verde:'#3FCB97' }[info2.estado];
-      document.getElementById('anmStatusRow'+id).innerHTML =
-        `<span class="anm-status-dot" style="background:${colorHex2};"></span> ${info2.label}`;
-      setCardStatus('cardMapa','complete');
-      initOrUpdateMap(id, clat, clon, info2, colorHex2);
+    marker.on('dragend', () => {
+      const p = marker.getLatLng();
+      aplicarPunto(id, p.lat, p.lng);
     });
-    repositionOverlay(anmMaps[id], lat, lon, info);
-    setTimeout(()=> map.invalidateSize(), 80);
+
+    anmMaps[id] = { map, marker, layers:{ titulos, solicitudes, satelite, terreno, vias, lugares, curvas, rios } };
+
+    /* ---- Clic para fijar el punto ---- */
+    map.on('click', e => aplicarPunto(id, e.latlng.lat, e.latlng.lng));
+
+    setTimeout(()=> map.invalidateSize(), 90);
   }
 
-  function repositionOverlay(entry, lat, lon, info){
-    const dLat = 0.0035, dLon = 0.0045;
-    const tituloColor = info.estado === 'rojo' ? '#E0524B' : (info.estado === 'amarillo' ? '#E0B354' : '#3FCB97');
-    // Solo el fallback simulado se reposiciona; la capa real de la ANM no.
-    if (entry.layers.titulos && !entry.layers.titulos._esriAnm && entry.layers.titulos.setLatLngs){
-      entry.layers.titulos.setLatLngs([
-        [lat+dLat*0.6, lon-dLon*0.8],[lat+dLat, lon+dLon*0.4],[lat+dLat*0.1, lon+dLon],[lat-dLat*0.7, lon+dLon*0.3],[lat-dLat*0.5, lon-dLon*0.9]
-      ]);
-      entry.layers.titulos.setStyle({ color: tituloColor, dashArray: info.estado==='amarillo' ? '5,4' : null });
-      entry.layers.titulos.setPopupContent(info.estado==='rojo' ? 'Área sin título minero vigente' : (info.estado==='amarillo' ? 'Polígono de solicitud en trámite' : 'Polígono de título minero vigente'));
-    }
+  function popupTxt(lat, lon){
+    return `<strong>Punto de la operación</strong><br>
+      <span style="color:#555">${lat.toFixed(5)}, ${lon.toFixed(5)}</span><br>
+      <span style="font-size:11px;color:#777">Arrástralo para ajustarlo</span>`;
+  }
 
-    entry.layers.ambiental.setLatLngs([
-      [lat+dLat*1.6, lon+dLon*0.9],[lat+dLat*2.1, lon+dLon*1.8],[lat+dLat*1.2, lon+dLon*2.2],[lat+dLat*0.7, lon+dLon*1.4]
-    ]);
+  function aplicarPunto(id, lat, lon){
+    writeCoordFields(id, lat, lon);
+    const e = anmMaps[id];
+    if(e){
+      e.marker.setLatLng([lat, lon]);
+      e.marker.setPopupContent(popupTxt(lat, lon));
+      e.marker.setOpacity(1);
+      // Nada de recentrar: el mapa se queda donde el analista lo dejó.
+    }
+    const info = simulateEstadoTitulo(lat, lon);
+    const color = { rojo:'#E0524B', amarillo:'#E0B354', verde:'#3FCB97' }[info.estado];
+    const row = document.getElementById('anmStatusRow'+id);
+    if(row) row.innerHTML = `<span class="anm-status-dot" style="background:${color};"></span> ${info.label}`;
+    setCardStatus('cardMapa','complete');
+  }
+
+  function quitarPunto(id){
+    const e = anmMaps[id];
+    if(!e) return;
+    e.map.removeLayer(e.marker);
+    e.marker = L.marker(e.map.getCenter(), { draggable:true, opacity:0,
+      autoPan:false, icon:PIN_ICON }).addTo(e.map);
+    const fila = document.getElementById('coordRow'+id);
+    if(fila) fila.querySelectorAll('.lat-deg,.lat-min,.lat-sec,.lon-deg,.lon-min,.lon-sec')
+              .forEach(i => i.value = '');
+    const row = document.getElementById('anmStatusRow'+id);
+    if(row) row.innerHTML = '<span class="anm-status-dot" style="background:#666;"></span> Sin punto marcado';
+    setCardStatus('cardMapa','empty');
+    toast('Punto retirado — toca el mapa para marcar otro');
   }
 
   function toggleLayer(id, layerName, visible){
-    const entry = anmMaps[id];
-    if(!entry) return;
-    const layer = entry.layers[layerName];
-    if(!layer) return;
-    if(visible) entry.map.addLayer(layer); else entry.map.removeLayer(layer);
+    const e = anmMaps[id]; if(!e) return;
+    const layer = e.layers[layerName]; if(!layer) return;
+    if(visible) e.map.addLayer(layer); else e.map.removeLayer(layer);
   }
+
+  function pantallaCompleta(id){
+    const wrap = document.getElementById('mapViewer'+id).closest('.map-box');
+    if(!wrap) return;
+    const e = anmMaps[id];
+    const refrescar = () => { if(e) setTimeout(()=> e.map.invalidateSize(), 260); };
+
+    // Pantalla completa nativa: ocupa el monitor entero, sin barras del navegador.
+    const yaEstoy = document.fullscreenElement || document.webkitFullscreenElement;
+    if(yaEstoy){
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      return;
+    }
+    const pedir = wrap.requestFullscreen || wrap.webkitRequestFullscreen;
+    if(pedir){
+      pedir.call(wrap).then(refrescar).catch(()=>{
+        // Si el navegador la niega, se amplía dentro de la ventana.
+        wrap.classList.add('mapa-full');
+        document.body.classList.add('con-mapa-full');
+        refrescar();
+      });
+    } else {
+      wrap.classList.toggle('mapa-full');
+      document.body.classList.toggle('con-mapa-full', wrap.classList.contains('mapa-full'));
+      refrescar();
+    }
+  }
+
+  // Al salir de pantalla completa (Escape o botón), recolocar los mapas
+  ['fullscreenchange','webkitfullscreenchange'].forEach(ev =>
+    document.addEventListener(ev, () => {
+      Object.values(anmMaps).forEach(e => setTimeout(()=> e.map.invalidateSize(), 260));
+    }));
+
+  document.addEventListener('keydown', ev => {
+    if(ev.key === 'Escape'){
+      const abierto = document.querySelector('.map-box.mapa-full');
+      if(abierto){
+        abierto.classList.remove('mapa-full');
+        document.body.classList.remove('con-mapa-full');
+        Object.values(anmMaps).forEach(e => setTimeout(()=> e.map.invalidateSize(), 200));
+      }
+    }
+  });
 
   // ---------- INICIALIZAR ----------
   addCoordRow();
@@ -3228,6 +3384,8 @@ function crearOperacion(){
   const maquinaria = maqValues.map((q,i)=>({i,q})).filter(x=>x.q>0);
   if(!maquinaria.length){ toast('Registra al menos un equipo de maquinaria'); return; }
   if(!ha || !prof){ toast('Falta el área o la profundidad'); return; }
+  if(!getSelectedChipText('actividadSelect')){ toast('Elige el tipo de actividad minera'); return; }
+  if(!getSelectedChipText('recursoSelect')){ toast('Elige el recurso explotado'); return; }
 
   const nombreEl = document.querySelector('#cardGenerales input[type=text]');
   const ins = document.querySelectorAll('#cardGeoInsumos .insumo-grid input');
