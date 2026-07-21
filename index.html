@@ -572,6 +572,30 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
   .topbar,#sicNav,.scard,.skpi,.pricebar,.secband,.et{backdrop-filter:none}
 }
 
+/* --- Barra de precios en el formulario --- */
+.bprecios{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;
+  background:rgba(28,32,36,.86);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border:1px solid var(--border-subtle);border-left:4px solid var(--gold);
+  border-radius:11px;padding:12px 16px;margin-bottom:14px}
+.bp-tit{font-size:12.5px;font-weight:650;color:var(--text-primary);align-self:center}
+.bp-campo{display:flex;flex-direction:column;gap:3px;min-width:0}
+.bp-campo label{font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--text-tertiary);font-weight:700}
+.bp-in{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);
+  font-size:12.5px;color:var(--text-secondary)}
+.bp-in input{width:96px;background:var(--bg-input);border:1px solid var(--border-default);
+  border-radius:5px;padding:5px 8px;color:var(--gold);font-family:var(--font-mono);
+  font-size:14px;font-weight:700;text-align:right}
+.bp-in input:focus{outline:none;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(200,168,75,.2)}
+.bp-u{font-size:10px;color:var(--text-tertiary)}
+.bp-src{font-size:9.5px;color:var(--text-tertiary);max-width:190px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bp-campo.derivado .bp-val{font-family:var(--font-mono);font-size:14px;font-weight:700;
+  color:var(--text-secondary);padding:5px 0}
+.bp-acc{margin-left:auto;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+@media(max-width:760px){ .bprecios{gap:12px} .bp-acc{margin-left:0;width:100%} }
+
 /* --- Panel de precios --- */
 .pricebar{background:var(--bg-card);border:1px solid var(--border-subtle);
   border-left:4px solid var(--gold);border-radius:11px;padding:14px 16px;margin-bottom:16px}
@@ -579,6 +603,10 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
 .pricetit{font-size:13px;font-weight:620}
 .pricestamp{margin-left:auto;font-size:10.5px;color:var(--text-tertiary);
   background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:20px;padding:3px 10px}
+.pricestamp.ok{color:var(--success-text);border-color:var(--success-border);background:var(--success-bg)}
+.pricestamp.parcial{color:var(--warning-text);border-color:var(--warning-border);background:var(--warning-bg)}
+.pricestamp.error{color:var(--danger-text);border-color:var(--danger-border);background:var(--danger-bg)}
+.pricestamp.cargando{color:var(--info-text);border-color:var(--info-border);background:var(--info-bg)}
 .pricegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:11px}
 .pricecell{background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:8px;padding:10px 12px}
 .pricecell.manual{border-style:dashed;border-color:var(--border-strong)}
@@ -614,8 +642,47 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
 .ctop{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:7px}
 .clab{font-size:12.5px;font-weight:560}
 .cres{font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--success-text);white-space:nowrap}
-.cfor{font-family:var(--font-mono);font-size:11.5px;color:var(--text-secondary);background:var(--bg-secondary);
-  border:1px solid var(--border-subtle);border-radius:5px;padding:8px 10px;line-height:1.75;word-break:break-word}
+.cfor{display:flex;flex-wrap:wrap;align-items:center;gap:5px;font-family:var(--font-mono);
+  font-size:11px;background:var(--bg-tertiary);border-radius:6px;padding:9px 11px;line-height:1.9}
+.tok{padding:2px 7px;border-radius:4px;white-space:nowrap}
+.tok-data{background:var(--info-bg);color:var(--info-text);border:1px solid rgba(55,138,221,.35)}
+.tok-param{background:rgba(200,168,75,.13);color:var(--gold);border:1px solid rgba(200,168,75,.38)}
+.tok-op{color:var(--text-tertiary)}
+.tok-result{background:var(--success-bg);color:var(--success-text);
+  border:1px solid var(--success-border);font-weight:700}
+.tok-leyenda{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;font-family:var(--font-mono);font-size:10.5px}
+.crow-acc{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.mini-b{background:transparent;border:1px solid var(--border-default);color:var(--text-secondary);
+  font-size:10.5px;font-weight:600;padding:5px 10px;border-radius:6px;cursor:pointer;font-family:inherit}
+.mini-b:hover{color:var(--text-primary);border-color:var(--border-strong)}
+.mini-b.param{color:var(--gold);border-color:rgba(200,168,75,.35)}
+.mini-b.param:hover{background:rgba(200,168,75,.1)}
+.mini-b.flag{color:var(--danger-text);border-color:var(--danger-border)}
+.mini-b.enviar{background:var(--danger-text);color:#2B0E0C;border-color:var(--danger-text);font-weight:700}
+.nota-panel{display:none;flex-direction:column;gap:8px;margin-top:9px;
+  background:var(--bg-tertiary);border:1px solid var(--border-default);border-radius:8px;padding:10px}
+.nota-panel.abierta{display:flex}
+.nota-panel textarea{width:100%;min-height:56px;resize:vertical;background:var(--bg-input);
+  border:1px solid var(--border-default);color:var(--text-primary);border-radius:6px;padding:8px;font-size:12px;font-family:inherit}
+.nota-hecha{margin-top:9px;background:var(--danger-bg);border:1px solid var(--danger-border);
+  border-radius:8px;padding:9px 12px;font-size:11.5px;color:var(--text-secondary);line-height:1.5}
+.nota-hecha b{color:var(--danger-text)}
+.ref-grupo{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);
+  font-weight:700;margin-bottom:10px}
+.ref-item{padding:9px 0;border-bottom:1px solid var(--border-subtle)}
+.ref-item:last-child{border-bottom:none}
+.ref-t{font-size:12.5px;font-weight:600;margin-bottom:4px;line-height:1.45}
+.ref-t a{color:var(--info-text);text-decoration:none}
+.ref-t a:hover{text-decoration:underline}
+.ref-d{font-size:12px;color:var(--text-secondary);line-height:1.6}
+.ref-s{font-size:11.5px;color:var(--success-text);margin-top:5px}
+.mini-b.tog{display:flex;align-items:center;gap:6px;color:var(--text-secondary)}
+.mini-b.tog input{accent-color:var(--success-text);width:13px;height:13px;cursor:pointer}
+.crow.excluida{opacity:.42}
+.crow.excluida .cres{color:var(--text-tertiary)}
+.crow.propia{border-left:3px solid var(--gold)}
+.ptab input.resaltado{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,168,75,.25);
+  transition:box-shadow .3s ease}
 .ptag{display:inline-block;margin-top:6px;font-size:10.5px;color:var(--gold);background:rgba(200,168,75,.1);
   border:1px solid rgba(200,168,75,.3);border-radius:4px;padding:2px 7px}
 
@@ -715,6 +782,8 @@ body.en-login .lg-cred{border-top-color:rgba(255,255,255,.16)}
   </header>
 
   <div class="main">
+    <div id="barraPrecios"></div>
+
     <div class="page-intro">
       <h1>Registro de operación</h1>
       <p>Estos datos son la base de todo — de aquí se calcula el impacto económico, ambiental y operacional, y se llena la tarjeta en el dashboard.</p>
@@ -3136,12 +3205,31 @@ let PARAMS = {
   defCieloAbierto:{v:1.20,u:'×', g:'Factor de deforestación', l:'Cielo abierto'},
   defMixta:      {v:0.80, u:'×', g:'Factor de deforestación', l:'Mixta'},
 
-  concAluvOro:   {v:0.00010, u:'kg/m³', g:'Concentración de oro', l:'Aluvial'},
-  concSubtOro:   {v:0.00030, u:'kg/m³', g:'Concentración de oro', l:'Subterránea'},
-  concCieloOro:  {v:0.00020, u:'kg/m³', g:'Concentración de oro', l:'Cielo abierto'},
-  concMixtaOro:  {v:0.00016, u:'kg/m³', g:'Concentración de oro', l:'Mixta'},
+  conc_Aluvial_Oro:{v:0.00010, u:'kg/m³', g:'Concentración · Oro', l:'Aluvial'},
+  conc_Subterránea_Oro:{v:0.00030, u:'kg/m³', g:'Concentración · Oro', l:'Subterránea'},
+  'conc_Cielo abierto_Oro':{v:0.00020, u:'kg/m³', g:'Concentración · Oro', l:'Cielo abierto'},
+  conc_Mixta_Oro:{v:0.00016, u:'kg/m³', g:'Concentración · Oro', l:'Mixta'},
 
-  hgPorOro:      {v:3, u:'kg Hg/kg oro', g:'Insumos', l:'Mercurio por kg de oro'},
+  'conc_Aluvial_Carbón':{v:0.35, u:'kg/m³', g:'Concentración · Carbón', l:'Aluvial'},
+  'conc_Subterránea_Carbón':{v:0.55, u:'kg/m³', g:'Concentración · Carbón', l:'Subterránea'},
+  'conc_Cielo abierto_Carbón':{v:0.45, u:'kg/m³', g:'Concentración · Carbón', l:'Cielo abierto'},
+  'conc_Mixta_Carbón':{v:0.40, u:'kg/m³', g:'Concentración · Carbón', l:'Mixta'},
+
+  conc_Aluvial_Esmeraldas:{v:0.00002, u:'ct/m³', g:'Concentración · Esmeraldas', l:'Aluvial'},
+  'conc_Subterránea_Esmeraldas':{v:0.00006, u:'ct/m³', g:'Concentración · Esmeraldas', l:'Subterránea'},
+  'conc_Cielo abierto_Esmeraldas':{v:0.00004, u:'ct/m³', g:'Concentración · Esmeraldas', l:'Cielo abierto'},
+  conc_Mixta_Esmeraldas:{v:0.00003, u:'ct/m³', g:'Concentración · Esmeraldas', l:'Mixta'},
+
+  'conc_Aluvial_Arenas / gravas':{v:0.9, u:'ton/m³', g:'Concentración · Arenas y gravas', l:'Aluvial'},
+  'conc_Subterránea_Arenas / gravas':{v:0.5, u:'ton/m³', g:'Concentración · Arenas y gravas', l:'Subterránea'},
+  'conc_Cielo abierto_Arenas / gravas':{v:0.8, u:'ton/m³', g:'Concentración · Arenas y gravas', l:'Cielo abierto'},
+  'conc_Mixta_Arenas / gravas':{v:0.7, u:'ton/m³', g:'Concentración · Arenas y gravas', l:'Mixta'},
+
+  'precio_Carbón':{v:3000, u:'COP/kg', g:'Precios por recurso', l:'Carbón'},
+  precio_Esmeraldas:{v:3600000, u:'COP/quilate', g:'Precios por recurso', l:'Esmeraldas'},
+  'precio_Arenas / gravas':{v:66700, u:'COP/tonelada', g:'Precios por recurso', l:'Arenas y gravas'},
+
+  hgPorOro:      {v:3, u:'kg Hg/kg oro', g:'Insumos', l:'Mercurio por kg de oro (solo aplica al oro)'},
 
   oroUsdGramo:   {v:137.5,     u:'USD/gramo', g:'Precios', l:'Precio del oro', live:'oro'},
   trm:           {v:4000,      u:'COP/USD',   g:'Precios', l:'Tasa de cambio (TRM)', live:'trm'},
@@ -3156,173 +3244,384 @@ let PARAMS = {
   co2PorHa:      {v:170,   u:'t CO₂/ha',     g:'Ambiental', l:'CO₂ por hectárea de bosque'},
   m2PorHa:       {v:10000, u:'m²/ha',        g:'Ambiental', l:'Metros cuadrados por hectárea'}
 };
+const UNIDAD_SIC = {'Oro':'kg', 'Carbón':'kg', 'Esmeraldas':'quilates', 'Arenas / gravas':'toneladas'};
+const USA_MERCURIO = {'Oro':true, 'Carbón':false, 'Esmeraldas':false, 'Arenas / gravas':false};
 const K_DEF  = {'Aluvial':'defAluvial','Subterránea':'defSubterranea','Cielo abierto':'defCieloAbierto','Mixta':'defMixta'};
 const K_CONC = {'Aluvial':'concAluvOro','Subterránea':'concSubtOro','Cielo abierto':'concCieloOro','Mixta':'concMixtaOro'};
 
 /* ---------- MOTOR ---------- */
-function calcularSICPRO(op, P){
-  const p = k => k==='precioOro' ? P.oroUsdGramo.v * 1000 * P.trm.v : P[k].v;
-  const R = {}, M = [];
-  const row = (e,l,v,u,f,pk)=>M.push({e,l,v,u,f,pk});
-  const horasMes = p('horasDia')*p('diasMes');
+/* Fichas: D=dato de la operación · P=parámetro · O=operador/intermedio · X=resultado */
+const D  = v        => ({t:'data',   v:String(v)});
+const P  = (v,k)    => ({t:'param',  v:String(v), k:k||null});
+const O  = v        => ({t:'op',     v:String(v)});
+const X  = v        => ({t:'result', v:String(v)});
 
-  /* 1 — Maquinaria */
+function calcularSICPRO(op, PA){
+  const p = k => k==='precioOro' ? PA.oroUsdGramo.v * 1000 * PA.trm.v : PA[k].v;
+  const R = {}, M = [];
+  const row = (e,l,val,uni,fichas,claves) =>
+    M.push({e, l, v:val, u:uni, f:fichas, keys:(claves||[]).filter(Boolean)});
+
+  const horasMes = p('horasDia') * p('diasMes');
+
+  /* ═════ 1. Maquinaria ═════ */
   let cap=0, acpmH=0, co2H=0, per=0, valMaq=0; const det=[];
   op.maquinaria.forEach(it=>{
     const m = MAQUINARIA[it.i]; if(!m||!it.q) return;
-    const c = typeof m.cap==='number'?m.cap:0;
+    const c = typeof m.cap==='number' ? m.cap : 0;
     const vl = numVal(m.val);
     cap+=it.q*c; acpmH+=it.q*m.acpm; co2H+=it.q*m.co2; per+=it.q*m.per; valMaq+=it.q*vl;
-    det.push({n:m.n,q:it.q,cap:c,acpm:m.acpm,per:m.per,val:vl});
+    det.push({n:m.n, q:it.q, cap:c, acpm:m.acpm, per:m.per, co2:m.co2, val:vl});
   });
-  R.capacidadMes = cap*horasMes;
-  row(1,'Capacidad de remoción',F.n(R.capacidadMes),'m³/mes',
-    det.filter(d=>d.cap).map(d=>`${d.q} × ${d.cap} m³/h`).join('  +  ')+
-    `  =  ${F.n(cap)} m³/h  ×  ${horasMes} h/mes  =  ${F.n(R.capacidadMes)} m³/mes`,'horasDia');
 
-  R.acpmMes = acpmH*horasMes;
-  row(1,'Consumo de ACPM',F.n(R.acpmMes),'L/mes',
-    det.filter(d=>d.acpm).map(d=>`${d.q} × ${d.acpm} L/h`).join('  +  ')+
-    `  =  ${F.n(acpmH)} L/h  ×  ${horasMes} h/mes  =  ${F.n(R.acpmMes)} L/mes`);
+  const inter = (arr, sep) => arr.reduce((a,x,i)=> i ? a.concat([O(sep)], x) : x, []);
+
+  R.capacidadMes = cap * horasMes;
+  row(1,'Capacidad de remoción', F.n(R.capacidadMes), 'm³/mes',
+    inter(det.filter(d=>d.cap).map(d=>[D(`${d.q} ${d.n}`), O('×'), P(`${d.cap} m³/h`,'__maq')]), '+')
+      .concat([O('='), O(`${F.n(cap)} m³/h`), O('×'), P(`${p('horasDia')} h/día`,'horasDia'),
+               O('×'), P(`${p('diasMes')} días/mes`,'diasMes'), O('='), X(`${F.n(R.capacidadMes)} m³/mes`)]),
+    ['horasDia','diasMes']);
+
+  R.acpmMes = acpmH * horasMes;
+  row(1,'Consumo de ACPM', F.n(R.acpmMes), 'L/mes',
+    inter(det.filter(d=>d.acpm).map(d=>[D(`${d.q} ${d.n}`), O('×'), P(`${d.acpm} L/h`,'__maq')]), '+')
+      .concat([O('='), O(`${F.n(acpmH)} L/h`), O('×'), P(`${horasMes} h/mes`,'horasDia'),
+               O('='), X(`${F.n(R.acpmMes)} L/mes`)]),
+    ['horasDia','diasMes']);
 
   R.personal = per;
-  row(1,'Personal necesario',F.n(per),'personas',
-    det.map(d=>`${d.q} × ${d.per}`).join('  +  ')+`  =  ${F.n(per)}`);
+  row(1,'Personal necesario', F.n(per), 'personas',
+    inter(det.map(d=>[D(`${d.q} ${d.n}`), O('×'), P(`${d.per} pers`,'__maq')]), '+')
+      .concat([O('='), X(`${F.n(per)} personas`)]), ['__maq']);
 
   R.valorMaquinaria = valMaq;
-  const sumIdx = idx => op.maquinaria.filter(x=>idx.includes(x.i))
-        .reduce((a,x)=>a + x.q*numVal(MAQUINARIA[x.i].val), 0);
-  const cntIdx = idx => op.maquinaria.filter(x=>idx.includes(x.i)).reduce((a,x)=>a+x.q,0);
-  R.valorMAICA  = sumIdx(MAICA_IDX);
-  R.valorDragas = sumIdx(DRAGA_IDX);
-  R.valorBombas = sumIdx(PUMP_IDX);
-  R.valorClasif = sumIdx(CLASIF_IDX);
-  R.nMAICA  = cntIdx(MAICA_IDX);
-  R.nDragas = cntIdx(DRAGA_IDX);
-  R.nBombas = cntIdx(PUMP_IDX);
-  R.nClasif = cntIdx(CLASIF_IDX);
-  R.capMAICA  = op.maquinaria.filter(x=>MAICA_IDX.includes(x.i))
-        .reduce((a,x)=>a + x.q*(typeof MAQUINARIA[x.i].cap==='number'?MAQUINARIA[x.i].cap:0),0) * horasMes;
-  R.capDragas = op.maquinaria.filter(x=>DRAGA_IDX.includes(x.i))
-        .reduce((a,x)=>a + x.q*(typeof MAQUINARIA[x.i].cap==='number'?MAQUINARIA[x.i].cap:0),0) * horasMes;
-  row(1,'Valor de la maquinaria en sitio',F.cop(valMaq),'',
-    det.map(d=>`${d.q} × ${F.cop(d.val)}`).join('  +  ')+`  =  ${F.cop(valMaq)}`);
+  row(1,'Valor de la maquinaria en sitio', F.usd(valMaq, p('trm')), '',
+    inter(det.map(d=>[D(String(d.q)), O('×'), P(F.cop(d.val),'__maq')]), '+')
+      .concat([O('='), O(F.cop(valMaq)), O('÷'), P(`${F.n(p('trm'))} COP/USD`,'trm'),
+               O('='), X(F.usd(valMaq,p('trm')))]), ['trm','__maq']);
 
-  /* 2 — Extracción */
+  const sub = (idx,campo) => op.maquinaria.filter(x=>idx.includes(x.i))
+        .reduce((a,x)=> a + x.q*(campo==='val' ? numVal(MAQUINARIA[x.i].val)
+              : (typeof MAQUINARIA[x.i].cap==='number'?MAQUINARIA[x.i].cap:0)), 0);
+  const cnt = idx => op.maquinaria.filter(x=>idx.includes(x.i)).reduce((a,x)=>a+x.q,0);
+  R.valorMAICA=sub(MAICA_IDX,'val');  R.valorDragas=sub(DRAGA_IDX,'val');
+  R.valorBombas=sub(PUMP_IDX,'val');  R.valorClasif=sub(CLASIF_IDX,'val');
+  R.nMAICA=cnt(MAICA_IDX); R.nDragas=cnt(DRAGA_IDX);
+  R.nBombas=cnt(PUMP_IDX); R.nClasif=cnt(CLASIF_IDX);
+  R.capMAICA=sub(MAICA_IDX,'cap')*horasMes; R.capDragas=sub(DRAGA_IDX,'cap')*horasMes;
+
+  row(1,'MAICA — maquinaria amarilla', F.n(op.maica), 'unidades',
+    [D('retroexcavadoras'), O('+'), D('excavadoras'), O('+'), D('bulldozers'),
+     O('='), X(`${F.n(op.maica)} MAICA`)]);
+
+  row(1,'UPM — unidades productoras mineras', F.n(op.upm), 'unidades',
+    [D(`${R.nBombas} bombas/motores`), O(R.nClasif ? '× hay clasificadora' : '× sin clasificadora'),
+     O('='), O(R.nClasif ? String(R.nBombas) : '0'), O('+'), D(`${R.nDragas} dragas`),
+     O('='), X(`${F.n(op.upm)} UPM`)]);
+
+  /* ═════ 2. Extracción ═════ */
   R.areaM2 = op.ha * p('m2PorHa');
   R.materialRemovido = R.areaM2 * op.prof;
-  row(2,'Material removido (consumado)',F.n(R.materialRemovido),'m³',
-    `${F.n(op.ha)} ha  ×  ${F.n(p('m2PorHa'))} m²/ha  ×  ${F.n(op.prof)} m  =  ${F.n(R.materialRemovido)} m³`);
+  row(2,'Material removido (consumado)', F.n(R.materialRemovido), 'm³',
+    [D(`${F.n(op.ha)} ha`), O('×'), P(`${F.n(p('m2PorHa'))} m²/ha`,'m2PorHa'), O('='),
+     O(`${F.n(R.areaM2)} m²`), O('×'), D(`${F.n(op.prof)} m prof.`), O('='),
+     X(`${F.n(R.materialRemovido)} m³`)], ['m2PorHa']);
 
-  const kc = K_CONC[op.actividad] || 'concAluvOro';
-  R.concentracion = p(kc);
+  const rec = op.recurso || 'Oro';
+  R.recurso = rec;
+  R.unidad  = UNIDAD_SIC[rec] || 'kg';
+  const kc = `conc_${op.actividad}_${rec}`;
+  R.concentracion = PA[kc] ? PA[kc].v : 0;
   R.produccion = R.materialRemovido * R.concentracion;
-  row(2,'Recurso presuntamente extraído',F.n(R.produccion),'kg',
-    `${F.n(R.materialRemovido)} m³  ×  ${R.concentracion} kg/m³ (${op.actividad})  =  ${F.n(R.produccion)} kg`,kc);
+  row(2,`${rec} presuntamente extraído`, F.n(R.produccion), R.unidad,
+    [O(`${F.n(R.materialRemovido)} m³`), O('×'),
+     P(`${R.concentracion} ${R.unidad}/m³ · ${rec} en ${op.actividad}`, kc), O('='),
+     X(`${F.n(R.produccion)} ${R.unidad}`)], [kc]);
 
   R.meses = R.capacidadMes>0 ? R.materialRemovido/R.capacidadMes : 0;
-  row(2,'Tiempo de operación',F.n(R.meses),'meses',
-    `${F.n(R.materialRemovido)} m³  ÷  ${F.n(R.capacidadMes)} m³/mes  =  ${F.n(R.meses)} meses`);
+  row(2,'Tiempo de operación', F.n(R.meses), 'meses',
+    [O(`${F.n(R.materialRemovido)} m³`), O('÷'), O(`${F.n(R.capacidadMes)} m³/mes`),
+     O('='), X(`${F.n(R.meses)} meses`)]);
 
   R.produccionMes = R.capacidadMes * R.concentracion;
-  row(2,'Producción mensual',F.n(R.produccionMes),'kg/mes',
-    `${F.n(R.capacidadMes)} m³/mes  ×  ${R.concentracion} kg/m³  =  ${F.n(R.produccionMes)} kg/mes`,kc);
+  row(2,'Producción mensual', F.n(R.produccionMes), R.unidad+'/mes',
+    [O(`${F.n(R.capacidadMes)} m³/mes`), O('×'), P(`${R.concentracion} ${R.unidad}/m³`, kc),
+     O('='), X(`${F.n(R.produccionMes)} ${R.unidad}/mes`)], [kc]);
 
-  /* 3 — Insumos */
-  R.hgTotal = R.produccion * p('hgPorOro');
-  row(3,'Mercurio presuntamente usado',F.n(R.hgTotal),'kg',
-    `${F.n(R.produccion)} kg oro  ×  ${p('hgPorOro')} kg Hg/kg  =  ${F.n(R.hgTotal)} kg`,'hgPorOro');
-  R.hgMes = R.produccionMes * p('hgPorOro');
-  row(3,'Mercurio / mes',F.n(R.hgMes),'kg/mes',
-    `${F.n(R.produccionMes)} kg/mes  ×  ${p('hgPorOro')} kg Hg/kg  =  ${F.n(R.hgMes)} kg/mes`,'hgPorOro');
+  /* ═════ 3. Insumos ═════ */
+  R.usaMercurio = !!USA_MERCURIO[rec];
+  if(R.usaMercurio){
+    R.hgTotal = R.produccion * p('hgPorOro');
+    row(3,'Mercurio presuntamente usado', F.n(R.hgTotal), 'kg',
+      [O(`${F.n(R.produccion)} kg oro`), O('×'), P(`${p('hgPorOro')} kg Hg/kg oro`,'hgPorOro'),
+       O('='), X(`${F.n(R.hgTotal)} kg`)], ['hgPorOro']);
 
-  /* 4 — Economía */
-  R.valorMes = R.produccionMes * p('precioOro');
-  row(4,'Valor del recurso / mes',F.cop(R.valorMes),'',
-    `${F.n(R.produccionMes)} kg/mes  ×  ${F.cop(p('precioOro'))}/kg  =  ${F.cop(R.valorMes)}`,'precioOro');
+    R.hgMes = R.produccionMes * p('hgPorOro');
+    row(3,'Mercurio por mes', F.n(R.hgMes), 'kg/mes',
+      [O(`${F.n(R.produccionMes)} kg/mes`), O('×'), P(`${p('hgPorOro')} kg Hg/kg`,'hgPorOro'),
+       O('='), X(`${F.n(R.hgMes)} kg/mes`)], ['hgPorOro']);
+  } else {
+    R.hgTotal = 0; R.hgMes = 0;
+    row(3,'Mercurio', 'No aplica', '',
+      [D(rec), O('→'), O('la amalgamación con mercurio se usa en la extracción de oro,'),
+       O('no en este recurso'), O('='), X('0 kg')]);
+  }
+
+  /* ═════ 4. Economía ═════ */
+  const T = p('trm');
+  let fichaPrecio, clavesPrecio;
+  if(rec === 'Oro'){
+    R.precioUnidad = PA.oroUsdGramo.v * 1000 * T;              // COP por kg
+    fichaPrecio  = [O('1.000 g/kg'), O('×'), P(`US$${F.n(PA.oroUsdGramo.v)}/g`,'oroUsdGramo')];
+    clavesPrecio = ['oroUsdGramo','trm'];
+  } else {
+    const kp = `precio_${rec}`;
+    R.precioUnidad = PA[kp] ? PA[kp].v : 0;                    // COP por unidad del recurso
+    fichaPrecio  = [P(`${F.cop(R.precioUnidad)} por ${R.unidad.replace(/s$/,'')}`, kp)];
+    clavesPrecio = [kp,'trm'];
+  }
+  R.valorMes = R.produccionMes * R.precioUnidad;
+  row(4,`Valor del ${rec.toLowerCase()} por mes`, F.usd(R.valorMes,T), '',
+    [O(`${F.n(R.produccionMes)} ${R.unidad}/mes`), O('×')].concat(fichaPrecio,
+     [O('='), X(F.usd(R.valorMes,T)), O('='), O(F.cop(R.valorMes))]), clavesPrecio);
 
   R.galonesMes = R.acpmMes/p('litrosGalon');
   R.valorAcpm = R.galonesMes*p('precioAcpmGal');
-  row(4,'Valor del ACPM / mes',F.cop(R.valorAcpm),'',
-    `${F.n(R.acpmMes)} L  ÷  ${p('litrosGalon')} L/gal  =  ${F.n(R.galonesMes)} gal  ×  ${F.cop(p('precioAcpmGal'))}  =  ${F.cop(R.valorAcpm)}`,'precioAcpmGal');
+  row(4,'Valor del ACPM por mes', F.usd(R.valorAcpm,T), '',
+    [O(`${F.n(R.acpmMes)} L`), O('÷'), P(`${p('litrosGalon')} L/gal`,'litrosGalon'), O('='),
+     O(`${F.n(R.galonesMes)} gal`), O('×'), P(F.cop(p('precioAcpmGal')),'precioAcpmGal'),
+     O('='), X(F.usd(R.valorAcpm,T))], ['precioAcpmGal','litrosGalon']);
 
   R.costoPersonal = R.personal*p('costoPersona');
-  row(4,'Costo del personal / mes',F.cop(R.costoPersonal),'',
-    `${F.n(R.personal)} personas  ×  ${F.cop(p('costoPersona'))}  =  ${F.cop(R.costoPersonal)}`,'costoPersona');
+  row(4,'Costo del personal por mes', F.usd(R.costoPersonal,T), '',
+    [O(`${F.n(R.personal)} personas`), O('×'), P(F.cop(p('costoPersona')),'costoPersona'),
+     O('='), X(F.usd(R.costoPersonal,T))], ['costoPersona']);
 
-  R.costoHg = R.hgMes*p('precioHg');
-  row(4,'Costo del mercurio / mes',F.cop(R.costoHg),'',
-    `${F.n(R.hgMes)} kg/mes  ×  ${F.cop(p('precioHg'))}/kg  =  ${F.cop(R.costoHg)}`,'precioHg');
+  R.costoHg = R.usaMercurio ? R.hgMes*p('precioHg') : 0;
+  if(R.usaMercurio)
+    row(4,'Costo del mercurio por mes', F.usd(R.costoHg,T), '',
+      [O(`${F.n(R.hgMes)} kg/mes`), O('×'), P(F.cop(p('precioHg')),'precioHg'),
+       O('='), X(F.usd(R.costoHg,T))], ['precioHg']);
 
   R.costos = R.valorAcpm + R.costoPersonal + R.costoHg;
-  row(4,'Costos operacionales / mes',F.cop(R.costos),'',
-    `${F.cop(R.valorAcpm)}  +  ${F.cop(R.costoPersonal)}  +  ${F.cop(R.costoHg)}  =  ${F.cop(R.costos)}`);
+  row(4,'Costos operacionales por mes', F.usd(R.costos,T), '',
+    [O(`${F.usd(R.valorAcpm,T)} ACPM`), O('+'), O(`${F.usd(R.costoPersonal,T)} personal`),
+     O('+'), O(`${F.usd(R.costoHg,T)} mercurio`), O('='), X(F.usd(R.costos,T))]);
 
   R.excedente = R.valorMes - R.costos;
-  row(4,'Excedente ilícito / mes',F.cop(R.excedente),'',
-    `${F.cop(R.valorMes)}  −  ${F.cop(R.costos)}  =  ${F.cop(R.excedente)}`);
+  row(4,'Excedente ilícito por mes', F.usd(R.excedente,T), '',
+    [O(F.usd(R.valorMes,T)), O('−'), O(F.usd(R.costos,T)), O('='), X(F.usd(R.excedente,T))]);
 
   R.renta = R.valorMes*(p('cuotaIlicita')/100);
-  row(4,'→ Renta del grupo armado / mes',F.cop(R.renta),'',
-    `${F.cop(R.valorMes)}  ×  ${p('cuotaIlicita')}%  =  ${F.cop(R.renta)}`,'cuotaIlicita');
+  row(4,'→ Renta del grupo armado por mes', F.usd(R.renta,T), '',
+    [O(F.usd(R.valorMes,T)), O('×'), P(`${p('cuotaIlicita')}%`,'cuotaIlicita'),
+     O('='), X(F.usd(R.renta,T))], ['cuotaIlicita']);
 
   R.beneficio = R.excedente - R.renta;
-  row(4,'→ Beneficio del explotador / mes',F.cop(R.beneficio),'',
-    `${F.cop(R.excedente)}  −  ${F.cop(R.renta)}  =  ${F.cop(R.beneficio)}`);
+  row(4,'→ Beneficio del explotador por mes', F.usd(R.beneficio,T), '',
+    [O(F.usd(R.excedente,T)), O('−'), O(F.usd(R.renta,T)), O('='), X(F.usd(R.beneficio,T))]);
 
-  /* 5 — Ambiental */
+  /* ═════ 5. Ambiental ═════ */
   R.aguaSuelo = R.materialRemovido*p('aguaPorTierra');
-  row(5,'Agua afectada por remoción',F.n(R.aguaSuelo),'m³',
-    `${F.n(R.materialRemovido)} m³  ×  ${p('aguaPorTierra')} m³/m³  =  ${F.n(R.aguaSuelo)} m³`,'aguaPorTierra');
+  row(5,'Agua afectada por remoción', F.n(R.aguaSuelo), 'm³',
+    [O(`${F.n(R.materialRemovido)} m³ tierra`), O('×'),
+     P(`${p('aguaPorTierra')} m³ agua/m³`,'aguaPorTierra'), O('='),
+     X(`${F.n(R.aguaSuelo)} m³`)], ['aguaPorTierra']);
 
-  R.aguaHg = R.hgTotal*1000*p('aguaPorGrHg');
-  row(5,'Agua afectada por mercurio',F.n(R.aguaHg),'m³',
-    `${F.n(R.hgTotal)} kg  ×  1.000 g/kg  ×  ${F.n(p('aguaPorGrHg'))} m³/g  =  ${F.n(R.aguaHg)} m³`,'aguaPorGrHg');
+  R.aguaHg = R.usaMercurio ? R.hgTotal*1000*p('aguaPorGrHg') : 0;
+  if(R.usaMercurio)
+    row(5,'Agua afectada por mercurio', F.n(R.aguaHg), 'm³',
+      [O(`${F.n(R.hgTotal)} kg Hg`), O('×'), O('1.000 g/kg'), O('×'),
+       P(`${F.n(p('aguaPorGrHg'))} m³/g`,'aguaPorGrHg'), O('='),
+       X(`${F.n(R.aguaHg)} m³`)], ['aguaPorGrHg']);
   R.aguaTotal = R.aguaSuelo + R.aguaHg;
 
   R.haConsumada = op.ha;
-  row(5,'Superficie deforestada — CONSUMADA',F.n(R.haConsumada),'ha',
-    `${F.n(op.ha)} ha medidas en terreno — se toma tal cual, sin factor`);
+  row(5,'Superficie deforestada — CONSUMADA', F.n(R.haConsumada), 'ha',
+    [D(`${F.n(op.ha)} ha medidas en terreno`), O('→'), O('se toma tal cual, sin factor'),
+     O('='), X(`${F.n(R.haConsumada)} ha`)]);
 
   R.co2Consumado = R.haConsumada*p('co2PorHa');
-  row(5,'CO₂ por biomasa — CONSUMADO',F.n(R.co2Consumado),'t CO₂',
-    `${F.n(R.haConsumada)} ha  ×  ${p('co2PorHa')} t/ha  =  ${F.n(R.co2Consumado)} t`,'co2PorHa');
+  row(5,'CO₂ por biomasa — CONSUMADO', F.n(R.co2Consumado), 't CO₂',
+    [O(`${F.n(R.haConsumada)} ha`), O('×'), P(`${p('co2PorHa')} t CO₂/ha`,'co2PorHa'),
+     O('='), X(`${F.n(R.co2Consumado)} t`)], ['co2PorHa']);
 
   const kd = K_DEF[op.actividad] || 'defAluvial';
   R.factorDef = p(kd);
   R.haMes = op.prof>0 ? (R.capacidadMes/op.prof)*R.factorDef/p('m2PorHa') : 0;
   R.haAno = R.haMes*p('mesesAno');
-  row(5,'Superficie deforestable — PROYECCIÓN',F.n(R.haMes)+' ha/mes',`· ${F.n(R.haAno)} ha/año`,
-    `${F.n(R.capacidadMes)} m³/mes  ÷  ${F.n(op.prof)} m  ×  factor ${op.actividad} (${R.factorDef})  ÷  ${F.n(p('m2PorHa'))}  =  ${F.n(R.haMes)} ha/mes`,kd);
+  row(5,'Superficie deforestable — PROYECCIÓN', F.n(R.haMes)+' ha/mes', `· ${F.n(R.haAno)} ha/año`,
+    [O(`${F.n(R.capacidadMes)} m³/mes`), O('÷'), D(`${F.n(op.prof)} m prof.`), O('='),
+     O(`${F.n(R.capacidadMes/op.prof)} m²/mes`), O('×'),
+     P(`factor ${op.actividad} ${R.factorDef}`, kd), O('÷'),
+     P(`${F.n(p('m2PorHa'))} m²/ha`,'m2PorHa'), O('='), X(`${F.n(R.haMes)} ha/mes`),
+     O('×'), P(`${p('mesesAno')} meses/año`,'mesesAno'), O('='), X(`${F.n(R.haAno)} ha/año`)],
+    [kd,'m2PorHa','mesesAno']);
 
   R.co2Combustible = R.galonesMes*p('co2PorGalon');
-  row(5,'Huella de carbono (combustible) / mes',F.n(R.co2Combustible),'kg CO₂/mes',
-    `${F.n(R.galonesMes)} gal  ×  ${p('co2PorGalon')} kg/gal  =  ${F.n(R.co2Combustible)} kg/mes`,'co2PorGalon');
+  row(5,'Huella de carbono por combustible', F.n(R.co2Combustible), 'kg CO₂/mes',
+    [O(`${F.n(R.galonesMes)} gal/mes`), O('×'), P(`${p('co2PorGalon')} kg CO₂/gal`,'co2PorGalon'),
+     O('='), X(`${F.n(R.co2Combustible)} kg/mes`)], ['co2PorGalon']);
 
   R.co2BiomasaMes = R.haMes*p('co2PorHa');
   R.co2TotalMes = R.co2BiomasaMes + R.co2Combustible/1000;
-  row(5,'Huella de carbono total — PROYECCIÓN',F.n(R.co2TotalMes),'t CO₂/mes',
-    `${F.n(R.co2BiomasaMes)} t biomasa  +  ${F.n(R.co2Combustible/1000)} t combustible  =  ${F.n(R.co2TotalMes)} t/mes`);
+  row(5,'Huella de carbono total — PROYECCIÓN', F.n(R.co2TotalMes), 't CO₂/mes',
+    [O(`${F.n(R.haMes)} ha/mes`), O('×'), P(`${p('co2PorHa')} t/ha`,'co2PorHa'), O('='),
+     O(`${F.n(R.co2BiomasaMes)} t biomasa`), O('+'), O(`${F.n(R.co2Combustible/1000)} t combustible`),
+     O('='), X(`${F.n(R.co2TotalMes)} t CO₂/mes`)], ['co2PorHa']);
 
   R.valorAno = R.valorMes*p('mesesAno');
   R.rentaAno = R.renta*p('mesesAno');
-  return {R,M,det};
+  return {R, M, det};
 }
 
-/* ---------- Precios en vivo ---------- */
-let PRECIO_ESTADO = 'Valores manuales · sin conexión al servicio';
+/* ══════════ PRECIOS EN VIVO ══════════
+   Se consultan al abrir la página y quedan congelados dentro de cada
+   operación. Si todas las fuentes fallan, se conserva el último valor
+   conocido y el sistema lo dice, en vez de calcular con un dato viejo
+   en silencio. El botón de actualización manual nunca desaparece.      */
+
+const ONZA_TROY_G = 31.1035;
+
+let PRECIO_ESTADO = 'Sin consultar todavía';
+let PRECIO_FUENTE = { trm:'valor manual', oro:'valor manual' };
+
+function conTiempo(promesa, ms){
+  return Promise.race([
+    promesa,
+    new Promise((_,rej)=> setTimeout(()=> rej(new Error('tiempo agotado')), ms))
+  ]);
+}
+const traer = (url, ms) => conTiempo(
+  fetch(url, { cache:'no-store' }).then(r => { if(!r.ok) throw new Error(r.status); return r.json(); }),
+  ms || 8000);
+
+/* ---- TRM oficial: Superintendencia Financiera vía datos abiertos ---- */
+async function traerTRM(){
+  try{
+    const d = await traer('https://www.datos.gov.co/resource/32sa-8pi3.json?$limit=1&$order=vigenciadesde%20DESC');
+    const v = parseFloat(d[0].valor);
+    if(v > 0){
+      const dia = (d[0].vigenciadesde||'').slice(0,10);
+      return { v, fuente:'Superintendencia Financiera' + (dia?' · '+dia:'') };
+    }
+  }catch(e){ /* sigue con la alterna */ }
+  try{
+    const d = await traer('https://open.er-api.com/v6/latest/USD');
+    const v = d && d.rates && d.rates.COP;
+    if(v > 0) return { v, fuente:'Tasa de mercado (alterna)' };
+  }catch(e){}
+  return null;
+}
+
+/* ---- Oro: dólares por onza troy → por gramo ---- */
+async function traerOro(){
+  try{
+    const d = await traer('https://api.gold-api.com/price/XAU');
+    const onza = parseFloat(d.price);
+    if(onza > 0) return { v: onza/ONZA_TROY_G, onza, fuente:'Gold API · spot' };
+  }catch(e){}
+  try{
+    const d = await traer('https://freegoldapi.com/data/latest.json');
+    const ult = Array.isArray(d) ? d[d.length-1] : null;
+    const onza = ult && parseFloat(ult.price);
+    if(onza > 0) return { v: onza/ONZA_TROY_G, onza, fuente:'Free Gold API · ' + (ult.date||'') };
+  }catch(e){}
+  return null;
+}
+
+async function actualizarPrecios(silencioso){
+  const sello = document.getElementById('priceStamp');
+  if(sello){ sello.textContent = 'Consultando…'; sello.className = 'pricestamp cargando'; }
+
+  const [trm, oro] = await Promise.all([traerTRM(), traerOro()]);
+  const hora = new Date().toLocaleString('es-CO');
+  let logrados = 0;
+
+  if(trm){ PARAMS.trm.v = Math.round(trm.v); PRECIO_FUENTE.trm = trm.fuente; logrados++; }
+  if(oro){ PARAMS.oroUsdGramo.v = Math.round(oro.v*100)/100; PRECIO_FUENTE.oro = oro.fuente; logrados++; }
+
+  if(logrados === 2)      PRECIO_ESTADO = 'En vivo · ' + hora;
+  else if(logrados === 1) PRECIO_ESTADO = 'Parcial · uno de los dos servicios no respondió · ' + hora;
+  else                    PRECIO_ESTADO = 'Sin conexión · usando el último valor conocido';
+
+  if(sello){
+    sello.textContent = PRECIO_ESTADO;
+    sello.className = 'pricestamp ' + (logrados===2?'ok':(logrados?'parcial':'error'));
+  }
+  renderBarraPrecios();
+  if(!silencioso) toast(logrados ? 'Precios actualizados' : 'Ningún servicio respondió — quedan los valores manuales');
+  if(ACTUAL && logrados) recalcularActual();
+  if(document.getElementById('vParametros').classList.contains('active')) renderParametros();
+  return logrados;
+}
+
+function renderBarraPrecios(){
+  const b = document.getElementById('barraPrecios');
+  if(!b) return;
+  const t = PARAMS.trm.v, g = PARAMS.oroUsdGramo.v;
+  const clase = PRECIO_ESTADO.startsWith('En vivo') ? 'ok'
+              : PRECIO_ESTADO.startsWith('Sin')     ? 'error'
+              : PRECIO_ESTADO.startsWith('Parcial') ? 'parcial' : '';
+  b.innerHTML = `
+    <div class="bprecios">
+      <span class="bp-tit">💱 Precios de hoy</span>
+      <div class="bp-campo">
+        <label>Dólar · TRM</label>
+        <div class="bp-in"><span>$</span>
+          <input type="number" step="any" id="bTrm" value="${t}" onchange="aplicarDesdeBarra()">
+          <span class="bp-u">COP/USD</span></div>
+        <span class="bp-src">${PRECIO_FUENTE.trm}</span>
+      </div>
+      <div class="bp-campo">
+        <label>Oro por gramo</label>
+        <div class="bp-in"><span>US$</span>
+          <input type="number" step="any" id="bOro" value="${g}" onchange="aplicarDesdeBarra()">
+          <span class="bp-u">/g</span></div>
+        <span class="bp-src">${PRECIO_FUENTE.oro}</span>
+      </div>
+      <div class="bp-campo derivado">
+        <label>Equivale a</label>
+        <div class="bp-val">$${F.n(g*t)} <span class="bp-u">COP/gramo</span></div>
+        <span class="bp-src">$${F.n(g*1000*t)} COP/kg</span>
+      </div>
+      <div class="bp-acc">
+        <span class="pricestamp ${clase}">${PRECIO_ESTADO}</span>
+        <button class="sbtn" onclick="actualizarPrecios()">↻ Actualizar</button>
+      </div>
+    </div>`;
+}
+
+function aplicarDesdeBarra(){
+  const t = parseFloat(document.getElementById('bTrm').value);
+  const g = parseFloat(document.getElementById('bOro').value);
+  if(!isFinite(t) || !isFinite(g) || t<=0 || g<=0){ toast('Revisa los valores'); renderBarraPrecios(); return; }
+  PARAMS.trm.v = t; PARAMS.oroUsdGramo.v = g;
+  PRECIO_FUENTE = { trm:'Ingresado a mano', oro:'Ingresado a mano' };
+  PRECIO_ESTADO = 'Manual · ' + new Date().toLocaleString('es-CO');
+  renderBarraPrecios();
+  toast('Estos precios se usarán en la operación que registres');
+}
+
+function recalcularActual(){
+  if(!ACTUAL) return;
+  ACTUAL.params.trm.v = PARAMS.trm.v;
+  ACTUAL.params.oroUsdGramo.v = PARAMS.oroUsdGramo.v;
+  ACTUAL.fuentePrecio = Object.assign({}, PRECIO_FUENTE);
+  ACTUAL.calc = calcularSICPRO(ACTUAL, ACTUAL.params);
+  if(document.getElementById('vResultados').classList.contains('active')) renderResultados();
+}
+
 function aplicarPrecios(){
   const t = parseFloat(document.getElementById('mTrm').value);
   const g = parseFloat(document.getElementById('mOro').value);
   if(!isFinite(t) || !isFinite(g) || t<=0 || g<=0){ toast('Revisa los valores'); return; }
   PARAMS.trm.v = t; PARAMS.oroUsdGramo.v = g;
-  PRECIO_ESTADO = 'Actualizado a mano el ' + new Date().toLocaleString('es-CO');
-  if(ACTUAL){
-    ACTUAL.params.trm.v = t; ACTUAL.params.oroUsdGramo.v = g;
-    ACTUAL.calc = calcularSICPRO(ACTUAL, ACTUAL.params);
-    ACTUAL.generado = new Date().toLocaleString('es-CO');
-    renderResultados();
-  }
+  PRECIO_FUENTE = { trm:'Ingresado a mano', oro:'Ingresado a mano' };
+  PRECIO_ESTADO = 'Manual · ' + new Date().toLocaleString('es-CO');
+  recalcularActual();
+  renderResultados();
   toast('Precios aplicados · operación recalculada');
 }
 
@@ -3347,6 +3646,7 @@ function doLogin(){
   c.textContent = ROL==='admin'?'Administrador':'Analista';
   c.className='rchip '+(ROL==='admin'?'a':'n');
   buildNav(); go('vIngreso');
+  actualizarPrecios(true);   // refrescar al iniciar sesión
 }
 function logout(){ ROL=null; ACTUAL=null;
   document.body.classList.add('en-login');
@@ -3373,6 +3673,7 @@ function go(id){
   if(id==='vMinuta')     renderMinuta();
   if(id==='vParametros') renderParametros();
   if(id==='vHistorial')  renderHistorial();
+  if(id==='vIngreso')    renderBarraPrecios();
   if(id==='vAdmin')      document.getElementById('clvAct').value=CLAVES.analista;
   window.scrollTo(0,0);
 }
@@ -3414,7 +3715,8 @@ function crearOperacion(){
     maicaBreak: document.getElementById('maicaBreak').textContent,
     analista: ROL==='admin'?'ST Jiménez':'Analista',
     generado: new Date().toLocaleString('es-CO'),
-    params: JSON.parse(JSON.stringify(PARAMS))   // fotografía
+    params: JSON.parse(JSON.stringify(PARAMS)),  // fotografía
+    fuentePrecio: JSON.parse(JSON.stringify(PRECIO_FUENTE))
   };
   op.calc = calcularSICPRO(op, op.params);
   OPS.unshift(op); ACTUAL = op;
@@ -3435,9 +3737,10 @@ function renderResultados(){
   const eco=[['Valor del recurso',R.valorMes],['Renta grupo armado',R.renta],
              ['Beneficio explotador',R.beneficio],['Costos operacionales',R.costos]];
   const mE=Math.max(...eco.map(x=>x[1]))||1;
-  const cost=[['Personal',R.costoPersonal],['ACPM',R.valorAcpm],['Mercurio',R.costoHg]];
+  const cost=[['Personal',R.costoPersonal],['ACPM',R.valorAcpm]]
+    .concat(R.usaMercurio?[['Mercurio',R.costoHg]]:[]);
   const mC=Math.max(...cost.map(x=>x[1]))||1;
-  const amb=[['Agua por mercurio',R.aguaHg,'m³'],['Agua por remoción',R.aguaSuelo,'m³'],
+  const amb=[['Agua por mercurio',R.usaMercurio?R.aguaHg:0,'m³'],['Agua por remoción',R.aguaSuelo,'m³'],
              ['Material removido',R.materialRemovido,'m³']];
   const mA=Math.max(...amb.map(x=>x[1]))||1;
 
@@ -3504,20 +3807,23 @@ function renderResultados(){
   <div class="pricebar">
     <div class="pricehead">
       <span class="pricetit">💱 Precios aplicados a esta operación</span>
-      <span class="pricestamp" id="priceStamp">${PRECIO_ESTADO}</span>
+      <span class="pricestamp ${PRECIO_ESTADO.startsWith('En vivo')?'ok':(PRECIO_ESTADO.startsWith('Sin')?'error':'')}"
+            id="priceStamp">${PRECIO_ESTADO}</span>
+      <button class="sbtn" style="padding:4px 11px;font-size:11px" onclick="actualizarPrecios()">↻ Actualizar ahora</button>
     </div>
     <div class="pricegrid">
       <div class="pricecell">
         <div class="pl">Dólar · TRM</div>
         <div class="pv">$${F.n(o.params.trm.v)}<span class="pu"> COP/USD</span></div>
-        <div class="ps">Superintendencia Financiera</div>
+        <div class="ps">${(o.fuentePrecio&&o.fuentePrecio.trm)||PRECIO_FUENTE.trm}</div>
       </div>
       <div class="pricecell">
         <div class="pl">Oro</div>
         <div class="pv">US$${F.n(o.params.oroUsdGramo.v)}<span class="pu"> /gramo</span></div>
-        <div class="ps">$${F.n(o.params.oroUsdGramo.v*o.params.trm.v)} COP/gramo</div>
+        <div class="ps">$${F.n(o.params.oroUsdGramo.v*o.params.trm.v)} COP/gramo<br>
+          <span style="color:var(--text-tertiary)">${(o.fuentePrecio&&o.fuentePrecio.oro)||PRECIO_FUENTE.oro}</span></div>
       </div>
-      <div class="pricecell">
+      <div class="pricecell" style="${R.recurso==='Oro'?'':'display:none'}">
         <div class="pl">Oro por kilo</div>
         <div class="pv">US$${F.n(o.params.oroUsdGramo.v*1000)}<span class="pu"> /kg</span></div>
         <div class="ps">$${F.n(o.params.oroUsdGramo.v*1000*o.params.trm.v)} COP/kg</div>
@@ -3536,7 +3842,7 @@ function renderResultados(){
   <div class="skpis">
     <div class="skpi" style="--ac:var(--gold)"><div class="l">Valor del recurso</div>
       <div class="v">${F.usd(R.valorMes,T)}</div>
-      <div class="u">por mes · ${F.n(R.produccionMes)} kg · ${F.cop(R.valorMes)}</div></div>
+      <div class="u">por mes · ${F.n(R.produccionMes)} ${R.unidad} · ${F.cop(R.valorMes)}</div></div>
     <div class="skpi" style="--ac:var(--danger-text)"><div class="l">Renta del grupo armado</div>
       <div class="v">${F.usd(R.renta,T)}</div>
       <div class="u">por mes · ${o.params.cuotaIlicita.v}% · ${F.cop(R.renta)}</div></div>
@@ -3590,16 +3896,21 @@ function renderResultados(){
         Eso son ${F.n(R.haAno*o.params.co2PorHa.v)} toneladas de CO₂ que no se liberarán.</div></div>
 
     <div class="scard"><h2>💧 Agua afectada</h2>
-      ${amb.map(([l,v,u])=>bar(l,F.n(v)+' '+u,v/mA*100,'var(--info-text)')).join('')}
-      <div class="sfoot">Cada gramo de mercurio contamina hasta
-        ${F.n(o.params.aguaPorGrHg.v)} m³ de agua. Se estiman
-        <b style="color:var(--warning-text)">${F.n(R.hgTotal)} kg</b> de mercurio usados.</div></div>
+      ${amb.filter(x=>x[1]>0).map(([l,v,u])=>bar(l,F.n(v)+' '+u,v/mA*100,'var(--info-text)')).join('')}
+      <div class="sfoot">${R.usaMercurio
+        ? `Cada gramo de mercurio contamina hasta ${F.n(o.params.aguaPorGrHg.v)} m³ de agua.
+           Se estiman <b style="color:var(--warning-text)">${F.n(R.hgTotal)} kg</b> de mercurio usados.`
+        : `La afectación proviene solo de la remoción de suelo. La explotación de
+           ${R.recurso.toLowerCase()} no emplea mercurio.`}</div></div>
 
-    <div class="scard"><h2>♻️ Recurso e insumos</h2>
-      ${bar('Recurso extraído',F.n(R.produccion)+' kg',100,'var(--warning-text)')}
-      ${bar('Producción mensual',F.n(R.produccionMes)+' kg/mes',70,'var(--warning-text)')}
-      ${bar('Mercurio total',F.n(R.hgTotal)+' kg',48,'var(--warning-text)')}
-      <div class="sfoot">Concentración aplicada: ${R.concentracion} kg/m³ (${o.actividad}).
+    <div class="scard"><h2>♻️ ${R.recurso} e insumos</h2>
+      ${bar(R.recurso+' extraído',F.n(R.produccion)+' '+R.unidad,100,'var(--warning-text)')}
+      ${bar('Producción mensual',F.n(R.produccionMes)+' '+R.unidad+'/mes',70,'var(--warning-text)')}
+      ${R.usaMercurio?bar('Mercurio total',F.n(R.hgTotal)+' kg',48,'var(--warning-text)'):''}
+      <div class="sfoot">Concentración aplicada: ${R.concentracion} ${R.unidad}/m³
+        para ${R.recurso.toLowerCase()} en explotación ${o.actividad.toLowerCase()}.
+        ${R.usaMercurio?'':'<b style="color:var(--info-text)">Este recurso no se procesa con mercurio</b>, '+
+          'así que no se estima consumo ni contaminación por amalgamación. '}
         CO₂ ya liberado por biomasa: <b>${F.n(R.co2Consumado)} t</b>.</div></div>
   </div>
 
@@ -3615,6 +3926,7 @@ function vacio(m){ return `<div class="sempty">📭<br>${m}<br>
 /* ---------- Informe ---------- */
 function informeHTML(o){
   const R=o.calc.R, P=o.params, T=P.trm.v;
+  const propios = o.calc.M.filter((r,i)=> r.propio && !(o.ocultos&&o.ocultos[i]));
   const maq=o.calc.det.map(d=>`<tr><td>${d.n}</td><td class="n">${d.q}</td><td class="n">${F.usd(d.val*d.q,T)}</td></tr>`).join('');
   const hal=Object.entries(o.hallado).filter(([,v])=>v>0);
   const inc=Object.entries(o.incautado).filter(([,v])=>v>0);
@@ -3661,7 +3973,8 @@ function informeHTML(o){
 
   <div class="isec">3. Valorización económica</div>
   <table class="it"><tr><th>Concepto</th><th style="text-align:right">USD / mes</th><th style="text-align:right">COP / mes</th></tr>
-    <tr><td>Recurso presuntamente extraído</td><td class="n" colspan="2">${F.n(R.produccionMes)} kg/mes</td></tr>
+    <tr><td>${R.recurso} presuntamente extraído</td>
+        <td class="n" colspan="2">${F.n(R.produccionMes)} ${R.unidad}/mes</td></tr>
     <tr><td>Valor del recurso</td><td class="n">${F.usd(R.valorMes,T)}</td><td class="n">${F.cop(R.valorMes)}</td></tr>
     <tr><td>Costos operacionales</td><td class="n">${F.usd(R.costos,T)}</td><td class="n">${F.cop(R.costos)}</td></tr>
     <tr><td>Excedente ilícito</td><td class="n">${F.usd(R.excedente,T)}</td><td class="n">${F.cop(R.excedente)}</td></tr>
@@ -3671,17 +3984,23 @@ function informeHTML(o){
     <tr><td><b>Proyección anual del recurso</b></td>
         <td class="n">${F.usd(R.valorAno,T)}</td><td class="n">${F.cop(R.valorAno)}</td></tr></table>
   <table class="it"><tr><th colspan="3">Precios aplicados y congelados al momento del cálculo</th></tr>
-    <tr><td>Dólar (TRM)</td><td class="n">$${F.n(T)} COP/USD</td><td>Superintendencia Financiera</td></tr>
-    <tr><td>Oro</td><td class="n">US$${F.n(P.oroUsdGramo.v)} /gramo</td>
-        <td>$${F.n(P.oroUsdGramo.v*T)} COP/gramo</td></tr>
-    <tr><td>Oro por kilo</td><td class="n">US$${F.n(P.oroUsdGramo.v*1000)} /kg</td>
+    <tr><td>Dólar (TRM)</td><td class="n">$${F.n(T)} COP/USD</td>
+        <td>${(o.fuentePrecio&&o.fuentePrecio.trm)||'Valor manual'}</td></tr>
+    ${R.recurso!=='Oro'?`<tr><td>${R.recurso}</td>
+        <td class="n">${F.cop(R.precioUnidad)} / ${R.unidad.replace(/s$/,'')}</td>
+        <td>Parámetro del sistema</td></tr>`:''}
+    <tr style="${R.recurso==='Oro'?'':'display:none'}"><td>Oro</td><td class="n">US$${F.n(P.oroUsdGramo.v)} /gramo</td>
+        <td>${(o.fuentePrecio&&o.fuentePrecio.oro)||'Valor manual'} · $${F.n(P.oroUsdGramo.v*T)} COP/g</td></tr>
+    <tr style="${R.recurso==='Oro'?'':'display:none'}"><td>Oro por kilo</td>
+        <td class="n">US$${F.n(P.oroUsdGramo.v*1000)} /kg</td>
         <td>$${F.n(P.oroUsdGramo.v*1000*T)} COP/kg</td></tr></table>
 
   <div class="isec">4. Impacto ambiental</div>
   <table class="it"><tr><th>Concepto</th><th style="text-align:right">Valor</th></tr>
-    <tr><td>Mercurio presuntamente utilizado</td><td class="n">${F.n(R.hgTotal)} kg</td></tr>
+    ${R.usaMercurio?`<tr><td>Mercurio presuntamente utilizado</td><td class="n">${F.n(R.hgTotal)} kg</td></tr>`
+      :`<tr><td>Mercurio</td><td class="n">No aplica a ${R.recurso.toLowerCase()}</td></tr>`}
     <tr><td>Agua afectada por remoción</td><td class="n">${F.n(R.aguaSuelo)} m³</td></tr>
-    <tr><td>Agua afectada por mercurio</td><td class="n">${F.n(R.aguaHg)} m³</td></tr>
+    ${R.usaMercurio?`<tr><td>Agua afectada por mercurio</td><td class="n">${F.n(R.aguaHg)} m³</td></tr>`:''}
     <tr><td><b>Agua afectada total</b></td><td class="n">${F.n(R.aguaTotal)} m³</td></tr>
     <tr><td>Superficie deforestada consumada</td><td class="n">${F.n(R.haConsumada)} ha</td></tr>
     <tr><td>CO₂ liberado por biomasa (consumado)</td><td class="n">${F.n(R.co2Consumado)} t</td></tr>
@@ -3693,9 +4012,27 @@ function informeHTML(o){
   ${inc.length?`<div class="isec">${hal.length?6:5}. Material incautado</div><table class="it">
     ${inc.map(([k,v])=>`<tr><td style="text-transform:capitalize">${k}</td><td class="n">${F.n(v)}</td></tr>`).join('')}</table>`:''}
 
+  ${propios.length?`<div class="isec">Cálculos adicionales del analista</div>
+  <table class="it"><tr><th>Concepto</th><th style="text-align:right">Valor</th></tr>
+    ${propios.map(r=>`<tr><td>${r.l}</td><td class="n">${r.v} ${r.u}</td></tr>`).join('')}</table>`:''}
+
+  <div class="isec">Referencias técnicas</div>
+  <table class="it">
+    <tr><th>Parámetro</th><th>Fuente</th></tr>
+    <tr><td>Mercurio por kg de oro</td><td>Telmer y Veiga (2008); PNUMA, Global Mercury Assessment (2018)</td></tr>
+    <tr><td>CO₂ por galón de ACPM</td><td>US EPA, Greenhouse Gas Equivalencies (10.180 g CO₂/galón)</td></tr>
+    <tr><td>Carbono por hectárea de bosque</td><td>IDEAM, Mapa de Carbono Forestal (2011); ANLA, Valores de Referencia</td></tr>
+    <tr><td>Títulos y solicitudes mineras</td><td>ANM, Catastro Minero Colombiano (consulta en vivo)</td></tr>
+    <tr><td>División territorial</td><td>DANE, DIVIPOLA</td></tr>
+    <tr><td>Conversión monetaria</td><td>Superintendencia Financiera de Colombia, TRM</td></tr>
+    <tr><td>Capacidades, factores y concentraciones</td>
+        <td>Estimaciones operacionales propias de la Brigada, no validadas por literatura externa</td></tr>
+  </table>
+
   <div class="icon2"><b>// Concepto estratégico · Estado Mayor BRCMI</b><br><br>
     La explotación intervenida cuenta con capacidad para remover ${F.n(R.capacidadMes)} m³ de material al mes,
-    lo que representa un valor presunto de ${F.usd(R.valorMes,T)} mensuales en ${o.recurso}.
+    lo que representa una producción estimada de ${F.n(R.produccionMes)} ${R.unidad} de
+    ${R.recurso.toLowerCase()} al mes, por un valor presunto de ${F.usd(R.valorMes,T)} mensuales.
     De ese monto, aproximadamente ${F.usd(R.renta,T)} alimentarían presuntamente la economía ilícita de la región.
     En materia ambiental, la actividad consumó la afectación de ${F.n(R.haConsumada)} hectáreas y de
     ${F.n(R.aguaTotal)} m³ de agua. Dado que se trata de explotación ${o.actividad.toLowerCase()},
@@ -3754,23 +4091,191 @@ function exportarWord(){
 /* ---------- Minuta ---------- */
 const ETP={1:['⚙️','Capacidad y consumo de la maquinaria'],2:['⛏️','Extracción del recurso'],
            3:['⚗️','Insumos utilizados'],4:['💰','Valorización económica'],5:['🌿','Impacto ambiental']};
+/* ══════════ REFERENCIAS QUE SUSTENTAN LOS PARÁMETROS ══════════ */
+const REFERENCIAS = [
+  { g:'Mercurio en minería aluvial', items:[
+    { t:'Telmer, K. y Veiga, M. (2008). World emissions of mercury from artisanal and small scale gold mining.',
+      d:'Referencia estándar del sector. Reporta 1,3 kg de mercurio por kg de oro contando solo las pérdidas inmediatas, y advierte que cuando el mercurio no se recicla el consumo es al menos el doble. En dragas que lo descartan al río la proporción sube aún más.',
+      s:'Sustenta el parámetro de 3 kg Hg / kg oro.',
+      u:'https://www.planetgold.org/sites/default/files/2020-05/Telmer%20Veiga%20World%20Hg%20emmissions%20from%20ASM%202008.pdf' },
+    { t:'PNUMA (2018). Global Mercury Assessment.',
+      d:'La minería aurífera artesanal y de pequeña escala genera cerca del 37% de las 2.200 toneladas anuales de mercurio liberadas al ambiente, y prácticamente todo el mercurio que emplea termina liberado.',
+      s:'Contexto para la valoración del daño por mercurio.',
+      u:'https://www.unep.org/globalmercurypartnership/what-we-do/artisanal-and-small-scale-gold-mining-asgm' },
+    { t:'Convenio de Minamata sobre el Mercurio. Ley 1892 de 2018 (Colombia).',
+      d:'Instrumento internacional ratificado por Colombia que obliga a reducir y eliminar el uso de mercurio en la minería artesanal.',
+      s:'Marco jurídico del hallazgo de mercurio en sitio.', u:'' }
+  ]},
+  { g:'Huella de carbono', items:[
+    { t:'US EPA. Greenhouse Gas Equivalencies Calculator — Calculations and References.',
+      d:'Factor de conversión acordado de 10.180 gramos de CO₂ por galón de diésel consumido.',
+      s:'Sustenta el parámetro de 10 kg CO₂ por galón de ACPM.',
+      u:'https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator-calculations-and-references' },
+    { t:'IDEAM (2011). Mapa de Carbono Forestal — Biomasa Aérea de Colombia.',
+      d:'Estimación de las reservas de carbono en biomasa aérea de los bosques naturales del país, construida sobre 3.499 levantamientos florísticos e inventarios forestales, siguiendo la metodología del IPCC (2006).',
+      s:'Fuente nacional para el carbono por hectárea de bosque.', u:'' },
+    { t:'ANLA. Valores de Referencia del Potencial de Carbono Almacenado en Coberturas de la Tierra.',
+      d:'Documento oficial con los valores de carbono almacenado por tipo de cobertura. Establece que una tonelada de carbono equivale a 3,667 toneladas de CO₂ equivalente.',
+      s:'Permite ajustar el parámetro de t CO₂/ha según la cobertura real.',
+      u:'https://www.anla.gov.co/images/documentos/manuales/2024-03-14-anla-VRPCA-areas-lic-ANLA.pdf' },
+    { t:'IPCC (2006). Directrices para los inventarios nacionales de gases de efecto invernadero.',
+      d:'Metodología internacional sobre la que se construyen los factores de emisión y de biomasa usados por IDEAM y ANLA.',
+      s:'Base metodológica de toda la etapa ambiental.', u:'' }
+  ]},
+  { g:'Títulos mineros y legalidad', items:[
+    { t:'Agencia Nacional de Minería. Catastro Minero Colombiano — geoservicio ANM/ServiciosANM.',
+      d:'Capas oficiales de Título Vigente y Solicitud Vigente que el sistema consulta en vivo sobre el punto de la operación.',
+      s:'Determina si el punto intervenido cuenta con título o solicitud.',
+      u:'https://geo.anm.gov.co/webgis/rest/services/ANM/ServiciosANM/MapServer' },
+    { t:'Ley 685 de 2001 — Código de Minas.',
+      d:'Régimen de títulos y de la explotación ilícita de yacimientos mineros.', s:'', u:'' },
+    { t:'Código Penal, artículo 338 — Explotación ilícita de yacimiento minero.',
+      d:'Tipifica la explotación sin título de yacimientos y materiales, base jurídica de la intervención.', s:'', u:'' }
+  ]},
+  { g:'Cartografía y división territorial', items:[
+    { t:'DANE. División Político-Administrativa de Colombia (DIVIPOLA).',
+      d:'Listado oficial de 33 divisiones y 1.105 municipios que alimenta los selectores de departamento y municipio.',
+      s:'', u:'https://www.dane.gov.co/index.php/servicios-al-ciudadano/servicios-informacion/codigos-estadisticos' },
+    { t:'IGAC. Cartografía base y catastro.',
+      d:'Referencia cartográfica nacional.', s:'', u:'https://mapas.igac.gov.co/' },
+    { t:'Esri. World Imagery, World Transportation, World Hydro Reference y World Topo Map.',
+      d:'Capas de imagen satelital, vías, drenajes y relieve usadas en el visor.', s:'', u:'' }
+  ]},
+  { g:'Precios y conversión monetaria', items:[
+    { t:'Superintendencia Financiera de Colombia. Tasa Representativa del Mercado (TRM).',
+      d:'Tasa oficial de conversión entre pesos y dólares. Es la que corresponde a un documento institucional colombiano, por encima de una cotización de mercado.',
+      s:'Sustenta el parámetro de TRM.', u:'https://www.superfinanciera.gov.co/' },
+    { t:'Cotización internacional del oro (mercado spot, dólares por onza troy).',
+      d:'El oro se cotiza por onza troy; el sistema convierte a gramos usando 31,1035 gramos por onza.',
+      s:'Sustenta el parámetro de precio del oro por gramo.', u:'' }
+  ]},
+  { g:'Advertencia sobre parámetros propios', items:[
+    { t:'Capacidades de maquinaria, factores de deforestación, concentraciones de oro y cuota de la economía ilícita.',
+      d:'Estos valores no provienen de las fuentes anteriores: son estimaciones operacionales construidas por la Brigada a partir de la experiencia en terreno. No están validados por literatura externa y deben revisarse periódicamente contra los hallazgos reales de las operaciones.',
+      s:'Se documentan aquí para que quien lea el informe sepa distinguirlos de los factores respaldados.', u:'' }
+  ]}
+];
+
+function renderReferencias(){
+  return `<div class="et" style="margin-top:22px">
+    <div class="ethead" onclick="const b=this.nextElementSibling;
+      b.style.display=b.style.display==='none'?'block':'none'">
+      <span>📚</span><span class="t">Referencias y sustento técnico</span>
+      <span class="b">${REFERENCIAS.reduce((a,g)=>a+g.items.length,0)} fuentes</span></div>
+    <div style="display:none">
+      <div class="crow" style="color:var(--text-secondary);font-size:12.5px;line-height:1.6">
+        Fuentes sobre las que se apoyan los parámetros del sistema. Las que tienen enlace fueron
+        verificadas; las demás corresponden a normativa y documentos oficiales de consulta directa.
+      </div>
+      ${REFERENCIAS.map(g=>`
+        <div class="crow">
+          <div class="ref-grupo">${g.g}</div>
+          ${g.items.map(it=>`
+            <div class="ref-item">
+              <div class="ref-t">${it.u?`<a href="${it.u}" target="_blank" rel="noopener">${it.t}</a>`:it.t}</div>
+              <div class="ref-d">${it.d}</div>
+              ${it.s?`<div class="ref-s">▸ ${it.s}</div>`:''}
+            </div>`).join('')}
+        </div>`).join('')}
+    </div></div>`;
+}
+
+function fichas(f){
+  return f.map(x => `<span class="tok tok-${x.t}">${x.v}</span>`).join('');
+}
 function renderMinuta(){
   const c=document.getElementById('minBox');
   if(!ACTUAL){ c.innerHTML=vacio('Crea una operación para ver su memoria.'); return; }
   const M=ACTUAL.calc.M;
   c.innerHTML=`<div class="snote gold"><b>${ACTUAL.codigo} · ${ACTUAL.nombre}.</b>
-    Calculado el ${ACTUAL.generado} con los parámetros vigentes en ese momento.</div>`+
+    Calculado el ${ACTUAL.generado} con los parámetros vigentes en ese momento.</div>
+    <div class="sbar" style="position:static;margin:0 0 14px;justify-content:flex-start">
+      <button class="sbtn" onclick="agregarCalculo()">＋ Agregar un cálculo propio</button>
+      <span style="color:var(--text-tertiary);font-size:11.5px">
+        Desmarca «En el informe» para excluir un cálculo del PDF y del Word.</span>
+    </div>
+    <div class="tok-leyenda">
+      <span class="tok tok-data">dato de la operación</span>
+      <span class="tok tok-param">parámetro del sistema</span>
+      <span class="tok tok-op">operación / paso intermedio</span>
+      <span class="tok tok-result">resultado</span>
+    </div>` +
     Object.entries(ETP).map(([n,[ic,t]])=>{
       const fs=M.filter(r=>r.e==+n);
       return `<div class="et"><div class="ethead" onclick="const b=this.nextElementSibling;
         b.style.display=b.style.display==='none'?'block':'none'">
         <span>${ic}</span><span class="t">${n}. ${t}</span><span class="b">${fs.length} cálculos</span></div>
-        <div>${fs.map(r=>`<div class="crow">
-          <div class="ctop"><span class="clab">${r.l}</span><span class="cres">${r.v}${r.u?' '+r.u:''}</span></div>
-          <div class="cfor">${r.f}</div>
-          ${r.pk?`<span class="ptag">Parámetro: ${ACTUAL.params[r.pk].l} = ${ACTUAL.params[r.pk].v} ${ACTUAL.params[r.pk].u}</span>`:''}
-        </div>`).join('')}</div></div>`;
-    }).join('');
+        <div>${fs.map((r,i)=>{
+          const idx = M.indexOf(r);
+          const nota = ACTUAL.notas && ACTUAL.notas[idx];
+          const fuera = ACTUAL.ocultos && ACTUAL.ocultos[idx];
+          return `<div class="crow${fuera?' excluida':''}${r.propio?' propia':''}" id="crow${idx}">
+            <div class="ctop"><span class="clab">${r.propio?'✎ ':''}${r.l}</span>
+              <span class="cres">${r.v}${r.u?' '+r.u:''}</span></div>
+            <div class="cfor">${fichas(r.f)}</div>
+            <div class="crow-acc">
+              <label class="mini-b tog"><input type="checkbox" ${ACTUAL.ocultos&&ACTUAL.ocultos[idx]?'':'checked'}
+                onchange="alternarCalculo(${idx},this.checked)"> En el informe</label>
+              ${r.keys.filter(k=>k!=='__maq').map(k=>
+                `<button class="mini-b param" onclick="irAlParametro('${k}')">🎚️ ${ACTUAL.params[k].l}</button>`).join('')}
+              ${r.keys.includes('__maq')?
+                `<button class="mini-b param" onclick="irAlParametro(null)">🎚️ Tabla de maquinaria</button>`:''}
+              <button class="mini-b flag" onclick="abrirNota(${idx})">🚩 Reportar error</button>
+            </div>
+            <div class="nota-panel" id="nota${idx}">
+              <textarea id="notaTxt${idx}" placeholder="¿Qué te parece incorrecto en este cálculo?"></textarea>
+              <div style="display:flex;gap:8px;justify-content:flex-end">
+                <button class="mini-b" onclick="abrirNota(${idx})">Cancelar</button>
+                <button class="mini-b enviar" onclick="guardarNota(${idx})">Guardar observación</button>
+              </div>
+            </div>
+            ${nota?`<div class="nota-hecha"><b>🚩 Observación del analista</b><br>${nota}</div>`:''}
+          </div>`;
+        }).join('')}</div></div>`;
+    }).join('') + renderReferencias();
+}
+
+function alternarCalculo(i, incluir){
+  ACTUAL.ocultos = ACTUAL.ocultos || {};
+  if(incluir) delete ACTUAL.ocultos[i]; else ACTUAL.ocultos[i] = true;
+  toast(incluir ? 'Cálculo incluido en el informe' : 'Cálculo excluido del informe');
+}
+
+function agregarCalculo(){
+  const l = prompt('Nombre del cálculo (ej. Valor del combustible incautado):');
+  if(!l) return;
+  const v = prompt('Resultado (ej. 12.400):');
+  if(v === null) return;
+  const u = prompt('Unidad (ej. galones). Puedes dejarlo vacío:') || '';
+  const just = prompt('¿Cómo se obtuvo? Explícalo para que quede en la memoria:') || 'Ingresado manualmente por el analista.';
+  ACTUAL.calc.M.push({ e:5, l, v, u, propio:true,
+    f:[{t:'data', v:just}, {t:'op', v:'='}, {t:'result', v:`${v} ${u}`.trim()}], keys:[] });
+  renderMinuta();
+  toast('Cálculo agregado a la memoria y al informe');
+}
+
+function abrirNota(i){
+  const p = document.getElementById('nota'+i);
+  p.classList.toggle('abierta');
+}
+function guardarNota(i){
+  const t = document.getElementById('notaTxt'+i).value.trim();
+  if(!t){ toast('Escribe la observación'); return; }
+  ACTUAL.notas = ACTUAL.notas || {};
+  ACTUAL.notas[i] = t;
+  renderMinuta(); toast('Observación guardada en la memoria de cálculo');
+}
+function irAlParametro(k){
+  go('vParametros');
+  if(!k) return;
+  setTimeout(()=>{
+    const inp = document.querySelector(`[data-pk="${k}"]`);
+    if(inp){
+      inp.scrollIntoView({behavior:'smooth', block:'center'});
+      inp.classList.add('resaltado');
+      setTimeout(()=> inp.classList.remove('resaltado'), 2600);
+    }
+  }, 90);
 }
 
 /* ---------- Parámetros ---------- */
@@ -3819,6 +4324,7 @@ function abrirOp(i){ ACTUAL=OPS[i]; go('vResultados'); }
 
 document.getElementById('bgImg').style.backgroundImage = 'url(' + FONDO_BRCMI + ')';
 document.body.classList.add('en-login');
+actualizarPrecios(true);          // al abrir la página
 document.getElementById('lgPin').focus();
 </script>
 
