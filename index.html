@@ -205,7 +205,11 @@
     color:var(--text-secondary); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;
   }
   .maq-stepper button:hover{color:var(--text-primary); border-color:var(--border-strong);}
-  .maq-stepper .maq-count{ width:20px; text-align:center; font-size:11.5px; font-weight:700; font-variant-numeric:tabular-nums; }
+  .maq-stepper .maq-count{ width:38px; min-width:38px; text-align:center; font-size:11.5px; font-weight:700; font-variant-numeric:tabular-nums;
+    background:transparent; border:1px solid transparent; border-radius:6px; color:inherit; padding:2px 0; font-family:inherit; }
+  .maq-stepper input.maq-count:focus{ outline:none; border-color:var(--gold,#C9A227); background:rgba(201,162,39,0.10); }
+  .maq-stepper input.maq-count::-webkit-outer-spin-button,
+  .maq-stepper input.maq-count::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
   .upm-box{margin-top:9px; padding:9px 10px; border:0.5px solid rgba(127,119,221,0.35); background:rgba(127,119,221,0.08); border-radius:9px; display:flex; flex-direction:column; gap:6px;}
   .upm-line{display:flex; align-items:center; justify-content:space-between; gap:8px;}
   .upm-line.sub{font-size:10.5px; color:var(--text-secondary);}
@@ -1029,7 +1033,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
               </div>
               <div class="field">
                 <label>Fecha de verificación <span class="req-star">*</span></label>
-                <input type="date" value="2026-07-01">
+                <input type="date" id="formFecha" value="2026-07-01">
               </div>
             </div>
 
@@ -1095,7 +1099,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
               </div>
               <div class="field">
                 <label>Vereda <span class="opt">(si se conoce)</span></label>
-                <input type="text" placeholder="Nombre de la vereda">
+                <input type="text" id="formVereda" placeholder="Nombre de la vereda">
               </div>
             </div>
           </div>
@@ -1255,11 +1259,15 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
               </div>
               <div class="field">
                 <label>ACPM</label>
-                <div class="unit-suffix"><input type="text" placeholder="0"><span class="unit-label">gal</span></div>
+                <div class="unit-suffix"><input type="text" placeholder="0" id="insAcpm"><span class="unit-label">gal</span></div>
               </div>
               <div class="field">
                 <label>Aceite</label>
-                <div class="unit-suffix"><input type="text" placeholder="0"><span class="unit-label">gal</span></div>
+                <div class="unit-suffix"><input type="text" placeholder="0" id="insAceite"><span class="unit-label">gal</span></div>
+              </div>
+              <div class="field">
+                <label>Gasolina</label>
+                <div class="unit-suffix"><input type="text" placeholder="0" id="insGasolina"><span class="unit-label">gal</span></div>
               </div>
             </div>
 
@@ -1388,6 +1396,60 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
 
       </div>
 
+      <!-- ============ REPORTE Q5 (ancho completo) ============ -->
+      <div class="card full status-neutral" id="cardQ5">
+        <div class="card-head">
+          <span class="card-icon">📤</span>
+          <div class="card-title-wrap">
+            <span class="card-title">Reporte Q5 <span class="opt" style="text-transform:none;font-weight:400;">(para copiar y enviar)</span></span>
+            <span class="card-caption">Solo lo puntual del mensaje. Lo demás sale de esta operación. El Q5 listo aparece en “Resultados”.</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="upm-hint" style="margin-bottom:10px">El <b>encabezado</b> y el <b>¿QUIÉN?</b> salen de <b>“Tropas participantes”</b>; el <b>nombre de la operación</b> (ej. SULAMITA) sale de <b>“Nombre de la operación”</b> (arriba). Aquí solo completas lo puntual.</div>
+          <div class="field-grid">
+            <div class="field"><label>N° de orden de operación <span class="opt">(ej. 037)</span></label><input type="text" id="q5NumOrden" placeholder="037"></div>
+            <div class="field"><label>Hora de la operación <span class="opt">(militar)</span></label><input type="time" id="q5Hora"></div>
+          </div>
+          <div class="field" style="margin-bottom:10px">
+            <label>Acción sobre el material</label>
+            <select id="q5Accion">
+              <option>Destruido</option><option>Inutilizado</option><option>Inhabilitado</option>
+              <option>Intervenido</option><option>Incautado</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:10px">
+            <label>Fuerzas articuladas <span class="opt">(una o varias)</span></label>
+            <div class="chip-select" id="q5Fuerzas">
+              <label class="q5-chk"><input type="checkbox" class="q5fz" value="Fiscalía General de la Nación"> Fiscalía</label>
+              <label class="q5-chk"><input type="checkbox" class="q5fz" value="Policía Nacional"> Policía Nacional</label>
+              <label class="q5-chk"><input type="checkbox" class="q5fz" value="CAR (Corporación Autónoma)"> CAR</label>
+              <label class="q5-chk"><input type="checkbox" class="q5fz" value="Armada Nacional"> Armada</label>
+              <label class="q5-chk"><input type="checkbox" class="q5fz" value="Fuerza Aeroespacial"> Fuerza Aeroespacial</label>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label>Organización criminal afectada <span class="opt">(se escribe a mano)</span></label>
+              <input type="text" id="q5Gao" list="q5GaoList" placeholder="Ej: GAOR - FARC Frente 33">
+              <datalist id="q5GaoList">
+                <option>GAO Clan del Golfo</option><option>GAOR</option><option>FARC</option>
+                <option>ELN</option><option>Comando de Frontera</option>
+              </datalist>
+            </div>
+            <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
+              <button type="button" class="sbtn" onclick="q5Autozona()">📍 Autocompletar zona desde la coordenada</button>
+              <div class="upm-hint" id="q5Zona" style="margin-top:5px">Toma el punto del mapa y llena departamento y municipio. La vereda no siempre está en el mapa base; verifícala a mano.</div>
+            </div>
+          </div>
+          <div class="field" style="margin-top:4px">
+            <label>Relato de los hechos <span class="opt">(opcional · se mezcla en HECHOS)</span></label>
+            <textarea id="q5Relato" rows="3" placeholder="Escribe lo que pasó, en tercera persona. Ej: en desarrollo de patrullaje móvil observaron actividad de dragado sobre el río y procedieron a la verificación del área"></textarea>
+            <div class="upm-hint" style="margin-top:5px">Se intercala en el párrafo de HECHOS, entre el contexto y el resultado. El texto final es editable al copiar.</div>
+          </div>
+        </div>
+      </div>
+
       <!-- ============ CONTEXTO Y EVIDENCIA (ancho completo) ============ -->
       <div class="card full status-empty" id="cardEvidencia">
         <div class="card-head">
@@ -1471,6 +1533,13 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
   </div>
   <div id="infPaper"></div>
 </div></div>
+
+<style>
+  .q5-chk{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:5px 9px;border:1px solid var(--border,#333);border-radius:8px;cursor:pointer}
+  .q5-chk input{accent-color:#C9A227}
+  .q5-out{white-space:pre-wrap;word-wrap:break-word;font-family:var(--font-mono,monospace);font-size:12.5px;line-height:1.55;
+    background:#0F1114;color:#E6E7E9;border:1px solid #262A2F;border-radius:10px;padding:16px 18px}
+</style>
 
 <!-- ===== MINUTA ===== -->
 <div id="vMinuta" class="view"><div class="sicwrap">
@@ -1571,18 +1640,16 @@ const FOTO = {
     <div class="maq-item" id="maqItem${i}">
       <span class="maq-name">${m.n}</span>
       <div class="maq-stepper">
-        <button onclick="maqChange(${i},-1)">−</button>
-        <span class="maq-count" id="maqCount${i}">0</span>
-        <button onclick="maqChange(${i},1)">+</button>
+        <button type="button" onclick="maqChange(${i},-1)">−</button>
+        <input type="text" inputmode="numeric" class="maq-count" id="maqCount${i}" value="0"
+               onfocus="this.select()" oninput="maqInput(${i}, this.value)" onblur="maqNorm(${i})">
+        <button type="button" onclick="maqChange(${i},1)">+</button>
       </div>
     </div>
   `).join('');
 
   const maqValues = new Array(MAQUINARIA.length).fill(0);
-  function maqChange(i, delta){
-    maqValues[i] = Math.max(0, maqValues[i] + delta);
-    document.getElementById('maqCount'+i).textContent = maqValues[i];
-    document.getElementById('maqItem'+i).classList.toggle('active', maqValues[i] > 0);
+  function maqRefresh(){
     const total = maqValues.reduce((a,b)=>a+b,0);
     document.getElementById('maqBadge').textContent = total + (total===1 ? ' equipo' : ' equipos');
     document.getElementById('cardMaquinaria').classList.toggle('status-complete', total>0);
@@ -1590,6 +1657,22 @@ const FOTO = {
     computeUPM();
     computeMAICA();
     computePersonal();
+  }
+  function maqChange(i, delta){
+    maqValues[i] = Math.max(0, (maqValues[i]||0) + delta);
+    document.getElementById('maqCount'+i).value = maqValues[i];
+    document.getElementById('maqItem'+i).classList.toggle('active', maqValues[i] > 0);
+    maqRefresh();
+  }
+  // Escribir la cantidad directamente sobre el campo (sin darle N veces al botón)
+  function maqInput(i, val){
+    const n = Math.max(0, parseInt(String(val).replace(/[^0-9]/g,''),10) || 0);
+    maqValues[i] = n;
+    document.getElementById('maqItem'+i).classList.toggle('active', n > 0);
+    maqRefresh(); // no reescribimos el campo aquí: deja seguir escribiendo
+  }
+  function maqNorm(i){ // al salir, deja el número limpio en el campo
+    document.getElementById('maqCount'+i).value = maqValues[i]||0;
   }
 
   // ---------- UPM (Unidad Productora Minera) ----------
@@ -3843,9 +3926,18 @@ let PARAMS = {
   oroUsdGramo:   {v:137.5,     u:'USD/gramo', g:'Precios', l:'Precio del oro', live:'oro'},
   trm:           {v:4000,      u:'COP/USD',   g:'Precios', l:'Tasa de cambio (TRM)', live:'trm'},
   precioHg:      {v:2000000,   u:'COP/kg',    g:'Precios', l:'Costo del mercurio'},
-  precioAcpmGal: {v:12600,     u:'COP/galón', g:'Precios', l:'Precio del ACPM'},
+  precioAcpmGal: {v:10900,     u:'COP/galón', g:'Precios', l:'Precio del ACPM (galón)'},
   costoPersona:  {v:3000000,   u:'COP/mes',   g:'Precios', l:'Costo por persona/mes'},
   litrosGalon:   {v:3.781,     u:'L/galón',   g:'Precios', l:'Conversión litros a galón'},
+
+  precioGasolinaGal:{v:15600,   u:'COP/galón', g:'Precios de incautación', l:'Gasolina · por galón'},
+  precioAceiteGal:  {v:90000,   u:'COP/galón', g:'Precios de incautación', l:'Aceite · por galón'},
+  precioCianuroKg:  {v:30000,   u:'COP/kg',    g:'Precios de incautación', l:'Cianuro · por kg'},
+  precioExplosivosKg:{v:25000,  u:'COP/kg',    g:'Precios de incautación', l:'Explosivos · por kg'},
+  precioMaderaM3:   {v:400000,  u:'COP/m³',    g:'Precios de incautación', l:'Madera · por m³'},
+  precioColtanKg:   {v:200000,  u:'COP/kg',    g:'Precios de incautación', l:'Coltán · por kg'},
+
+  oroPorGalon:      {v:0.5,     u:'g oro/galón', g:'Extracción evitada', l:'Oro mínimo por galón de combustible incautado'},
 
   aguaPorTierra: {v:5,     u:'m³ agua/m³',   g:'Ambiental', l:'Agua afectada por remoción'},
   aguaPorGrHg:   {v:1000,  u:'m³ agua/g Hg', g:'Ambiental', l:'Agua contaminada por gramo de Hg'},
@@ -4052,6 +4144,45 @@ function calcularSICPRO(op, PA){
   row(4,'→ Beneficio del explotador por mes', F.usd(R.beneficio,T), '',
     [O(F.usd(R.excedente,T)), O('−'), O(F.usd(R.renta,T)), O('='), X(F.usd(R.beneficio,T))]);
 
+  /* ═════ 4b. Valor de lo incautado (impacto por incautación, sin destruir) ═════ */
+  const H = op.hallado||{}, IN = op.incautado||{};
+  const incDet = [];
+  const addInc = (cant,precio,lbl,uni,pk)=>{ if(cant>0 && precio>0) incDet.push({lbl,cant:+cant,uni,precio,v:cant*precio,pk}); };
+  addInc(H.acpm,      p('precioAcpmGal'),      'ACPM',       'gal', 'precioAcpmGal');
+  addInc(H.gasolina,  p('precioGasolinaGal'),  'Gasolina',   'gal', 'precioGasolinaGal');
+  addInc(H.aceite,    p('precioAceiteGal'),    'Aceite',     'gal', 'precioAceiteGal');
+  addInc(H.mercurio,  p('precioHg'),           'Mercurio',   'kg',  'precioHg');
+  addInc(H.cianuro,   p('precioCianuroKg'),    'Cianuro',    'kg',  'precioCianuroKg');
+  addInc(H.explosivos,p('precioExplosivosKg'), 'Explosivos', 'kg',  'precioExplosivosKg');
+  addInc(H.madera,    p('precioMaderaM3'),     'Madera',     'm³',  'precioMaderaM3');
+  addInc(IN.oro,        p('precioOro'),          'Oro',       'kg', 'precioOro');
+  addInc(IN.esmeraldas, p('precio_Esmeraldas'),  'Esmeraldas','ct', 'precio_Esmeraldas');
+  addInc(IN.coltan,     p('precioColtanKg'),     'Coltán',    'kg', 'precioColtanKg');
+  addInc(IN.carbon,     p('precio_Carbón')/1000, 'Carbón',    'kg', 'precio_Carbón');
+  R.incautadoDet = incDet;
+  R.valorIncautado = incDet.reduce((a,d)=>a+d.v,0);
+  incDet.forEach(d=> row(4, `Valor incautado · ${d.lbl}`, F.cop(d.v), '',
+    [D(`${F.n(d.cant)} ${d.uni}`), O('×'), P(`${F.cop(d.precio)}/${d.uni}`, d.pk==='precio_Carbón'?null:d.pk),
+     O('='), X(F.cop(d.v)), O('·'), O(F.usd(d.v,T))], d.pk==='precio_Carbón'?[]:[d.pk]));
+  if(incDet.length)
+    row(4,'→ Valor total incautado', F.cop(R.valorIncautado), '',
+      incDet.reduce((a,d,i)=> i? a.concat([O('+'),O(F.cop(d.v))]) : [O(F.cop(d.v))], [])
+        .concat([O('='), X(F.cop(R.valorIncautado)), O('·'), O(F.usd(R.valorIncautado,T))]));
+
+  /* ═════ 4c. Extracción de oro evitada por el combustible incautado ═════ */
+  R.galonesComb = (+H.acpm||0) + (+H.gasolina||0);   // galones de combustible incautado
+  R.oroEvitadoGr = R.galonesComb * p('oroPorGalon'); // gramos de oro que ya no se podrán extraer
+  const precioOroGr = p('precioOro')/1000;           // COP por gramo (precioOro es COP/kg)
+  R.valorOroEvitado = R.oroEvitadoGr * precioOroGr;
+  if(R.galonesComb>0){
+    row(4,'Oro cuya extracción se evita', F.n(R.oroEvitadoGr)+' g', '',
+      [D(`${F.n(R.galonesComb)} gal combustible`), O('×'), P(`${p('oroPorGalon')} g oro/gal`,'oroPorGalon'),
+       O('='), X(`${F.n(R.oroEvitadoGr)} g de oro`)], ['oroPorGalon']);
+    row(4,'→ Valor del oro no extraído', F.usd(R.valorOroEvitado,T), '',
+      [O(`${F.n(R.oroEvitadoGr)} g`), O('×'), O(`${F.cop(precioOroGr)}/g`),
+       O('='), X(F.usd(R.valorOroEvitado,T)), O('='), O(F.cop(R.valorOroEvitado))], ['oroUsdGramo','trm']);
+  }
+
   /* ═════ 5. Ambiental ═════ */
   R.aguaSuelo = R.materialRemovido*p('aguaPorTierra');
   row(5,'Agua afectada por remoción', F.n(R.aguaSuelo), 'm³',
@@ -4084,7 +4215,7 @@ function calcularSICPRO(op, PA){
   row(5,'Superficie deforestable — PROYECCIÓN', F.n(R.haMes)+' ha/mes', `· ${F.n(R.haAno)} ha/año`,
     [O(`${F.n(R.capacidadMes)} m³/mes`), O('÷'),
      D(R.subterranea ? `${F.n(R.altoUtil)} m alto del túnel` : `${F.n(op.prof)} m prof.`), O('='),
-     O(`${F.n(R.capacidadMes/op.prof)} m²/mes`), O('×'),
+     O(`${F.n(op.prof>0?R.capacidadMes/op.prof:0)} m²/mes`), O('×'),
      P(`factor ${op.actividad} ${R.factorDef}`, kd), O('÷'),
      P(`${F.n(p('m2PorHa'))} m²/ha`,'m2PorHa'), O('='), X(`${F.n(R.haMes)} ha/mes`),
      O('×'), P(`${p('mesesAno')} meses/año`,'mesesAno'), O('='), X(`${F.n(R.haAno)} ha/año`)],
@@ -4339,6 +4470,176 @@ function go(id){
   window.scrollTo(0,0);
 }
 
+/* ================= Q5 · REPORTE OPERACIONAL ================= */
+const Q5_MESES=['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+const Q5_ACCION={Destruido:'destrucción',Inutilizado:'inutilización',Inhabilitado:'inhabilitación',Intervenido:'intervención',Incautado:'incautación'};
+function q5Pad2(n){ n=Math.round(+n||0); return (n<10?'0':'')+n; }
+function q5COP(n){ return '$'+Math.round(+n||0).toLocaleString('es-CO')+' COP'; }
+function q5Sistema(a){ return ({'Aluvial':'aluvial','Subterránea':'socavón','Cielo abierto':'a cielo abierto','Mixta':'mixto'})[a]||(a||'').toLowerCase(); }
+function q5Lista(arr){ if(!arr.length) return ''; if(arr.length===1) return arr[0]; return arr.slice(0,-1).join(', ')+' y '+arr[arr.length-1]; }
+
+// Lee las coordenadas escritas en las filas del mapa y las pasa a decimal
+function leerCoordsOp(){
+  const rows=[...document.querySelectorAll('#coordList .coord-row')], out=[];
+  rows.forEach(r=>{
+    const g=s=>parseFloat((r.querySelector(s)?.value||'').replace(',','.'))||0;
+    const t=s=>(r.querySelector(s)?.value||'').trim();
+    const laD=g('.lat-deg'),laM=g('.lat-min'),laS=g('.lat-sec'),laDir=t('.lat-dir')||'N';
+    const loD=g('.lon-deg'),loM=g('.lon-min'),loS=g('.lon-sec'),loDir=t('.lon-dir')||'W';
+    if(!laD && !loD) return;
+    let lat=laD+laM/60+laS/3600; if(laDir==='S') lat=-lat;
+    let lon=loD+loM/60+loS/3600; if(loDir==='W') lon=-lon;
+    out.push({lat,lon,txt:`${laD}°${laM}'${Math.round(laS)}" ${laDir} ${loD}°${loM}'${Math.round(loS)}" ${loDir}`});
+  });
+  return out;
+}
+
+// Llena depto/municipio/vereda de la operación desde el punto del mapa
+async function q5Autozona(){
+  const zona=document.getElementById('q5Zona');
+  const cs=leerCoordsOp(); const c=cs[0];
+  if(!c){ zona.innerHTML='⚠️ No hay coordenada en el mapa. Marca un punto arriba y vuelve a intentar.'; return; }
+  zona.innerHTML='Consultando la zona de la coordenada…';
+  try{
+    const u=`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=14&accept-language=es&lat=${c.lat}&lon=${c.lon}`;
+    const r=await fetch(u,{headers:{'Accept':'application/json'}});
+    const j=await r.json(); const a=j.address||{};
+    const depto=a.state||a.region||'';
+    const muni=a.city||a.town||a.municipality||a.county||a.village||'';
+    const vereda=a.hamlet||a.village||a.suburb||a.neighbourhood||a.locality||'';
+    const dEl=document.getElementById('formDepto'), mEl=document.getElementById('formMunicipio'), vEl=document.getElementById('formVereda');
+    if(depto && dEl){ if([...dEl.options].some(o=>o.value===depto)){ dEl.value=depto; if(typeof handleDeptoChange==='function') handleDeptoChange(depto); } }
+    if(muni && mEl) mEl.value=muni;
+    if(vereda && vEl && !vEl.value) vEl.value=vereda;
+    if(typeof checkUbicacionStatus==='function') checkUbicacionStatus();
+    zona.innerHTML=`✅ Zona detectada: <b>${[vereda,muni,depto].filter(Boolean).join(' · ')||'sin datos'}</b>. La vereda no siempre está en el mapa base — verifícala a mano.`;
+  }catch(e){ zona.innerHTML='No se pudo consultar la zona (sin conexión o servicio no disponible). Escribe la ubicación a mano.'; }
+}
+
+// Arma el texto del Q5 a partir de una operación ya creada
+function buildQ5Text(o){
+  const R=(o.calc&&o.calc.R)||{}, q=o.q5||{};
+  const hora=q.hora||'', accion=q.accion||'Destruido', gao=q.gao||'';
+  const tropasArr=(o.tropas||[]).filter(Boolean);
+  const quien=(q.quien&&q.quien.trim())?q.quien.trim():tropasArr.join(' - ');
+  const fuerzas=q.fuerzas||[];
+  const sistema=q5Sistema(o.actividad);
+  const coord=(o.coords&&o.coords[0])?o.coords[0].txt:'';
+  const depto=o.depto||'', muni=o.municipio||'', vereda=o.vereda||'';
+
+  // Encabezado: la(s) tropa(s) van al final de la línea de mando, en el orden en que se ingresaron
+  const sufijoMando=tropasArr.length?('-'+tropasArr.join('-')):'';
+  const header=`🟢 CGFM-EJC-JEMOP-DIV7-BR4-BRCMI${sufijoMando}`;
+  const que='Operación contra la explotación ilícita de yacimientos mineros (EIYM).';
+
+  let cuando='—';
+  if(o.fecha){ const p=o.fecha.split('-'); const horaMil=(hora?hora.replace(':',''):'0000'); cuando=`${p[2]}-${horaMil}-${Q5_MESES[(+p[1])-1]||''}-${p[0]}`; }
+
+  const donde=`${vereda?('Vereda '+vereda+', '):''}${muni||'—'}${(depto&&depto!=='—')?(' - '+depto):''}`;
+
+  // ── HECHOS · estructura canónica ──
+  const upm=o.upm||0;
+  const numOrden=(q.numOrden||'').trim();
+  const nombreOp=(o.nombre && o.nombre!=='(sin nombre)') ? o.nombre.trim() : '';
+  // acción en sustantivo para "realizando la ___"
+  const ACC={Destruido:'destrucción controlada',Inutilizado:'inutilización',Inhabilitado:'inhabilitación',Intervenido:'intervención en el sitio',Incautado:'incautación del material'};
+  const accionFrase=ACC[accion]||'destrucción controlada';
+  // relato / método libre
+  let relato=(q.relato||'').trim();
+  if(relato){ relato=relato.replace(/\s*[.;,]+\s*$/,''); relato=relato.charAt(0).toLowerCase()+relato.slice(1); }
+  // fuerzas de apoyo + BRCMI
+  const apoyoLista=q5Lista([...fuerzas,'la Brigada contra la Explotación Ilícita de Yacimientos Mineros (BRCMI)']);
+  const coordClean=coord?`en las coordenadas ${coord}`:'';
+  const legal='el cual estaba siendo utilizado para la explotación ilícita de yacimientos mineros sin los permisos legales vigentes "licencia ambiental y título minero"';
+  const gaoFin=gao?`, los cuales servían como fuente de financiamiento para las economías ilícitas del ${gao}`:'';
+
+  // encabezamiento común
+  const opTag=`${numOrden?numOrden+' ':''}${nombreOp?`"${nombreOp}"`:''}`.trim();
+  const seg=[
+    `En desarrollo de operaciones decisivas en tareas de estabilidad${opTag?(' '+opTag):''}`,
+    relato,
+    quien||'la tropa',
+    coordClean,
+    `con el apoyo de ${apoyoLista}`
+  ].filter(Boolean);
+  const esIncautacion=(accion==='Incautado');
+  let resultadoFrase;
+  if(esIncautacion){
+    // Incautación: se centra en el material/insumos hallados. La maquinaria es opcional.
+    resultadoFrase=`se logra la incautación de material e insumos empleados para la explotación ilícita de yacimientos mineros sin los permisos legales vigentes "licencia ambiental y título minero"${gaoFin}.`;
+  } else if(upm>0){
+    // Destrucción / inutilización / inhabilitación / intervención sobre las UPM.
+    resultadoFrase=`se logra el hallazgo y la intervención de ${q5Pad2(upm)} (UPM) Unidad${upm===1?'':'es'} Productora${upm===1?'':'s'} Minera${upm===1?'':'s'}${sistema?(' tipo '+sistema):''}, realizando la ${accionFrase}, ${legal}${gaoFin}.`;
+  } else {
+    // Misma familia pero sin UPM contabilizada: se actúa sobre el material.
+    resultadoFrase=`se logra el hallazgo y la ${accionFrase} del material empleado para la explotación ilícita de yacimientos mineros sin los permisos legales vigentes "licencia ambiental y título minero"${gaoFin}.`;
+  }
+  const hechos=`${seg.join(', ')}, ${resultadoFrase}`;
+
+  const mat=[];
+  (o.maquinaria||[]).forEach(m=>{ const nm=MAQUINARIA[m.i]; if(nm&&m.q>0) mat.push(`${q5Pad2(m.q)} ${nm.n}`); });
+  (o.materialExtra||'').split('\n').map(s=>s.trim()).filter(Boolean).forEach(l=>mat.push(l));
+  const h=o.hallado||{};
+  if(h.acpm>0)      mat.push(`${Math.round(h.acpm)} galones de ACPM`);
+  if(h.gasolina>0)  mat.push(`${Math.round(h.gasolina)} galones de gasolina`);
+  if(h.aceite>0)    mat.push(`${Math.round(h.aceite)} galones de aceite`);
+  if(h.mercurio>0)  mat.push(`${h.mercurio} kg de mercurio`);
+  if(h.cianuro>0)   mat.push(`${h.cianuro} kg de cianuro`);
+  if(h.explosivos>0)mat.push(`${h.explosivos} kg de explosivos`);
+  if(h.madera>0)    mat.push(`${h.madera} m³ de madera`);
+  const inc=o.incautado||{};
+  if(inc.oro>0)        mat.push(`${inc.oro} kg de oro`);
+  if(inc.esmeraldas>0) mat.push(`${inc.esmeraldas} ct de esmeraldas`);
+  if(inc.coltan>0)     mat.push(`${inc.coltan} kg de coltán`);
+  if(inc.carbon>0)     mat.push(`${inc.carbon} kg de carbón`);
+  if(!mat.length) mat.push('(sin material registrado)');
+  const accionUpper=(accion||'').toUpperCase();
+
+  const valMaq=R.valorMaquinaria||0, valMes=R.valorMes||0;
+  const esOro=(o.recurso==='Oro');
+  const prodTxt=esOro
+     ? `${Math.round((R.produccionMes||0)*1000).toLocaleString('es-CO')} gramos de oro mensuales`
+     : `${(R.produccionMes||0).toLocaleString('es-CO',{maximumFractionDigits:1})} ${R.unidad||''} de ${(o.recurso||'').toLowerCase()} mensuales`;
+  const partes=[];
+  if(valMaq>0) partes.push(`una afectación de ${q5COP(valMaq)} en maquinaria y equipos`);
+  if(valMes>0) partes.push(`una afectación económica directa de ${q5COP(valMes)} mensuales, correspondiente a una producción aproximada de ${prodTxt}`);
+  let impacto;
+  if(partes.length){
+    impacto=`Con este resultado se logra ${q5Lista(partes)}, generando una disminución en los ingresos ilícitos derivados de la explotación ilícita de yacimientos mineros${sistema?(' mediante el sistema de explotación '+sistema):''}.`;
+  } else {
+    impacto='Con este resultado se afectan directamente las economías ilícitas derivadas de la explotación ilícita de yacimientos mineros.';
+  }
+  const valInc=R.valorIncautado||0;
+  const incClause=valInc>0?`El material e insumos incautados representan un valor económico aproximado de ${q5COP(valInc)}.`:'';
+  const oroEv=R.oroEvitadoGr||0, valOroEv=R.valorOroEvitado||0;
+  const oroEvClause=oroEv>0?`Con la incautación del combustible se evita la extracción ilícita de aproximadamente ${Math.round(oroEv).toLocaleString('es-CO')} gramos de oro, avaluados en ${q5COP(valOroEv)}.`:'';
+  const gaoClause=gao?`Esta acción impacta de manera directa las economías ilícitas de la organización criminal ${gao}.`:'';
+
+  const L=[];
+  L.push(header,'','✅ ¿QUÉ?:',que,'','✅ ¿QUIÉN?:',quien||'—','','✅ ¿CUÁNDO?:',cuando,
+         '','✅ ¿DÓNDE?:',donde,'','✅ HECHOS:',hechos,'',`✅ MATERIAL ${accionUpper}`);
+  mat.forEach(m=>L.push('• '+m));
+  L.push('','✅ IMPACTO OPERACIONAL',impacto);
+  if(incClause) L.push('',incClause);
+  if(oroEvClause) L.push('',oroEvClause);
+  L.push('','✅ ACCIONES SUBSIGUIENTES','- Se realiza la respectiva documentación y actos urgentes con apoyo de la Fiscalía General de la Nación.',
+         '','Patria Honor Lealtad','','Nuestro Compromiso es Colombia');
+  return L.join('\n');
+}
+
+function copiarQ5(){
+  const el=document.getElementById('q5Out'); if(!el) return;
+  const t=el.textContent;
+  const done=()=>toast('Q5 copiado — pégalo en tu reporte');
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done,()=>q5CopyFallback(t)); }
+  else q5CopyFallback(t);
+}
+function q5CopyFallback(t){
+  const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); toast('Q5 copiado'); }catch(e){ toast('Selecciona y copia manualmente'); }
+  document.body.removeChild(ta);
+}
+
 /* ---------- Crear operación (reemplaza la original) ---------- */
 function crearOperacion(){
   const act  = getSelectedChipText('actividadSelect');
@@ -4351,23 +4652,51 @@ function crearOperacion(){
   const longitud = parseNum(document.getElementById('inputLongitud').value);
   const frentes  = parseNum(document.getElementById('inputFrentes').value) || 1;
   const maquinaria = maqValues.map((q,i)=>({i,q})).filter(x=>x.q>0);
-  if(!maquinaria.length){ toast('Registra al menos un equipo de maquinaria'); return; }
-  if(!ha){ toast('Falta el área afectada en superficie'); return; }
-  if(esSub){
-    if(!seccion) { toast('Falta el área transversal de la bocamina'); return; }
-    if(!longitud){ toast('Falta la longitud del túnel'); return; }
-  } else if(!prof)       { toast('Falta la profundidad de la excavación'); return; }
-  if(!getSelectedChipText('actividadSelect')){ toast('Elige el tipo de actividad minera'); return; }
-  if(!getSelectedChipText('recursoSelect')){ toast('Elige el recurso explotado'); return; }
+  const insEls = document.querySelectorAll('#cardGeoInsumos .insumo-grid input');
+  const gasVal = parseNum(document.getElementById('insGasolina')?.value);
+  const hayInsumos = [...insEls].some(e=>parseNum(e.value)>0) || gasVal>0;
+  const hayIncautMin = ['incautadoOro','incautadoEsmeraldas','incautadoColtan','incautadoCarbon']
+                        .some(id=>parseNum(document.getElementById(id)?.value)>0);
+  // Una operación "normal" tiene maquinaria o área; si no hay nada de eso, es SOLO incautación.
+  const esOperacion = maquinaria.length>0 || ha>0 || prof>0 || seccion>0 || longitud>0;
+
+  if(esOperacion){
+    if(!maquinaria.length){ toast('Registra al menos un equipo de maquinaria (o deja la operación vacía y reporta solo la incautación)'); return; }
+    if(!ha){ toast('Falta el área afectada en superficie'); return; }
+    if(esSub){
+      if(!seccion) { toast('Falta el área transversal de la bocamina'); return; }
+      if(!longitud){ toast('Falta la longitud del túnel'); return; }
+    } else if(!prof)       { toast('Falta la profundidad de la excavación'); return; }
+    if(!getSelectedChipText('actividadSelect')){ toast('Elige el tipo de actividad minera'); return; }
+    if(!getSelectedChipText('recursoSelect')){ toast('Elige el recurso explotado'); return; }
+  } else {
+    if(!hayInsumos && !hayIncautMin){ toast('No hay nada que registrar: agrega maquinaria y área, o al menos un insumo o material incautado'); return; }
+  }
 
   const nombreEl = document.querySelector('#cardGenerales input[type=text]');
-  const ins = document.querySelectorAll('#cardGeoInsumos .insumo-grid input');
+  const ins = insEls;
+  // Tropas: toma los tags agregados y también cualquier texto pendiente en el campo (por si no le dieron “+”)
+  const tropasTags = [...document.querySelectorAll('#tropaList .tag-chip')].map(c=>(c.childNodes[0]&&c.childNodes[0].nodeValue||'').trim());
+  const tropaPend = (document.getElementById('tropaInput')?.value||'').trim().toUpperCase();
+  if(tropaPend && !tropasTags.includes(tropaPend)) tropasTags.push(tropaPend);
+  const tropasCap = tropasTags.filter(Boolean);
 
   const op = {
     codigo:'OP-2026-'+String(SEQ++), 
     nombre:(nombreEl&&nombreEl.value.trim())||'(sin nombre)',
     depto:document.getElementById('formDepto').value||'—',
     municipio:document.getElementById('formMunicipio').value||'—',
+    vereda:(document.getElementById('formVereda')?.value||'').trim(),
+    fecha:document.getElementById('formFecha')?.value||'',
+    tropas:tropasCap,
+    soloIncautacion:!esOperacion,
+    coords:leerCoordsOp(),
+    q5:{ hora:(document.getElementById('q5Hora')?.value||'').trim(),
+         numOrden:(document.getElementById('q5NumOrden')?.value||'').trim(),
+         relato:(document.getElementById('q5Relato')?.value||'').trim(),
+         accion:(document.getElementById('q5Accion')?.value||'Destruido'),
+         gao:(document.getElementById('q5Gao')?.value||'').trim(),
+         fuerzas:[...document.querySelectorAll('.q5fz:checked')].map(x=>x.value) },
     recurso:getSelectedChipText('recursoSelect')||'Oro',
     actividad:getSelectedChipText('actividadSelect')||'Aluvial',
     cobertura:getSelectedChipText('coberturaSelect')||'—',
@@ -4375,7 +4704,8 @@ function crearOperacion(){
     materialExtra:(document.getElementById('materialExtra').value||'').trim(),
     hallado:{ mercurio:parseNum(ins[0]?.value), cianuro:parseNum(ins[1]?.value),
               explosivos:parseNum(ins[2]?.value), madera:parseNum(ins[3]?.value),
-              acpm:parseNum(ins[4]?.value), aceite:parseNum(ins[5]?.value) },
+              acpm:parseNum(ins[4]?.value), aceite:parseNum(ins[5]?.value),
+              gasolina:parseNum(document.getElementById('insGasolina')?.value) },
     incautado:{ oro:parseNum(document.getElementById('incautadoOro').value),
                 esmeraldas:parseNum(document.getElementById('incautadoEsmeraldas').value),
                 coltan:parseNum(document.getElementById('incautadoColtan').value),
@@ -4417,11 +4747,21 @@ function renderResultados(){
              ['Material removido',R.materialRemovido,'m³']];
   const mA=Math.max(...amb.map(x=>x[1]))||1;
 
+  const q5txt=buildQ5Text(o).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   box.innerHTML=`
   <h1>${o.nombre}</h1>
   <p class="lead"><span style="font-family:var(--font-mono)">${o.codigo}</span> ·
     ${o.municipio}, ${o.depto} · ${o.actividad}
     <span class="rec-sello">${{'Oro':'🟡','Esmeraldas':'💎','Carbón':'⚫','Arenas / gravas':'🟤'}[o.recurso]||''} ${o.recurso}</span></p>
+
+  <div class="q5-panel no-print" style="margin:0 0 20px;border:1px solid #C9A227;border-radius:12px;padding:14px 16px;background:rgba(201,162,39,.06)">
+    <div class="sbar" style="margin:0 0 10px;align-items:center">
+      <span style="margin-right:auto;font-weight:600;font-size:13px">📤 Mensaje Q5 · listo para copiar y enviar</span>
+      <button class="sbtn gold" onclick="copiarQ5()">📋 Copiar Q5</button>
+    </div>
+    <pre id="q5Out" class="q5-out">${q5txt}</pre>
+  </div>`;
+  box.innerHTML+=`
   <div class="snote"><b>Informe listo.</b> Se generó automáticamente. Descárgalo en PDF o Word desde <b>Informe</b>.</div>
 
   <!-- ══════════ 1. MAQUINARIA Y CAPACIDAD ══════════ -->
@@ -4540,6 +4880,24 @@ function renderResultados(){
       ${cost.map(([l,v])=>bar(l,F.usd(v,T),v/mC*100,'var(--text-secondary)')).join('')}
       <div class="sfoot">Los tres costos suman <b>${F.usd(R.costos,T)}</b> al mes.
         Convertidos con la TRM de ${F.cop(T)} congelada al momento de calcular.</div></div>
+
+    <div class="scard"><h2>💰 Valor de lo incautado</h2>
+      ${(R.incautadoDet&&R.incautadoDet.length)?`
+      <table class="ptab">
+        <tr><th>Ítem</th><th style="text-align:right">Cantidad</th><th style="text-align:right">Valor</th></tr>
+        ${R.incautadoDet.map(d=>`<tr><td>${d.lbl}</td><td style="text-align:right">${F.n(d.cant)} ${d.uni}</td>
+           <td style="text-align:right;font-family:var(--font-mono)">${F.cop(d.v)}</td></tr>`).join('')}
+        <tr><td><b>Total incautado</b></td><td></td>
+           <td style="text-align:right;font-family:var(--font-mono)"><b style="color:var(--gold)">${F.cop(R.valorIncautado)}</b></td></tr>
+      </table>
+      <div class="sfoot">Valor del material e insumos <b>incautados</b>. Incautar también golpea la economía ilícita, aunque no se destruya.
+        Precios editables en <b>Parámetros → Precios de incautación</b>.</div>`
+      : `<div class="sfoot">No se registró material ni insumos incautados. Si se reportan (insumos hallados o material incautado), aparecen aquí valorizados con los precios de <b>Parámetros</b>.</div>`}
+      ${R.oroEvitadoGr>0?`<div class="sfoot" style="margin-top:10px;border-top:1px dashed var(--border,#333);padding-top:9px">
+        🛑 <b>Extracción evitada:</b> al incautar <b>${F.n(R.galonesComb)} galones</b> de combustible se evita la extracción ilícita de
+        aproximadamente <b style="color:var(--gold)">${F.n(R.oroEvitadoGr)} g de oro</b>, avaluados en <b>${F.cop(R.valorOroEvitado)}</b>.
+        <br><span style="color:var(--text-tertiary)">Factor editable en <b>Parámetros → Extracción evitada</b> (${o.params.oroPorGalon?o.params.oroPorGalon.v:'—'} g oro/galón).</span></div>`:''}
+    </div>
   </div>
 
   <!-- ══════════ 3. AMBIENTAL ══════════ -->
