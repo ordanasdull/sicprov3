@@ -914,6 +914,22 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
 .ptab input{width:140px;font-family:var(--font-mono);text-align:right;background:var(--bg-input);
   border:1px solid var(--border-default);border-radius:5px;padding:6px 9px;color:var(--text-primary);font-size:12.5px}
 .ptab .u{color:var(--text-tertiary);font-size:11.5px;white-space:nowrap}
+.maqcat-wrap{overflow-x:auto;margin:0 -4px}
+.maqcat td{vertical-align:middle}
+.maqcat input.mc-n{width:100%;min-width:170px;text-align:left;font-family:inherit}
+.maqcat input.mc-val{width:150px}
+.maqcat input.mc-sm{width:72px}
+.maqcat input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold);cursor:pointer}
+.maqcat tr.mod td:first-child{box-shadow:inset 3px 0 0 var(--gold)}
+.maqcat .grp{font-size:10.5px;color:var(--text-tertiary);white-space:nowrap}
+.maqcat .mill{display:block;font-size:10.5px;color:var(--text-tertiary);text-align:right;margin-top:2px;font-family:var(--font-mono)}
+.maqcat input:disabled{opacity:.35}
+.maqcat td.oro-col{text-align:right;font-family:var(--font-mono);font-weight:600;color:var(--gold);white-space:nowrap;background:rgba(200,168,75,.06)}
+.maqcat th.oro-col{color:var(--gold);background:rgba(200,168,75,.06)}
+.oro-sel{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:12px;color:var(--text-secondary);
+  margin:0 0 10px;padding:8px 12px;border:1px solid rgba(200,168,75,.3);border-radius:8px;background:rgba(200,168,75,.05)}
+.oro-sel select{background:var(--bg-input);color:var(--text-primary);border:1px solid var(--border-default);border-radius:5px;padding:4px 8px;font-size:12px}
+.oro-sel .oro-form{color:var(--text-tertiary);font-size:11.5px}
 .live{font-size:10px;color:var(--info-text);background:var(--info-bg);border:1px solid var(--info-border);
   border-radius:4px;padding:2px 6px;margin-left:7px}
 
@@ -1397,12 +1413,12 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
       </div>
 
       <!-- ============ REPORTE Q5 (ancho completo) ============ -->
-      <div class="card full status-neutral" id="cardQ5">
+      <div class="card full status-neutral" id="cardQ5"><!-- Directriz vigente: del Q5 solo queda la acción sobre el material; los demás campos se ocultan y se conservan por si se reactivan. -->
         <div class="card-head">
           <span class="card-icon">📤</span>
           <div class="card-title-wrap">
             <span class="card-title">Reporte Q5 <span class="opt" style="text-transform:none;font-weight:400;">(para copiar y enviar)</span></span>
-            <span class="card-caption">Solo lo puntual del mensaje. Lo demás sale de esta operación. El Q5 listo aparece en “Resultados”.</span>
+            <span class="card-caption">El Q5 lleva el material afectado, el impacto operacional y el impacto ambiental. Sale listo en “Resultados”.</span>
           </div>
         </div>
         <div class="card-body">
@@ -1411,7 +1427,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
             <div class="field"><label>N° de orden de operación <span class="opt">(ej. 037)</span></label><input type="text" id="q5NumOrden" placeholder="037"></div>
             <div class="field"><label>Hora de la operación <span class="opt">(militar)</span></label><input type="time" id="q5Hora"></div>
           </div>
-          <div class="field" style="margin-bottom:10px">
+          <div class="field q5-keep" style="margin-bottom:0;max-width:320px">
             <label>Acción sobre el material</label>
             <select id="q5Accion">
               <option>Destruido</option><option>Inutilizado</option><option>Inhabilitado</option>
@@ -1535,6 +1551,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
 </div></div>
 
 <style>
+  #cardQ5 .card-body > *:not(.q5-keep){display:none}
   .q5-chk{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:5px 9px;border:1px solid var(--border,#333);border-radius:8px;cursor:pointer}
   .q5-chk input{accent-color:#C9A227}
   .q5-out{white-space:pre-wrap;word-wrap:break-word;font-family:var(--font-mono,monospace);font-size:12.5px;line-height:1.55;
@@ -1616,7 +1633,7 @@ const FOTO = {
     {n:'Excavadora',             cap:50,  val:'450.000.000',   acpm:22, co2:59,  ac:0.5,  per:4},
     {n:'Motobomba minera',       cap:1,   val:'3.500.000',     acpm:3,  co2:8,   ac:0.05, per:1.5},
     {n:'Clasificadora metal',    cap:0,   val:'8.000.000',     acpm:0,  co2:0,   ac:0,    per:3},
-    {n:'Dragón',                 cap:200, val:'1.500.000.000', acpm:40, co2:107, ac:1,    per:4},
+    {n:'Dragón',                 cap:200, val:'5.000.000.000', acpm:40, co2:107, ac:1,    per:4},
     {n:'Draga caperuza',         cap:30,  val:'500.000.000',   acpm:25, co2:67,  ac:0.6,  per:3},
     {n:'Draga tipo buzo',        cap:8,   val:'12.000.000',    acpm:18, co2:48,  ac:0.4,  per:3},
     {n:'Cargador frontal',       cap:80,  val:'380.000.000',   acpm:20, co2:54,  ac:0.5,  per:2},
@@ -1635,20 +1652,44 @@ const FOTO = {
     {n:'Motobomba',              cap:1,   val:'3.500.000',     acpm:3,  co2:8,   ac:0.03, per:1.5},
     {n:'Bulldozer',              cap:45,  val:'420.000.000',   acpm:24, co2:64,  ac:0.5,  per:4},
   ];
+  // Copia de fábrica (valores del código) y ajustes del administrador guardados en este navegador.
+  const MAQ_FABRICA = JSON.parse(JSON.stringify(MAQUINARIA));
+  MAQUINARIA.forEach(m=>{ if(m.rem===undefined) m.rem = (typeof m.cap==='number' && m.cap>0); });
+  const MAQ_KEY = 'sicpro_maquinaria_v1';
+  (function cargarCatalogoGuardado(){
+    try{
+      const g = JSON.parse(localStorage.getItem(MAQ_KEY)||'null');
+      if(!Array.isArray(g)) return;
+      g.forEach((it,i)=>{
+        if(!it || typeof it.n!=='string') return;
+        const base = MAQUINARIA[i] || {co2:0, ac:0, nuevo:true};
+        Object.assign(base, {n:it.n, cap:+it.cap||0, val:String(it.val), acpm:+it.acpm||0, per:+it.per||0, rem:!!it.rem});
+        if(!MAQUINARIA[i]) MAQUINARIA.push(base);
+      });
+    }catch(e){}
+  })();
+  function guardarCatalogoLocal(){
+    try{ localStorage.setItem(MAQ_KEY, JSON.stringify(MAQUINARIA.map(m=>({n:m.n,cap:m.cap,val:m.val,acpm:m.acpm,per:m.per,rem:m.rem,nuevo:!!m.nuevo})))); return true; }
+    catch(e){ return false; }
+  }
   const maqGrid = document.getElementById('maqGrid');
-  maqGrid.innerHTML = MAQUINARIA.map((m,i)=>`
-    <div class="maq-item" id="maqItem${i}">
+  function renderMaqGrid(){
+    while(maqValues.length < MAQUINARIA.length) maqValues.push(0);
+    maqGrid.innerHTML = MAQUINARIA.map((m,i)=>`
+    <div class="maq-item ${maqValues[i]>0?'active':''}" id="maqItem${i}">
       <span class="maq-name">${m.n}</span>
       <div class="maq-stepper">
         <button type="button" onclick="maqChange(${i},-1)">−</button>
-        <input type="text" inputmode="numeric" class="maq-count" id="maqCount${i}" value="0"
+        <input type="text" inputmode="numeric" class="maq-count" id="maqCount${i}" value="${maqValues[i]||0}"
                onfocus="this.select()" oninput="maqInput(${i}, this.value)" onblur="maqNorm(${i})">
         <button type="button" onclick="maqChange(${i},1)">+</button>
       </div>
     </div>
   `).join('');
+  }
 
   const maqValues = new Array(MAQUINARIA.length).fill(0);
+  renderMaqGrid();
   function maqRefresh(){
     const total = maqValues.reduce((a,b)=>a+b,0);
     document.getElementById('maqBadge').textContent = total + (total===1 ? ' equipo' : ' equipos');
@@ -3966,9 +4007,11 @@ function calcularSICPRO(op, PA){
 
   /* ═════ 1. Maquinaria ═════ */
   let cap=0, acpmH=0, co2H=0, per=0, valMaq=0; const det=[];
+  const CAT = op.maqSnap || MAQUINARIA;   // fotografía del catálogo con que se calculó
+  const capDe = m => (m && m.rem!==false && typeof m.cap==='number') ? m.cap : 0;
   op.maquinaria.forEach(it=>{
-    const m = MAQUINARIA[it.i]; if(!m||!it.q) return;
-    const c = typeof m.cap==='number' ? m.cap : 0;
+    const m = CAT[it.i]; if(!m||!it.q) return;
+    const c = capDe(m);
     const vl = numVal(m.val);
     cap+=it.q*c; acpmH+=it.q*m.acpm; co2H+=it.q*m.co2; per+=it.q*m.per; valMaq+=it.q*vl;
     det.push({n:m.n, q:it.q, cap:c, acpm:m.acpm, per:m.per, co2:m.co2, val:vl});
@@ -4002,8 +4045,7 @@ function calcularSICPRO(op, PA){
                O('='), X(F.usd(valMaq,p('trm')))]), ['trm','__maq']);
 
   const sub = (idx,campo) => op.maquinaria.filter(x=>idx.includes(x.i))
-        .reduce((a,x)=> a + x.q*(campo==='val' ? numVal(MAQUINARIA[x.i].val)
-              : (typeof MAQUINARIA[x.i].cap==='number'?MAQUINARIA[x.i].cap:0)), 0);
+        .reduce((a,x)=> a + x.q*(campo==='val' ? numVal(CAT[x.i].val) : capDe(CAT[x.i])), 0);
   const cnt = idx => op.maquinaria.filter(x=>idx.includes(x.i)).reduce((a,x)=>a+x.q,0);
   R.valorMAICA=sub(MAICA_IDX,'val');  R.valorDragas=sub(DRAGA_IDX,'val');
   R.valorBombas=sub(PUMP_IDX,'val');  R.valorClasif=sub(CLASIF_IDX,'val');
@@ -4448,7 +4490,7 @@ function logout(){ ROL=null; ACTUAL=null;
 
 const NAVA=[{id:'vIngreso',l:'Nueva operación'},{id:'vResultados',l:'Resultados'},
             {id:'vInforme',l:'Informe'},{id:'vHistorial',l:'Operaciones'}];
-const NAVB=[{id:'vMinuta',l:'Memoria de cálculo',a:1},{id:'vParametros',l:'Parámetros',a:1},
+const NAVB=[{id:'vMinuta',l:'Memoria de cálculo',a:1},{id:'vParametros',l:'Parámetros y maquinaria',a:1},
             {id:'vAdmin',l:'Administración',a:1}];
 function buildNav(){
   document.getElementById('sicLinks').innerHTML =
@@ -4516,69 +4558,48 @@ async function q5Autozona(){
   }catch(e){ zona.innerHTML='No se pudo consultar la zona (sin conexión o servicio no disponible). Escribe la ubicación a mano.'; }
 }
 
-// Arma el texto del Q5 a partir de una operación ya creada
+// Arma el texto del Q5 a partir de una operación ya creada.
+// Directriz vigente: el Q5 lleva el material afectado, el impacto operacional y el impacto ambiental, resumidos.
+// Lleva: material destruido/incautado + impacto operacional + impacto ambiental.
+// (Línea de mando, ¿qué?, ¿quién?, ¿cuándo?, ¿dónde? y hechos ya no van.)
 function buildQ5Text(o){
-  const R=(o.calc&&o.calc.R)||{}, q=o.q5||{};
-  const hora=q.hora||'', accion=q.accion||'Destruido', gao=q.gao||'';
-  const tropasArr=(o.tropas||[]).filter(Boolean);
-  const quien=(q.quien&&q.quien.trim())?q.quien.trim():tropasArr.join(' - ');
-  const fuerzas=q.fuerzas||[];
+  const R=(o.calc&&o.calc.R)||{};
   const sistema=q5Sistema(o.actividad);
-  const coord=(o.coords&&o.coords[0])?o.coords[0].txt:'';
-  const depto=o.depto||'', muni=o.municipio||'', vereda=o.vereda||'';
+  const pos=x=>isFinite(x)&&x>0;
+  const nf=(x,d)=>(+x).toLocaleString('es-CO',{maximumFractionDigits:d||0});
 
-  // Encabezado: la(s) tropa(s) van al final de la línea de mando, en el orden en que se ingresaron
-  const sufijoMando=tropasArr.length?('-'+tropasArr.join('-')):'';
-  const header=`🟢 CGFM-EJC-JEMOP-DIV7-BR4-BRCMI${sufijoMando}`;
-  const que='Operación contra la explotación ilícita de yacimientos mineros (EIYM).';
+  // ── IMPACTO OPERACIONAL ──
+  const valMaq=R.valorMaquinaria||0, valMes=R.valorMes||0;
+  const esOro=(o.recurso==='Oro');
+  const prodTxt=esOro
+     ? `${Math.round((R.produccionMes||0)*1000).toLocaleString('es-CO')} gramos de oro mensuales`
+     : `${nf(R.produccionMes||0,1)} ${R.unidad||''} de ${(o.recurso||'').toLowerCase()} mensuales`;
+  const partes=[];
+  if(valMaq>0) partes.push(`una afectación de ${q5COP(valMaq)} en maquinaria y equipos`);
+  if(valMes>0) partes.push(`una afectación económica directa de ${q5COP(valMes)} mensuales, correspondiente a una producción aproximada de ${prodTxt}`);
+  let impacto = partes.length
+    ? `Con este resultado se logra ${q5Lista(partes)}, generando una disminución en los ingresos ilícitos derivados de la explotación ilícita de yacimientos mineros${sistema?(' mediante el sistema de explotación '+sistema):''}.`
+    : 'Con este resultado se afectan directamente las economías ilícitas derivadas de la explotación ilícita de yacimientos mineros.';
+  const valInc=R.valorIncautado||0;
+  const incClause=valInc>0?`El material e insumos incautados representan un valor económico aproximado de ${q5COP(valInc)}.`:'';
+  const oroEv=R.oroEvitadoGr||0, valOroEv=R.valorOroEvitado||0;
+  const oroEvClause=oroEv>0?`Con la incautación del combustible se evita la extracción ilícita de aproximadamente ${Math.round(oroEv).toLocaleString('es-CO')} gramos de oro, avaluados en ${q5COP(valOroEv)}.`:'';
 
-  let cuando='—';
-  if(o.fecha){ const p=o.fecha.split('-'); const horaMil=(hora?hora.replace(':',''):'0000'); cuando=`${p[2]}-${horaMil}-${Q5_MESES[(+p[1])-1]||''}-${p[0]}`; }
+  // ── IMPACTO AMBIENTAL (una sola frase) ──
+  const amb=[];
+  if(pos(R.haAno))       amb.push(`la deforestación de aproximadamente ${nf(R.haAno,1)} hectáreas al año`);
+  if(pos(R.aguaTotal))   amb.push(`la afectación de ${nf(R.aguaTotal)} m³ de agua${R.usaMercurio&&pos(R.aguaHg)?' por remoción de suelo y uso de mercurio':''}`);
+  if(pos(R.co2TotalMes)) amb.push(`la emisión de ${nf(R.co2TotalMes,1)} toneladas de CO₂ al mes`);
+  const ambiental = amb.length
+    ? `Se evita ${q5Lista(amb)}.`
+    : 'Se evita la contaminación de suelos y fuentes hídricas asociada al uso de los insumos incautados.';
 
-  const donde=`${vereda?('Vereda '+vereda+', '):''}${muni||'—'}${(depto&&depto!=='—')?(' - '+depto):''}`;
-
-  // ── HECHOS · estructura canónica ──
-  const upm=o.upm||0;
-  const numOrden=(q.numOrden||'').trim();
-  const nombreOp=(o.nombre && o.nombre!=='(sin nombre)') ? o.nombre.trim() : '';
-  // acción en sustantivo para "realizando la ___"
-  const ACC={Destruido:'destrucción controlada',Inutilizado:'inutilización',Inhabilitado:'inhabilitación',Intervenido:'intervención en el sitio',Incautado:'incautación del material'};
-  const accionFrase=ACC[accion]||'destrucción controlada';
-  // relato / método libre
-  let relato=(q.relato||'').trim();
-  if(relato){ relato=relato.replace(/\s*[.;,]+\s*$/,''); relato=relato.charAt(0).toLowerCase()+relato.slice(1); }
-  // fuerzas de apoyo + BRCMI
-  const apoyoLista=q5Lista([...fuerzas,'la Brigada contra la Explotación Ilícita de Yacimientos Mineros (BRCMI)']);
-  const coordClean=coord?`en las coordenadas ${coord}`:'';
-  const legal='el cual estaba siendo utilizado para la explotación ilícita de yacimientos mineros sin los permisos legales vigentes "licencia ambiental y título minero"';
-  const gaoFin=gao?`, los cuales servían como fuente de financiamiento para las economías ilícitas del ${gao}`:'';
-
-  // encabezamiento común
-  const opTag=`${numOrden?numOrden+' ':''}${nombreOp?`"${nombreOp}"`:''}`.trim();
-  const seg=[
-    `En desarrollo de operaciones decisivas en tareas de estabilidad${opTag?(' '+opTag):''}`,
-    relato,
-    quien||'la tropa',
-    coordClean,
-    `con el apoyo de ${apoyoLista}`
-  ].filter(Boolean);
-  const esIncautacion=(accion==='Incautado');
-  let resultadoFrase;
-  if(esIncautacion){
-    // Incautación: se centra en el material/insumos hallados. La maquinaria es opcional.
-    resultadoFrase=`se logra la incautación de material e insumos empleados para la explotación ilícita de yacimientos mineros sin los permisos legales vigentes "licencia ambiental y título minero"${gaoFin}.`;
-  } else if(upm>0){
-    // Destrucción / inutilización / inhabilitación / intervención sobre las UPM.
-    resultadoFrase=`se logra el hallazgo y la intervención de ${q5Pad2(upm)} (UPM) Unidad${upm===1?'':'es'} Productora${upm===1?'':'s'} Minera${upm===1?'':'s'}${sistema?(' tipo '+sistema):''}, realizando la ${accionFrase}, ${legal}${gaoFin}.`;
-  } else {
-    // Misma familia pero sin UPM contabilizada: se actúa sobre el material.
-    resultadoFrase=`se logra el hallazgo y la ${accionFrase} del material empleado para la explotación ilícita de yacimientos mineros sin los permisos legales vigentes "licencia ambiental y título minero"${gaoFin}.`;
-  }
-  const hechos=`${seg.join(', ')}, ${resultadoFrase}`;
-
+  // ── MATERIAL DESTRUIDO / INCAUTADO (solo cantidades) ──
+  const q=o.q5||{};
+  const accionUpper=(o.soloIncautacion?'INCAUTADO':(q.accion||'Destruido')).toUpperCase();
   const mat=[];
-  (o.maquinaria||[]).forEach(m=>{ const nm=MAQUINARIA[m.i]; if(nm&&m.q>0) mat.push(`${q5Pad2(m.q)} ${nm.n}`); });
-  (o.materialExtra||'').split('\n').map(s=>s.trim()).filter(Boolean).forEach(l=>mat.push(l));
+  (o.maquinaria||[]).forEach(m=>{ const nm=(o.maqSnap||MAQUINARIA)[m.i]; if(nm&&m.q>0) mat.push(`${q5Pad2(m.q)} ${nm.n}`); });
+  (o.materialExtra||'').split('\n').map(x=>x.trim()).filter(Boolean).forEach(l=>mat.push(l));
   const h=o.hallado||{};
   if(h.acpm>0)      mat.push(`${Math.round(h.acpm)} galones de ACPM`);
   if(h.gasolina>0)  mat.push(`${Math.round(h.gasolina)} galones de gasolina`);
@@ -4592,38 +4613,13 @@ function buildQ5Text(o){
   if(inc.esmeraldas>0) mat.push(`${inc.esmeraldas} ct de esmeraldas`);
   if(inc.coltan>0)     mat.push(`${inc.coltan} kg de coltán`);
   if(inc.carbon>0)     mat.push(`${inc.carbon} kg de carbón`);
-  if(!mat.length) mat.push('(sin material registrado)');
-  const accionUpper=(accion||'').toUpperCase();
-
-  const valMaq=R.valorMaquinaria||0, valMes=R.valorMes||0;
-  const esOro=(o.recurso==='Oro');
-  const prodTxt=esOro
-     ? `${Math.round((R.produccionMes||0)*1000).toLocaleString('es-CO')} gramos de oro mensuales`
-     : `${(R.produccionMes||0).toLocaleString('es-CO',{maximumFractionDigits:1})} ${R.unidad||''} de ${(o.recurso||'').toLowerCase()} mensuales`;
-  const partes=[];
-  if(valMaq>0) partes.push(`una afectación de ${q5COP(valMaq)} en maquinaria y equipos`);
-  if(valMes>0) partes.push(`una afectación económica directa de ${q5COP(valMes)} mensuales, correspondiente a una producción aproximada de ${prodTxt}`);
-  let impacto;
-  if(partes.length){
-    impacto=`Con este resultado se logra ${q5Lista(partes)}, generando una disminución en los ingresos ilícitos derivados de la explotación ilícita de yacimientos mineros${sistema?(' mediante el sistema de explotación '+sistema):''}.`;
-  } else {
-    impacto='Con este resultado se afectan directamente las economías ilícitas derivadas de la explotación ilícita de yacimientos mineros.';
-  }
-  const valInc=R.valorIncautado||0;
-  const incClause=valInc>0?`El material e insumos incautados representan un valor económico aproximado de ${q5COP(valInc)}.`:'';
-  const oroEv=R.oroEvitadoGr||0, valOroEv=R.valorOroEvitado||0;
-  const oroEvClause=oroEv>0?`Con la incautación del combustible se evita la extracción ilícita de aproximadamente ${Math.round(oroEv).toLocaleString('es-CO')} gramos de oro, avaluados en ${q5COP(valOroEv)}.`:'';
-  const gaoClause=gao?`Esta acción impacta de manera directa las economías ilícitas de la organización criminal ${gao}.`:'';
 
   const L=[];
-  L.push(header,'','✅ ¿QUÉ?:',que,'','✅ ¿QUIÉN?:',quien||'—','','✅ ¿CUÁNDO?:',cuando,
-         '','✅ ¿DÓNDE?:',donde,'','✅ HECHOS:',hechos,'',`✅ MATERIAL ${accionUpper}`);
-  mat.forEach(m=>L.push('• '+m));
-  L.push('','✅ IMPACTO OPERACIONAL',impacto);
+  if(mat.length){ L.push(`✅ MATERIAL ${accionUpper}`); mat.forEach(m=>L.push('• '+m)); L.push(''); }
+  L.push('✅ IMPACTO OPERACIONAL',impacto);
   if(incClause) L.push('',incClause);
   if(oroEvClause) L.push('',oroEvClause);
-  L.push('','✅ ACCIONES SUBSIGUIENTES','- Se realiza la respectiva documentación y actos urgentes con apoyo de la Fiscalía General de la Nación.',
-         '','Patria Honor Lealtad','','Nuestro Compromiso es Colombia');
+  L.push('','✅ IMPACTO AMBIENTAL',ambiental);
   return L.join('\n');
 }
 
@@ -4718,6 +4714,7 @@ function crearOperacion(){
     analista: ROL==='admin'?'ST Jiménez':'Analista',
     generado: new Date().toLocaleString('es-CO'),
     params: JSON.parse(JSON.stringify(PARAMS)),  // fotografía
+    maqSnap: JSON.parse(JSON.stringify(MAQUINARIA)),  // fotografía del catálogo de maquinaria
     fuentePrecio: JSON.parse(JSON.stringify(PRECIO_FUENTE))
   };
   op.calc = calcularSICPRO(op, op.params);
@@ -5318,7 +5315,7 @@ function irAlParametro(k){
   go('vParametros');
   if(!k) return;
   setTimeout(()=>{
-    const inp = document.querySelector(`[data-pk="${k}"]`);
+    const inp = k==='__maq' ? document.getElementById('maqCatalogo') : document.querySelector(`[data-pk="${k}"]`);
     if(inp){
       inp.scrollIntoView({behavior:'smooth', block:'center'});
       inp.classList.add('resaltado');
@@ -5328,9 +5325,134 @@ function irAlParametro(k){
 }
 
 /* ---------- Parámetros ---------- */
+/* ---------- Catálogo de maquinaria (editable por el administrador) ---------- */
+function grupoMaq(i){
+  if(MAICA_IDX.includes(i))  return 'MAICA';
+  if(DRAGA_IDX.includes(i))  return 'Draga · 1 UPM';
+  if(PUMP_IDX.includes(i))   return 'Lavado · UPM';
+  if(CLASIF_IDX.includes(i)) return 'Clasificadora';
+  return '—';
+}
+function millones(v){ const n=numVal(v); return n>=1e6 ? '≈ $'+(n/1e6).toLocaleString('es-CO',{maximumFractionDigits:1})+' millones' : ''; }
+function maqModificado(m,i){
+  const f=MAQ_FABRICA[i]; if(!f) return true;
+  const fRem=(typeof f.cap==='number'&&f.cap>0);
+  return m.n!==f.n || numVal(m.val)!==numVal(f.val) || (+m.cap||0)!==(typeof f.cap==='number'?f.cap:0)
+      || m.acpm!==f.acpm || m.per!==f.per || !!m.rem!==fRem;
+}
+// Oro estimado por equipo: capacidad (m³/h) × horas/día × concentración de oro del tipo de explotación.
+// Usa exactamente los parámetros vigentes del motor (horasDia, diasMes, conc_<actividad>_Oro).
+let MAQ_ACT_ORO = 'Aluvial';
+function oroEstimadoMaq(cap, act){
+  const c = PARAMS['conc_'+act+'_Oro'] ? PARAMS['conc_'+act+'_Oro'].v : 0;   // kg/m³
+  const dia = (+cap||0) * PARAMS.horasDia.v * c * 1000;                       // g/día
+  return {dia, mes: dia * PARAMS.diasMes.v};
+}
+function oroCeldas(cap, rem){
+  if(!rem || !(+cap>0)) return ['—','—'];
+  const o = oroEstimadoMaq(cap, MAQ_ACT_ORO);
+  const f = x => x.toLocaleString('es-CO',{maximumFractionDigits: x<10?1:0});
+  return [f(o.dia), f(o.mes)];
+}
+function recalcOroFila(tr){
+  const rem = tr.querySelector('[data-mf=rem]').checked, cap = tr.querySelector('[data-mf=cap]').value;
+  const [d,m] = oroCeldas(cap, rem);
+  tr.querySelector('.oro-dia').textContent = d; tr.querySelector('.oro-mes').textContent = m;
+}
+function cambiarActOro(v){
+  MAQ_ACT_ORO = v;
+  document.querySelectorAll('#maqCatalogo tr[data-mi]').forEach(recalcOroFila);
+  const c = PARAMS['conc_'+v+'_Oro'];
+  const el = document.getElementById('oroConcHint'); if(el) el.textContent = c ? `${c.v} kg/m³` : '—';
+}
+function catalogoMaqHTML(){
+  return `<div class="scard" id="maqCatalogo" style="margin-bottom:14px">
+    <h2>🚜 Catálogo de maquinaria</h2>
+    <p style="font-size:12px;color:var(--text-secondary);margin:-4px 0 10px">
+      Nombre, valor y rendimiento de cada equipo. Lo que cambies aquí aplica a las operaciones nuevas;
+      las ya calculadas conservan los valores con que se hicieron. La franja dorada marca lo que difiere del valor de fábrica.</p>
+    <div class="oro-sel">
+      <span>⛏️ <b>Oro estimado por equipo</b> en explotación</span>
+      <select onchange="cambiarActOro(this.value)">
+        ${['Aluvial','Subterránea','Cielo abierto','Mixta'].map(a=>`<option ${a===MAQ_ACT_ORO?'selected':''}>${a}</option>`).join('')}
+      </select>
+      <span class="oro-form">= capacidad × ${PARAMS.horasDia.v} h/día × <span id="oroConcHint">${PARAMS['conc_'+MAQ_ACT_ORO+'_Oro'].v} kg/m³</span>
+        · mes de ${PARAMS.diasMes.v} días. Compáralo con lo que reportan en cada región.</span>
+    </div>
+    <div class="maqcat-wrap"><table class="ptab maqcat">
+      <tr><th>Equipo</th><th>Cuenta como</th><th style="text-align:center">¿Remueve material?</th>
+          <th style="text-align:right">Capacidad<br>m³/h</th><th style="text-align:right">Valor unitario<br>COP</th>
+          <th style="text-align:right">ACPM<br>L/h</th><th style="text-align:right">Personal<br>por equipo</th>
+          <th class="oro-col" style="text-align:right">Oro estimado<br>g / día</th><th class="oro-col" style="text-align:right">Oro estimado<br>g / mes</th></tr>
+      ${MAQUINARIA.map((m,i)=>`<tr class="${maqModificado(m,i)?'mod':''}" data-mi="${i}">
+        <td><input class="mc-n" data-mf="n" value="${String(m.n).replace(/"/g,'&quot;')}"></td>
+        <td class="grp">${grupoMaq(i)}</td>
+        <td style="text-align:center"><input type="checkbox" data-mf="rem" ${m.rem?'checked':''}
+              onchange="this.closest('tr').querySelector('[data-mf=cap]').disabled=!this.checked;recalcOroFila(this.closest('tr'))"></td>
+        <td style="text-align:right"><input class="mc-sm" type="number" step="any" min="0" data-mf="cap"
+              value="${typeof m.cap==='number'?m.cap:0}" ${m.rem?'':'disabled'} oninput="recalcOroFila(this.closest('tr'))"></td>
+        <td style="text-align:right"><input class="mc-val" type="text" inputmode="numeric" data-mf="val"
+              value="${numVal(m.val).toLocaleString('es-CO')}"
+              oninput="this.nextElementSibling.textContent=millones(this.value)"
+              onblur="this.value=numVal(this.value).toLocaleString('es-CO')">
+            <span class="mill">${millones(m.val)}</span></td>
+        <td style="text-align:right"><input class="mc-sm" type="number" step="any" min="0" data-mf="acpm" value="${m.acpm}"></td>
+        <td style="text-align:right"><input class="mc-sm" type="number" step="any" min="0" data-mf="per" value="${m.per}"></td>
+        ${(()=>{ const [d,me]=oroCeldas(m.cap,m.rem);
+          return `<td class="oro-col oro-dia">${d}</td><td class="oro-col oro-mes">${me}</td>`; })()}
+      </tr>`).join('')}
+    </table></div>
+    <div class="sbar" style="margin:12px 0 0">
+      <span style="margin-right:auto;color:var(--text-tertiary);font-size:11.5px" id="maqHint">
+        “Cuenta como” fija qué equipos suman UPM y MAICA; no se edita aquí.</span>
+      <button class="sbtn" onclick="agregarEquipo()">＋ Agregar equipo</button>
+      <button class="sbtn" onclick="restaurarCatalogo()">Restaurar de fábrica</button>
+      <button class="sbtn gold" onclick="guardarCatalogo()">Guardar maquinaria</button>
+    </div>
+  </div>`;
+}
+function leerCatalogoTabla(){
+  let n=0;
+  document.querySelectorAll('#maqCatalogo tr[data-mi]').forEach(tr=>{
+    const i=+tr.dataset.mi, m=MAQUINARIA[i]; if(!m) return;
+    const f=k=>tr.querySelector(`[data-mf="${k}"]`);
+    const nv={ n:(f('n').value.trim()||m.n), rem:f('rem').checked,
+               cap:Math.max(0,parseFloat(f('cap').value)||0),
+               val:numVal(f('val').value).toLocaleString('es-CO'),
+               acpm:Math.max(0,parseFloat(f('acpm').value)||0),
+               per:Math.max(0,parseFloat(f('per').value)||0) };
+    const antes=JSON.stringify([m.n,m.rem,+m.cap||0,numVal(m.val),m.acpm,m.per]);
+    if(antes!==JSON.stringify([nv.n,nv.rem,nv.cap,numVal(nv.val),nv.acpm,nv.per])){ Object.assign(m,nv); n++; }
+  });
+  return n;
+}
+function guardarCatalogo(){
+  const n=leerCatalogoTabla();
+  const ok=guardarCatalogoLocal();
+  renderMaqGrid(); maqRefresh(); renderParametros();
+  toast(n ? `${n} equipo(s) actualizado(s)${ok?'':' · ojo: este navegador no permite guardar, se perderá al recargar'}` : 'No cambiaste nada en la maquinaria');
+}
+function agregarEquipo(){
+  leerCatalogoTabla();
+  MAQUINARIA.push({n:'Equipo nuevo', cap:0, val:'0', acpm:0, co2:0, ac:0, per:1, rem:false, nuevo:true});
+  renderParametros();
+  const tr=document.querySelector('#maqCatalogo tr[data-mi="'+(MAQUINARIA.length-1)+'"] .mc-n');
+  if(tr){ tr.scrollIntoView({behavior:'smooth',block:'center'}); tr.select(); }
+  toast('Equipo agregado: ponle nombre y valores, luego “Guardar maquinaria”');
+}
+function restaurarCatalogo(){
+  if(!confirm('¿Volver a los valores de fábrica de toda la maquinaria? Se borran los equipos agregados.')) return;
+  MAQUINARIA.length=0;
+  MAQ_FABRICA.forEach(f=>MAQUINARIA.push(Object.assign(JSON.parse(JSON.stringify(f)),{rem:(typeof f.cap==='number'&&f.cap>0)})));
+  maqValues.length=MAQUINARIA.length;
+  try{ localStorage.removeItem(MAQ_KEY); }catch(e){}
+  renderMaqGrid(); maqRefresh(); renderParametros();
+  toast('Catálogo restaurado');
+}
+
 function renderParametros(){
   const g={}; Object.entries(PARAMS).forEach(([k,p])=>{ (g[p.g]=g[p.g]||[]).push([k,p]); });
-  document.getElementById('parBox').innerHTML=Object.entries(g).map(([gr,it])=>`
+  document.getElementById('parBox').innerHTML=catalogoMaqHTML()+Object.entries(g).map(([gr,it])=>`
     <div class="scard" style="margin-bottom:14px"><h2>🎚️ ${gr}</h2>
       <table class="ptab"><tr><th>Constante</th><th style="text-align:right">Valor</th><th>Unidad</th></tr>
       ${it.map(([k,p])=>`<tr class="${p.check?'porver':''}"><td>${p.l}${p.live?'<span class="live">en vivo</span>':''}${p.check?'<span class="porver-b" title="Valor sin validar contra fuente externa">⚠ por verificar</span>':''}</td>
@@ -5344,6 +5466,7 @@ function guardarParametros(){
     const v=parseFloat(i.value);
     if(isFinite(v)&&v!==PARAMS[i.dataset.pk].v){ PARAMS[i.dataset.pk].v=v; n++; }
   });
+  const nm=leerCatalogoTabla(); if(nm){ guardarCatalogoLocal(); renderMaqGrid(); maqRefresh(); n+=nm; }
   document.getElementById('parHint').textContent = n?`${n} actualizado(s) · aplican de la próxima operación`:'Sin cambios';
   toast(n?`${n} parámetro(s) guardado(s)`:'No cambiaste nada');
 }
