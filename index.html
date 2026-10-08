@@ -543,6 +543,133 @@
 .bval{text-align:right;font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)}
 .sfoot{margin-top:13px;padding-top:11px;border-top:1px solid var(--border-subtle);font-size:12.5px;color:var(--text-secondary)}
 
+
+/* ════════════ REDISEÑO · NUEVA OPERACIÓN POR PASOS ════════════ */
+body:not(.en-login) #bgImg{opacity:.05}
+body:not(.en-login) #bgVeil{background:var(--bg-base)}
+#vIngreso.wiz-on .page-intro, #vIngreso.wiz-on .save-footer, #vIngreso.wiz-on .header-right,
+#vIngreso.wiz-on .header-titles .sub{display:none}
+#vIngreso.wiz-on .main{max-width:1180px;padding:12px 24px 50px}
+/* precios en una línea */
+#barraPrecios{margin-bottom:12px}
+/* barra de precios completa pero compacta */
+#vIngreso.wiz-on .bprecios{padding:6px 12px;gap:6px 16px;margin:0;align-items:center;border-left-width:3px;border-radius:9px;background:var(--bg-elevated)}
+#vIngreso.wiz-on .bp-tit{font-size:11.5px}
+#vIngreso.wiz-on .bp-campo{flex-direction:row;align-items:center;gap:6px}
+#vIngreso.wiz-on .bp-campo label{font-size:9.5px}
+#vIngreso.wiz-on .bp-in{font-size:11px;gap:3px}
+#vIngreso.wiz-on .bp-in input{width:78px;padding:2px 6px;font-size:12px;border-radius:5px}
+#vIngreso.wiz-on .bp-src{display:none}
+#vIngreso.wiz-on .bp-campo.derivado .bp-val{font-size:12px;padding:0}
+#vIngreso.wiz-on .bp-acc{gap:6px}
+#vIngreso.wiz-on .bp-acc .pricestamp{font-size:10px}
+#vIngreso.wiz-on .bp-acc .sbtn{padding:3px 9px;font-size:11px}
+/* estructura */
+.wiz{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:20px;align-items:start}
+.wiz-steps{grid-column:1/-1;display:flex;gap:8px;counter-reset:paso}
+.wiz-tab .tt span{white-space:nowrap}
+.wiz-tab{flex:1;display:flex;align-items:center;gap:9px;padding:7px 12px;border-radius:10px;cursor:pointer;
+  background:transparent;border:1px solid var(--border-subtle);color:var(--text-secondary);text-align:left;font-family:inherit}
+.wiz-tab:hover{border-color:var(--border-strong)}
+.wiz-tab .n{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-weight:700;font-size:12px;background:var(--bg-tertiary);color:var(--text-secondary)}
+.wiz-tab .tt{display:flex;flex-direction:column;min-width:0}
+.wiz-tab .tt b{font-size:12.5px;color:var(--text-primary);font-weight:600}
+.wiz-tab .tt span{font-size:11px;color:var(--text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wiz-tab.on{border-color:var(--gold);background:rgba(200,168,75,.07)}
+.wiz-tab.on .n{background:var(--gold);color:#17140B}
+.wiz-tab.ok .n{background:var(--success-text);color:#0E1812}
+.wiz-tab.ok .n::before{content:'✓'}
+.wiz-tab.ok .n span{display:none}
+.wiz-step{display:none;flex-direction:column;gap:12px}
+.wiz-step.on{display:flex;animation:wizIn .2s ease}
+@keyframes wizIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.wiz-head h2{font-size:17px;font-weight:700;margin:0}
+.wiz-head p{font-size:12.5px;color:var(--text-secondary);margin:2px 0 0}
+.wiz-nav{display:flex;gap:10px;margin-top:14px;align-items:center}
+.wiz-nav .sp{flex:1;font-size:12.5px;color:var(--text-tertiary)}
+.wbtn{font-family:inherit;font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--border-default);background:var(--bg-tertiary);color:var(--text-primary)}
+.wbtn:hover{border-color:var(--border-strong)}
+.wbtn.gold{background:var(--gold);border-color:var(--gold);color:#17140B}
+.wbtn.gold:hover{filter:brightness(1.07)}
+.wbtn[disabled]{opacity:.35;cursor:default}
+/* tarjetas más limpias */
+#vIngreso.wiz-on .card, #vIngreso.wiz-on .map-card{border:1px solid var(--border-subtle);border-radius:12px;
+  padding:14px 16px;background:var(--bg-card);box-shadow:none}
+#vIngreso.wiz-on .card.full{grid-column:auto}
+#vIngreso.wiz-on .card-head{margin-bottom:10px;gap:8px}
+#vIngreso.wiz-on .card-icon{font-size:15px}
+#vIngreso.wiz-on .card-title{font-size:14px;font-weight:600}
+#vIngreso.wiz-on .card-caption{font-size:11.5px}
+#vIngreso.wiz-on .card-body{gap:10px}
+#vIngreso.wiz-on .field{gap:4px}
+#vIngreso.wiz-on .field label{font-size:11.5px;font-weight:600;color:var(--text-secondary)}
+#vIngreso.wiz-on .field input[type=text], #vIngreso.wiz-on .field input[type=number], #vIngreso.wiz-on .field input[type=date],
+#vIngreso.wiz-on .field input[type=time], #vIngreso.wiz-on .field select, #vIngreso.wiz-on .field textarea,
+#vIngreso.wiz-on .readonly-code{font-size:13px;padding:7px 10px;border-radius:7px;border:1px solid var(--border-default);
+  background:var(--bg-input);color:var(--text-primary);color-scheme:dark}
+#vIngreso.wiz-on .unit-suffix input{padding-right:48px}
+#vIngreso.wiz-on .unit-suffix .unit-label{font-size:11px}
+#vIngreso.wiz-on .field-grid{gap:10px}
+#vIngreso.wiz-on .field-hint, #vIngreso.wiz-on .upm-hint{font-size:11px;line-height:1.45}
+#vIngreso.wiz-on .subdivider{font-size:10.5px;margin:4px 0 0}
+#vIngreso.wiz-on .chip-select{gap:6px}
+#vIngreso.wiz-on .chip-option{font-size:12px;padding:5px 11px}
+#vIngreso.wiz-on .geo-aviso{font-size:12px}
+#vIngreso.wiz-on .map-viewer{height:340px}
+#vIngreso.wiz-on .status-dot-mini{display:none}
+#vIngreso.wiz-on .insumo-grid{gap:12px}
+/* opcional plegable */
+#vIngreso.wiz-on .gms-fields input, #vIngreso.wiz-on .gms-fields select{font-size:13px;padding:6px 5px;border-radius:7px}
+#vIngreso.wiz-on .coord-row-head .coord-idx{font-size:11.5px}
+#vIngreso.wiz-on .anm-result-row{font-size:11.5px}
+.wiz-opt{border:1px dashed var(--border-default);border-radius:10px;padding:0 16px}
+.wiz-opt > summary{cursor:pointer;list-style:none;padding:9px 0;font-size:12.5px;font-weight:600;color:var(--text-secondary)}
+.wiz-opt > summary::-webkit-details-marker{display:none}
+.wiz-opt > summary::before{content:'＋ ';color:var(--gold)}
+.wiz-opt[open] > summary::before{content:'－ '}
+.wiz-opt[open]{padding-bottom:12px}
+.wiz-opt > *:not(summary){margin-top:8px}
+/* maquinaria agrupada */
+#vIngreso.wiz-on .maq-grid{display:flex;flex-direction:column;gap:12px}
+.maq-leyenda{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11px;color:var(--text-tertiary);margin-bottom:8px}
+.maq-leyenda i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px}
+#vIngreso.wiz-on .maq-item .maq-name::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:var(--gc,#888);margin-right:7px;vertical-align:1px}
+.maq-gt{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:6px}
+.maq-gi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+@media(max-width:1100px){.maq-gi{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.maq-gi{grid-template-columns:1fr}}
+#vIngreso.wiz-on .maq-item .maq-name{display:flex;align-items:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#vIngreso.wiz-on .maq-item .maq-name::before{flex-shrink:0}
+#vIngreso.wiz-on .maq-item{padding:5px 8px;border-radius:8px;border:1px solid var(--border-subtle)}
+#vIngreso.wiz-on .maq-item.active{border-color:var(--gold);background:rgba(200,168,75,.08)}
+#vIngreso.wiz-on .maq-item .maq-name{font-size:12px;font-weight:500}
+#vIngreso.wiz-on .maq-stepper button{width:22px;height:22px;font-size:13px;border-radius:6px}
+#vIngreso.wiz-on .maq-stepper .maq-count{font-size:13px;width:34px;min-width:34px}
+/* resumen fijo */
+.wiz-sum{position:sticky;top:64px;display:flex;flex-direction:column;gap:10px;background:var(--bg-elevated);
+  border:1px solid var(--border-subtle);border-radius:12px;padding:14px}
+.wiz-sum h3{margin:0;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary)}
+.ws-kpis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.ws-k{background:var(--bg-card);border-radius:8px;padding:7px 6px;text-align:center}
+.ws-k b{display:block;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.ws-k span{font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.04em}
+.ws-row{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--text-secondary)}
+.ws-row b{color:var(--text-primary);font-variant-numeric:tabular-nums;text-align:right}
+.ws-row b.gold{color:var(--gold)}
+.ws-sep{height:1px;background:var(--border-subtle)}
+.ws-check{display:flex;flex-direction:column;gap:5px;font-size:12px}
+.ws-check div{display:flex;align-items:center;gap:8px;color:var(--text-tertiary);cursor:pointer}
+.ws-check div::before{content:'';width:13px;height:13px;border-radius:50%;border:1.5px solid var(--border-strong);flex-shrink:0}
+.ws-check div.ok{color:var(--text-secondary)}
+.ws-check div.ok::before{background:var(--success-text);border-color:var(--success-text)}
+.wiz-sum .wbtn.gold{width:100%;padding:10px}
+.ws-note{font-size:10.5px;color:var(--text-tertiary);text-align:center;margin-top:-6px}
+@media(max-width:980px){ .wiz{grid-template-columns:1fr} .wiz-sum{position:static} .wiz-tab .tt span{display:none} }
+@media(max-width:640px){ .wiz-tab .tt{display:none} .wiz-tab{justify-content:center} #vIngreso.wiz-on .main{padding:14px 16px 50px} }
+
 /* --- Fondo institucional --- */
 body{background:transparent!important}
 #bgImg,#bgVeil{position:fixed;inset:0;pointer-events:none}
@@ -1180,7 +1307,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
 
             <!-- Área afectada en superficie: se pide siempre -->
             <div class="field" style="margin-bottom:10px">
-              <label id="lblArea">Área afectada en superficie <span class="req-star">*</span></label>
+              <label id="lblArea">Área afectada en superficie <span class="opt">(opcional · deforestación ya causada)</span></label>
               <div class="unit-suffix">
                 <input type="text" id="inputHectareas" placeholder="Ej: 0,6" oninput="checkGeometriaStatus()">
                 <span class="unit-label">ha</span>
@@ -1191,7 +1318,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
             <!-- MODO SUPERFICIE: aluvial, cielo abierto, mixta -->
             <div id="geoSuperficie">
               <div class="field">
-                <label>Profundidad media de la excavación <span class="req-star">*</span></label>
+                <label>Profundidad media de la excavación <span class="opt">(opcional · permite proyectar la deforestación)</span></label>
                 <div class="unit-suffix">
                   <input type="text" id="inputProfundidad" placeholder="Ej: 3" oninput="checkGeometriaStatus()">
                   <span class="unit-label">m</span>
@@ -1220,7 +1347,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
                 </div>
               </div>
               <div class="field" style="margin-bottom:10px">
-                <label>Área transversal de la bocamina <span class="req-star">*</span></label>
+                <label>Área transversal de la bocamina <span class="opt">(opcional)</span></label>
                 <div class="unit-suffix">
                   <input type="text" id="inputSeccion" placeholder="Ej: 2,7"
                          oninput="seccionManual=true; checkGeometriaStatus()">
@@ -1234,7 +1361,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
 
               <div class="field-grid">
                 <div class="field">
-                  <label>Longitud del túnel <span class="req-star">*</span></label>
+                  <label>Longitud del túnel <span class="opt">(opcional)</span></label>
                   <div class="unit-suffix">
                     <input type="text" id="inputLongitud" placeholder="Ej: 120" oninput="checkGeometriaStatus()">
                     <span class="unit-label">m</span>
@@ -1413,7 +1540,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
       </div>
 
       <!-- ============ REPORTE Q5 (ancho completo) ============ -->
-      <div class="card full status-neutral" id="cardQ5"><!-- Directriz vigente: del Q5 solo queda la acción sobre el material; los demás campos se ocultan y se conservan por si se reactivan. -->
+      <div class="card full status-neutral" id="cardQ5" style="display:none"><!-- Directriz vigente: del Q5 solo queda la acción sobre el material; los demás campos se ocultan y se conservan por si se reactivan. -->
         <div class="card-head">
           <span class="card-icon">📤</span>
           <div class="card-title-wrap">
@@ -1675,7 +1802,11 @@ const FOTO = {
   const maqGrid = document.getElementById('maqGrid');
   function renderMaqGrid(){
     while(maqValues.length < MAQUINARIA.length) maqValues.push(0);
-    maqGrid.innerHTML = MAQUINARIA.map((m,i)=>`
+    const GRUPOS = [['Maquinaria amarilla',[0,1,21,7,8]],['Dragas',[4,5,6]],
+                    ['Lavado y clasificación',[2,9,20,12,3,13]]];
+    const usados = new Set(GRUPOS.flatMap(g=>g[1]));
+    GRUPOS.push(['Motores, plantas y otros', MAQUINARIA.map((_,i)=>i).filter(i=>!usados.has(i))]);
+    const item = i => { const m = MAQUINARIA[i]; return !m ? '' : `
     <div class="maq-item ${maqValues[i]>0?'active':''}" id="maqItem${i}">
       <span class="maq-name">${m.n}</span>
       <div class="maq-stepper">
@@ -1684,8 +1815,10 @@ const FOTO = {
                onfocus="this.select()" oninput="maqInput(${i}, this.value)" onblur="maqNorm(${i})">
         <button type="button" onclick="maqChange(${i},1)">+</button>
       </div>
-    </div>
-  `).join('');
+    </div>`; };
+    const COLG = ['#E0A23C','#5FA8E8','#3FCB97','#9AA0A6'];
+    maqGrid.innerHTML = `<div class="maq-leyenda">${GRUPOS.map(([t],g)=>`<span><i style="background:${COLG[g]}"></i>${t}</span>`).join('')}</div>
+      <div class="maq-gi">${GRUPOS.map(([t,idx],g)=>idx.map(i=>item(i).replace('class="maq-name"',`class="maq-name" style="--gc:${COLG[g]}"`)).join('')).join('')}</div>`;
   }
 
   const maqValues = new Array(MAQUINARIA.length).fill(0);
@@ -1698,6 +1831,7 @@ const FOTO = {
     computeUPM();
     computeMAICA();
     computePersonal();
+    if(typeof actualizarResumen==='function') actualizarResumen();
   }
   function maqChange(i, delta){
     maqValues[i] = Math.max(0, (maqValues[i]||0) + delta);
@@ -3253,8 +3387,8 @@ function polvareda(centroVw, humo, cantidad){
     document.getElementById('geoSuperficie').style.display = sub ? 'none' : 'block';
     document.getElementById('geoSocavon').style.display    = sub ? 'block' : 'none';
     document.getElementById('lblArea').innerHTML = sub
-      ? 'Área afectada en superficie <span class="req-star">*</span>'
-      : 'Área intervenida <span class="req-star">*</span>';
+      ? 'Área afectada en superficie <span class="opt">(opcional · deforestación ya causada)</span>'
+      : 'Área intervenida <span class="opt">(opcional · deforestación ya causada)</span>';
     document.getElementById('hintArea').textContent = sub
       ? 'Solo la bocamina, patios de acopio y campamento. No incluye el túnel.'
       : 'Lo medido en terreno. De aquí sale la deforestación consumada.';
@@ -3500,11 +3634,24 @@ function polvareda(centroVw, humo, cantidad){
   const anmMaps = {};
   let liveUpdateTimers = {};
 
+  // El mapa (y las consultas a la ANM) solo se arman cuando su recuadro ya se ve en pantalla.
+  // Si se crean ocultos (detrás del login o en otro paso), Leaflet queda con tamaño 0: pinta un
+  // cuadro suelto y la ANM rechaza la consulta de títulos y las capas (piden una imagen de 0×0).
+  const _esperaMapa = {};
+  function esperarMapaVisible(id, cont){
+    if(_esperaMapa[id] || typeof ResizeObserver==='undefined') return;
+    const ro = new ResizeObserver(()=>{
+      if(cont.offsetWidth > 0 && cont.offsetHeight > 0){ ro.disconnect(); delete _esperaMapa[id]; liveUpdateMap(id); }
+    });
+    _esperaMapa[id] = ro; ro.observe(cont);
+  }
   function liveUpdateMap(id){
     clearTimeout(liveUpdateTimers[id]);
     liveUpdateTimers[id] = setTimeout(()=>{ try{
       const row = document.getElementById('coordRow' + id);
       if(!row) return;
+      const cont = document.getElementById('mapViewer' + id);
+      if(cont && !(cont.offsetWidth > 0 && cont.offsetHeight > 0)){ esperarMapaVisible(id, cont); return; }
       const lat = dms(
         row.querySelector('.lat-deg').value, row.querySelector('.lat-min').value, row.querySelector('.lat-sec').value,
         row.querySelector('.lat-dir').value, 5, 41, 41
@@ -3570,6 +3717,12 @@ function polvareda(centroVw, humo, cantidad){
     }
 
     const map = L.map(container, { zoomControl:true, attributionControl:true }).setView([lat, lon], 14);
+    // Leaflet calcula su tamaño al crearse; si el contenedor estaba oculto o aún sin medidas,
+    // solo pinta un cuadro. Se reajusta cada vez que el contenedor cambie de tamaño o se muestre.
+    if(typeof ResizeObserver!=='undefined'){
+      new ResizeObserver(()=>{ if(container.offsetWidth) map.invalidateSize({pan:false}); }).observe(container);
+    }
+    [150,600,1500].forEach(t=>setTimeout(()=>map.invalidateSize({pan:false}),t));
 
     /* ---- Bases ---- */
     const satelite = L.tileLayer(
@@ -4070,7 +4223,7 @@ function calcularSICPRO(op, PA){
     R.seccion = op.seccion || ((op.ancho||0) * (op.alto||0));
     R.frentes = op.frentes || 1;
     R.materialRemovido = R.seccion * (op.longitud||0) * R.frentes;
-    R.altoUtil = op.alto || Math.sqrt(R.seccion) || 1;
+    R.altoUtil = op.alto || Math.sqrt(R.seccion) || 0;   // sin medida → no se proyecta deforestación
     row(2,'Área transversal de la bocamina', F.n(R.seccion), 'm²',
       op.seccionMedida
         ? [D(`${F.n(R.seccion)} m² medidos directamente en la bocamina`), O('='),
@@ -4084,7 +4237,7 @@ function calcularSICPRO(op, PA){
       [D(`${F.n(op.ha)} ha`), O('→'), O('bocamina, patios y campamento — el túnel va por debajo'),
        O('='), X(`${F.n(op.ha)} ha`)]);
   } else {
-    R.altoUtil = op.prof || 1;
+    R.altoUtil = op.prof || 0;   // sin profundidad → no se proyecta deforestación
     R.materialRemovido = R.areaM2 * op.prof;
     row(2,'Material removido (consumado)', F.n(R.materialRemovido), 'm³',
       [D(`${F.n(op.ha)} ha`), O('×'), P(`${F.n(p('m2PorHa'))} m²/ha`,'m2PorHa'), O('='),
@@ -4257,7 +4410,7 @@ function calcularSICPRO(op, PA){
   row(5,'Superficie deforestable — PROYECCIÓN', F.n(R.haMes)+' ha/mes', `· ${F.n(R.haAno)} ha/año`,
     [O(`${F.n(R.capacidadMes)} m³/mes`), O('÷'),
      D(R.subterranea ? `${F.n(R.altoUtil)} m alto del túnel` : `${F.n(op.prof)} m prof.`), O('='),
-     O(`${F.n(op.prof>0?R.capacidadMes/op.prof:0)} m²/mes`), O('×'),
+     O(R.altoUtil>0 ? `${F.n(R.capacidadMes/R.altoUtil)} m²/mes` : 'sin profundidad: no se proyecta'), O('×'),
      P(`factor ${op.actividad} ${R.factorDef}`, kd), O('÷'),
      P(`${F.n(p('m2PorHa'))} m²/ha`,'m2PorHa'), O('='), X(`${F.n(R.haMes)} ha/mes`),
      O('×'), P(`${p('mesesAno')} meses/año`,'mesesAno'), O('='), X(`${F.n(R.haAno)} ha/año`)],
@@ -4596,7 +4749,10 @@ function buildQ5Text(o){
 
   // ── MATERIAL DESTRUIDO / INCAUTADO (solo cantidades) ──
   const q=o.q5||{};
-  const accionUpper=(o.soloIncautacion?'INCAUTADO':(q.accion||'Destruido')).toUpperCase();
+  // La acción sale del "Tipo de operación" de Datos generales (Destrucción / Incautación / Mixta)
+  const tipo=(o.tipoOp||'').toLowerCase();
+  const accionUpper = o.soloIncautacion || tipo.includes('incaut') ? 'INCAUTADO'
+                    : tipo.includes('mixta') ? 'DESTRUIDO E INCAUTADO' : 'DESTRUIDO';
   const mat=[];
   (o.maquinaria||[]).forEach(m=>{ const nm=(o.maqSnap||MAQUINARIA)[m.i]; if(nm&&m.q>0) mat.push(`${q5Pad2(m.q)} ${nm.n}`); });
   (o.materialExtra||'').split('\n').map(x=>x.trim()).filter(Boolean).forEach(l=>mat.push(l));
@@ -4658,11 +4814,8 @@ function crearOperacion(){
 
   if(esOperacion){
     if(!maquinaria.length){ toast('Registra al menos un equipo de maquinaria (o deja la operación vacía y reporta solo la incautación)'); return; }
-    if(!ha){ toast('Falta el área afectada en superficie'); return; }
-    if(esSub){
-      if(!seccion) { toast('Falta el área transversal de la bocamina'); return; }
-      if(!longitud){ toast('Falta la longitud del túnel'); return; }
-    } else if(!prof)       { toast('Falta la profundidad de la excavación'); return; }
+    // Área, profundidad y medidas del socavón son OPCIONALES: los cálculos mensuales salen de la maquinaria.
+    // La profundidad (o el alto del túnel) solo afina la proyección de deforestación; el área, la ya causada.
     if(!getSelectedChipText('actividadSelect')){ toast('Elige el tipo de actividad minera'); return; }
     if(!getSelectedChipText('recursoSelect')){ toast('Elige el recurso explotado'); return; }
   } else {
@@ -4686,6 +4839,7 @@ function crearOperacion(){
     fecha:document.getElementById('formFecha')?.value||'',
     tropas:tropasCap,
     soloIncautacion:!esOperacion,
+    tipoOp:(getSelectedChipText('tipoOpSelect')||'').replace(/^[^A-Za-zÁÉÍÓÚáéíóú]+/,'').trim(),
     coords:leerCoordsOp(),
     q5:{ hora:(document.getElementById('q5Hora')?.value||'').trim(),
          numOrden:(document.getElementById('q5NumOrden')?.value||'').trim(),
@@ -4919,12 +5073,14 @@ function renderResultados(){
       ${bar('Al año',F.n(R.haAno)+' ha',100,'var(--danger-text)')}
       ${bar('Ya consumado',F.n(R.haConsumada)+' ha',R.haAno?Math.min(100,R.haConsumada/R.haAno*100):0,'var(--warning-text)')}
       <div class="sfoot">
-        La maquinaria hallada remueve ${F.n(R.capacidadMes)} m³/mes. A ${F.n(o.prof)} m de profundidad
-        eso equivale a ${F.n(R.capacidadMes/o.prof)} m² de terreno al mes, que multiplicados por el
+        ${R.altoUtil>0 ? `La maquinaria hallada remueve ${F.n(R.capacidadMes)} m³/mes. A ${F.n(R.altoUtil)} m de
+        ${R.subterranea?'alto de túnel':'profundidad'} eso equivale a ${F.n(R.capacidadMes/R.altoUtil)} m² de terreno al mes, que multiplicados por el
         factor de <b>${o.actividad.toLowerCase()}</b> (${R.factorDef}) dan
         <b style="color:var(--danger-text)">${F.n(R.haMes)} hectáreas al mes</b> —
         <b style="color:var(--danger-text)">${F.n(R.haAno)} hectáreas al año</b> si nadie las detiene.
-        Eso son ${F.n(R.haAno*o.params.co2PorHa.v)} toneladas de CO₂ que no se liberarán.</div></div>
+        Eso son ${F.n(R.haAno*o.params.co2PorHa.v)} toneladas de CO₂ que no se liberarán.`
+        : `No se registró la profundidad de la excavación, así que <b>no se proyecta la deforestación</b>.
+        Si la agregas, se calcula a partir de los ${F.n(R.capacidadMes)} m³/mes que remueve la maquinaria.`}</div></div>
 
     <div class="scard"><h2>💧 Agua afectada</h2>
       ${amb.filter(x=>x[1]>0).map(([l,v,u])=>bar(l,F.n(v)+' '+u,v/mA*100,'var(--info-text)')).join('')}
@@ -4986,7 +5142,7 @@ function informeHTML(o){
       ? `Socavón · bocamina ${F.n(R.seccion)} m²${o.seccionMedida?' (medida)':' (ancho × alto)'}
          × ${F.n(o.longitud)} m × ${F.n(R.frentes)} frente(s)
          · superficie afectada ${F.n(o.ha)} ha`
-      : `${F.n(o.ha)} ha × ${F.n(o.prof)} m de profundidad`}</td></tr>
+      : `${o.ha?F.n(o.ha)+' ha':'área no registrada'} · ${o.prof?F.n(o.prof)+' m de profundidad':'profundidad no registrada'}`}</td></tr>
   </table>
 
   <div class="isec">1. Maquinaria y equipo hallado</div>
@@ -5501,5 +5657,114 @@ actualizarPrecios(true);          // al abrir la página
 document.getElementById('lgPin').focus();
 </script>
 
+
+<script>
+/* ════════════ REDISEÑO · NUEVA OPERACIÓN POR PASOS ════════════
+   Solo reorganiza las tarjetas existentes (mismos ids y funciones). No toca cálculos. */
+const PASOS = [
+  {t:'Operación y maquinaria', s:'Lo necesario para calcular', h:'Operación y maquinaria',
+   p:'Fecha, recurso, equipos y medidas del sitio. Con esto ya se puede crear la operación.',
+   cards:['cardGenerales','cardRecurso','cardMaquinaria','cardGeoInsumos']},
+  {t:'Lugar, sitio y evidencia', s:'Complementario', h:'Lugar, sitio y evidencia',
+   p:'Complementario. Coordenada, municipio y evidencia de la operación.',
+   cards:['cardMapa','cardUbicacion','cardEvidencia']},
+];
+let PASO = 0;
+(function montarWizard(){
+  const vi = document.getElementById('vIngreso'), main = vi.querySelector('.main'), layout = vi.querySelector('.layout');
+  if(!layout) return;
+  const wiz = document.createElement('div'); wiz.className = 'wiz';
+  wiz.innerHTML = `<nav class="wiz-steps">${PASOS.map((p,i)=>`<button type="button" class="wiz-tab" data-i="${i}" onclick="irPaso(${i})">
+      <span class="n"><span>${i+1}</span></span><span class="tt"><b>${p.t}</b><span>${p.s}</span></span></button>`).join('')}</nav>
+    <div class="wiz-body"></div><aside class="wiz-sum" id="wizSum"></aside>`;
+  layout.parentNode.insertBefore(wiz, layout);
+  const body = wiz.querySelector('.wiz-body');
+  PASOS.forEach((p,i)=>{
+    const sec = document.createElement('section'); sec.className = 'wiz-step'; sec.dataset.i = i;
+    sec.innerHTML = `<div class="wiz-head"><h2>${p.h}</h2><p>${p.p}</p></div>`;
+    p.cards.forEach(id=>{ const c = document.getElementById(id); if(c) sec.appendChild(c); });
+    body.appendChild(sec);
+  });
+  const nav = document.createElement('div'); nav.className = 'wiz-nav';
+  nav.innerHTML = `<button type="button" class="wbtn" id="wizAtras" onclick="irPaso(PASO-1)">← Atrás</button>
+    <span class="sp" id="wizPos"></span>
+    <button type="button" class="wbtn gold" id="wizSig" onclick="irPaso(PASO+1)">Siguiente →</button>`;
+  body.appendChild(nav);
+  layout.style.display = 'none';
+
+  // Insumos y material incautado: plegables dentro de la misma tarjeta (los selectores siguen igual)
+  const geoBody = document.querySelector('#cardGeoInsumos .card-body');
+  const ini = [...geoBody.children].find(e=>e.classList.contains('subdivider') && /Insumos hallados/.test(e.textContent));
+  if(ini){
+    const det = document.createElement('details'); det.className = 'wiz-opt';
+    det.innerHTML = '<summary>Insumos hallados y material incautado <span style="font-weight:400;color:var(--text-tertiary)">(opcional)</span></summary>';
+    let n = ini; const mover = [];
+    while(n){ mover.push(n); n = n.nextElementSibling; }
+    geoBody.appendChild(det); mover.forEach(e=>det.appendChild(e));
+  }
+  // Material adicional de la maquinaria: plegable
+  const extra = document.getElementById('materialExtra')?.closest('.field');
+  if(extra){
+    const det = document.createElement('details'); det.className = 'wiz-opt';
+    det.innerHTML = '<summary>Material adicional fuera del catálogo <span style="font-weight:400;color:var(--text-tertiary)">(canecas, mangueras, plataformas…)</span></summary>';
+    extra.parentNode.insertBefore(det, extra); det.appendChild(extra);
+  }
+  vi.classList.add('wiz-on');
+  irPaso(0, true);
+  ['input','change','click'].forEach(ev=>vi.addEventListener(ev, ()=>requestAnimationFrame(actualizarResumen)));
+  actualizarResumen();
+})();
+
+function irPaso(i, silencioso){
+  if(i<0 || i>=PASOS.length) return;
+  PASO = i;
+  document.querySelectorAll('.wiz-step').forEach(s=>s.classList.toggle('on', +s.dataset.i===i));
+  document.querySelectorAll('.wiz-tab').forEach(t=>t.classList.toggle('on', +t.dataset.i===i));
+  document.getElementById('wizAtras').disabled = (i===0);
+  const sig = document.getElementById('wizSig');
+  if(i===PASOS.length-1){ sig.textContent='✓ Crear operación'; sig.onclick=()=>crearOperacion(); }
+  else { sig.textContent=`Siguiente: ${PASOS[i+1].t} →`; sig.onclick=()=>irPaso(PASO+1); }
+  document.getElementById('wizPos').textContent = `Paso ${i+1} de ${PASOS.length}`;
+  if(PASOS[i].cards.includes('cardMapa') && typeof anmMaps!=='undefined') setTimeout(()=>Object.values(anmMaps).forEach(e=>e.map&&e.map.invalidateSize()),60);
+  if(!silencioso) window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function actualizarResumen(){
+  const box = document.getElementById('wizSum'); if(!box) return;
+  const v = id => (document.getElementById(id)?.value||'').trim();
+  const txt = id => (document.getElementById(id)?.textContent||'0');
+  const act = getSelectedChipText('actividadSelect') || 'Aluvial';
+  let valMaq = 0, oroMes = 0, equipos = 0;
+  MAQUINARIA.forEach((m,i)=>{ const q = maqValues[i]||0; if(!q) return; equipos += q;
+    valMaq += q*numVal(m.val);
+    if(m.rem!==false && typeof m.cap==='number') oroMes += q*oroEstimadoMaq(m.cap, act).mes; });
+  const oroTxt = oroMes>=1000 ? (oroMes/1000).toLocaleString('es-CO',{maximumFractionDigits:1})+' kg' : Math.round(oroMes).toLocaleString('es-CO')+' g';
+  const geoOk = document.getElementById('cardGeoInsumos').classList.contains('status-complete');
+  const checks = [
+    ['Fecha de la operación', !!v('formFecha'), 0],
+    ['Recurso y actividad', !!(getSelectedChipText('recursoSelect') && getSelectedChipText('actividadSelect')), 0],
+    ['Maquinaria', equipos>0, 0],
+    ['Lugar (opcional)', !!(v('formDepto') && v('formMunicipio')), 1],
+    ['Área y profundidad (opcional)', geoOk, 0],
+  ];
+  // Paso completo = sus chequeos completos
+  const okPaso = [checks[0][1] && checks[1][1] && checks[2][1], false];
+  document.querySelectorAll('.wiz-tab').forEach(t=>t.classList.toggle('ok', okPaso[+t.dataset.i] && +t.dataset.i!==PASO));
+  box.innerHTML = `
+    <h3>Resumen en vivo</h3>
+    <div class="ws-kpis">
+      <div class="ws-k"><b>${txt('upmBadge').replace(/\D+/g,'')||0}</b><span>UPM</span></div>
+      <div class="ws-k"><b>${txt('maicaBadge').replace(/\D+/g,'')||0}</b><span>MAICA</span></div>
+      <div class="ws-k"><b>${txt('dragaArt')}</b><span>Dragas</span></div>
+    </div>
+    <div class="ws-row"><span>Equipos</span><b>${equipos}</b></div>
+    <div class="ws-row"><span>Valor maquinaria</span><b>$${(valMaq/1e6).toLocaleString('es-CO',{maximumFractionDigits:0})} M</b></div>
+    <div class="ws-row"><span>Oro estimado / mes</span><b class="gold">${equipos?oroTxt:'—'}</b></div>
+    <div class="ws-sep"></div>
+    <div class="ws-check">${checks.map(([l,ok,p])=>`<div class="${ok?'ok':''}" onclick="irPaso(${p})">${l}</div>`).join('')}</div>
+    <button type="button" class="wbtn gold" onclick="crearOperacion()">✓ Crear operación</button>
+    <div class="ws-note">Nada se guarda hasta crear la operación</div>`;
+}
+</script>
 </body>
 </html>
