@@ -552,6 +552,39 @@ body:not(.en-login) #bgVeil{background:var(--bg-base)}
 #vIngreso.wiz-on .main{max-width:1180px;padding:12px 24px 50px}
 /* precios en una línea */
 #barraPrecios{margin-bottom:12px}
+#vIngreso.wiz-on .topbar{display:none}
+#vIngreso.wiz-on .main{padding-top:10px}
+.wiz-steps{align-items:center;flex-wrap:wrap}
+.wiz-steps .wiz-tab{flex:0 1 auto;padding:5px 12px 5px 6px;border-radius:999px;gap:7px}
+.wiz-steps .wiz-tab .n{width:20px;height:20px;font-size:11px}
+.wiz-steps .wiz-tab .tt span{display:none}
+.wiz-steps .wiz-tab .tt b{font-size:12px}
+#sicNav{flex-wrap:nowrap;gap:10px}
+#sicNav #sicLinks{flex-shrink:0}
+#sicNav #barraPrecios{margin:0 0 0 12px;flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+#sicNav #barraPrecios::-webkit-scrollbar{display:none}
+#sicNav .me{flex-shrink:0}
+.bprecios.bp-compacta{display:flex;align-items:center;flex-wrap:nowrap;gap:12px;padding:0;margin:0;border:0;
+  background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;white-space:nowrap;width:max-content;margin-left:auto}
+.bp-compacta .bp-tit{font-size:10px;font-weight:600;color:var(--text-secondary);line-height:1.15}
+.bp-filas{display:flex;flex-direction:column;gap:3px}
+.bp-fila{display:flex;align-items:center;gap:12px}
+.bp-lado{display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+#sicNav{padding-top:6px;padding-bottom:6px}
+.bp-compacta .bp-campo{flex-direction:row;align-items:center;gap:4px}
+.bp-compacta .bp-campo label{font-size:8.5px;letter-spacing:.05em}
+.bp-compacta .bp-in{font-size:10px;gap:2px}
+.bp-compacta .bp-in input{width:64px;padding:0 5px;font-size:10.5px;border-radius:4px;height:17px}
+.bp-compacta .bp-u{font-size:9px}
+.bp-compacta .bp-campo.foco label{color:var(--gold)}
+.bp-eq{font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--text-secondary);white-space:nowrap}
+.bp-estado{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;color:var(--text-tertiary);cursor:help}
+.bp-estado i{width:6px;height:6px;border-radius:50%;background:var(--text-tertiary)}
+.bp-estado.ok i{background:#3fb27f}.bp-estado.parcial i{background:#d9a441}.bp-estado.error i{background:#e0675a}
+.bp-estado.error{color:#e0675a}
+.bp-ref{font-family:inherit;font-size:10px;padding:1px 7px;border-radius:5px;border:1px solid var(--border-default);
+  background:transparent;color:var(--text-secondary);cursor:pointer;flex-shrink:0}
+.bp-ref:hover{color:var(--text-primary);border-color:var(--border-strong)}
 /* barra de precios completa pero compacta */
 #vIngreso.wiz-on .bprecios{padding:6px 12px;gap:6px 16px;margin:0;align-items:center;border-left-width:3px;border-radius:9px;background:var(--bg-elevated)}
 #vIngreso.wiz-on .bp-tit{font-size:11.5px}
@@ -565,7 +598,7 @@ body:not(.en-login) #bgVeil{background:var(--bg-base)}
 #vIngreso.wiz-on .bp-acc .pricestamp{font-size:10px}
 #vIngreso.wiz-on .bp-acc .sbtn{padding:3px 9px;font-size:11px}
 /* estructura */
-.wiz{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:20px;align-items:start}
+.wiz{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:start}
 .wiz-steps{grid-column:1/-1;display:flex;gap:8px;counter-reset:paso}
 .wiz-tab .tt span{white-space:nowrap}
 .wiz-tab{flex:1;display:flex;align-items:center;gap:9px;padding:7px 12px;border-radius:10px;cursor:pointer;
@@ -667,6 +700,36 @@ body:not(.en-login) #bgVeil{background:var(--bg-base)}
 .ws-check div.ok::before{background:var(--success-text);border-color:var(--success-text)}
 .wiz-sum .wbtn.gold{width:100%;padding:10px}
 .ws-note{font-size:10.5px;color:var(--text-tertiary);text-align:center;margin-top:-6px}
+.wiz-sum{max-height:calc(100vh - 80px);overflow-y:auto}
+/* Barras de desplazamiento discretas (oscuras y delgadas; casi invisibles hasta pasar el mouse) */
+.wiz-sum,.ws-q5 pre,.ac-list{scrollbar-width:thin;scrollbar-color:transparent transparent}
+.wiz-sum:hover,.ws-q5 pre:hover,.ac-list:hover{scrollbar-color:rgba(255,255,255,.18) transparent}
+.wiz-sum::-webkit-scrollbar,.ws-q5 pre::-webkit-scrollbar,.ac-list::-webkit-scrollbar{width:6px;background:transparent}
+.wiz-sum::-webkit-scrollbar-track,.ws-q5 pre::-webkit-scrollbar-track,.ac-list::-webkit-scrollbar-track{background:transparent}
+.wiz-sum::-webkit-scrollbar-thumb,.ws-q5 pre::-webkit-scrollbar-thumb,.ac-list::-webkit-scrollbar-thumb{background:transparent;border-radius:6px}
+.wiz-sum:hover::-webkit-scrollbar-thumb,.ws-q5 pre:hover::-webkit-scrollbar-thumb,.ac-list:hover::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18)}
+.wiz-sum::-webkit-scrollbar-button,.ws-q5 pre::-webkit-scrollbar-button,.ac-list::-webkit-scrollbar-button{display:none;height:0}
+.ws-cajas{display:flex;flex-direction:column;gap:8px}
+.ws-dyn{display:flex;flex-direction:column;gap:9px}
+.ws-dyn .ws-row{font-size:12px}
+.ws-cajas .upm-box,.ws-cajas .maica-box{margin-top:0;padding:7px 9px;gap:4px;font-size:11.5px}
+.ws-cajas .upm-hint{display:none}
+.ws-cajas .upm-label,.ws-cajas .maica-label{font-size:12px}
+.ws-cajas .upm-badge,.ws-cajas .maica-badge{font-size:11px;padding:2px 8px}
+.ws-cajas .upm-line.sub{font-size:11px;flex-wrap:wrap;row-gap:4px}
+.ws-cajas .upm-stepper span:first-child{font-size:10.5px}
+.ws-sub{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-tertiary)}
+.ws-datos{display:flex;flex-direction:column;gap:3px;font-size:11.5px}
+.ws-datos div{display:flex;justify-content:space-between;gap:10px;cursor:pointer;color:var(--text-tertiary)}
+.ws-datos div b{font-weight:500;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:62%;opacity:.55}
+.ws-datos div.ok span::after{content:' ✓';color:#3fb27f;font-size:10px;font-weight:700}
+.ws-datos div.ok b{color:var(--text-primary);opacity:1}
+.ws-q5 summary{cursor:pointer;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;list-style:none}
+.ws-q5 summary::-webkit-details-marker{display:none}
+.ws-q5 summary .q5-pill{margin-left:0}
+.ws-copy{margin-left:auto;font-size:10.5px;padding:2px 8px;border-radius:6px;border:1px solid rgba(201,162,39,.5);background:transparent;color:#C9A227;cursor:pointer}
+.ws-q5 pre{margin:8px 0 0;white-space:pre-wrap;word-wrap:break-word;font-family:var(--font-mono,monospace);font-size:10.5px;line-height:1.5;
+  max-height:300px;overflow-y:auto;padding:8px 9px;border-radius:8px;background:rgba(201,162,39,.06);border:1px dashed rgba(201,162,39,.4);color:var(--text-secondary)}
 @media(max-width:980px){ .wiz{grid-template-columns:1fr} .wiz-sum{position:static} .wiz-tab .tt span{display:none} }
 @media(max-width:640px){ .wiz-tab .tt{display:none} .wiz-tab{justify-content:center} #vIngreso.wiz-on .main{padding:14px 16px 50px} }
 
@@ -1169,19 +1232,15 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
             <span class="status-dot-mini"></span>
           </div>
           <div class="card-body">
-            <div class="field-grid">
+            <div class="field-grid grid4">
               <div class="field">
                 <label>Código de caso</label>
                 <div class="readonly-code">OP-2026-081 · al guardar</div>
               </div>
               <div class="field">
-                <label>Fecha de verificación <span class="req-star">*</span></label>
+                <label>Fecha <span class="req-star">*</span></label>
                 <input type="date" id="formFecha" value="2026-07-01">
               </div>
-            </div>
-
-            <div class="subdivider">Clasificación</div>
-            <div class="field-grid">
               <div class="field">
                 <label>Tipo de operación <span class="req-star">*</span></label>
                 <div class="chip-select" id="tipoOpSelect">
@@ -1206,19 +1265,74 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
                 <input type="text" placeholder="Ej: Operación Manantial Turbio">
               </div>
               <div class="field">
-                <label>Tropas participantes <span class="opt">(opcional)</span></label>
+                <label>Tropas participantes · UT <span class="q5-pill" title="Se usa en el mensaje Q5">Q5</span></label>
                 <div class="tag-input-row">
-                  <input type="text" id="tropaInput" placeholder="Ej: BIPLI12" onkeydown="if(event.key==='Enter'){event.preventDefault(); addTropaTag();}">
+                  <input type="text" id="tropaInput" placeholder="Ej: BIRIF31" onkeydown="if(event.key==='Enter'){event.preventDefault(); addTropaTag();}">
                   <button type="button" class="mini-add-btn" onclick="addTropaTag()">+</button>
                 </div>
               </div>
             </div>
             <div class="tag-list" id="tropaList"></div>
+
+            <!-- ── DATOS PARA EL Q5 (solo los usa el mensaje Q5, formato de la circular) ── -->
+            <div class="q5-zone">
+              <div class="q5-zone-head"><span class="q5-pill">Q5</span> Para el mensaje Q5 <span class="opt">· lo que el cálculo no sabe</span></div>
+              <div class="field-grid">
+                <div class="field">
+                  <label>División <span class="req-star">*</span></label>
+                  <input type="text" id="q5Div" list="q5DivList" placeholder="Ej: Séptima División">
+                  <datalist id="q5DivList">
+                    <option>Primera División</option><option>Segunda División</option><option>Tercera División</option>
+                    <option>Cuarta División</option><option>Quinta División</option><option>Sexta División</option>
+                    <option>Séptima División</option><option>Octava División</option>
+                    <option>Fuerza de Tarea Conjunta Omega</option><option>Fuerza de Tarea Conjunta Hércules</option>
+                  </datalist>
+                </div>
+                <div class="field-grid" style="gap:10px;margin:0">
+                  <div class="field"><label>Brigada</label><input type="text" id="q5Br" placeholder="Ej: BR11"></div>
+                  <div class="field"><label>Hora</label><input type="time" id="q5Hora"></div>
+                </div>
+              </div>
+              <div class="field-grid">
+                <div class="field">
+                  <label>GAO afectado</label>
+                  <input type="text" id="q5Gao" list="q5GaoList" placeholder="Ej: GAO Clan del Golfo">
+                  <datalist id="q5GaoList">
+                    <option>GAO Clan del Golfo</option><option>GAO ELN</option>
+                    <option>GAO-r Estado Mayor Central</option><option>GAO-r Estado Mayor de Bloques y Frentes</option>
+                    <option>GAO-r Segunda Marquetalia</option><option>GAO Comandos de la Frontera</option>
+                  </datalist>
+                </div>
+                <div class="field">
+                  <label>Subestructura / facción</label>
+                  <input type="text" id="q5Se" placeholder='Ej: SE "Rubén Darío Ávila" · o cabecilla, alias y posición'>
+                </div>
+              </div>
+              <div class="field-grid grid3">
+                <div class="field">
+                  <label>Departamento <span class="req-star">*</span></label>
+                  <select onchange="handleDeptoChange(this.value); checkUbicacionStatus();" id="formDepto">
+                    <option value="">Selecciona...</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Municipio <span class="req-star">*</span></label>
+                  <input type="text" id="formMunicipio" list="municipioList" placeholder="Elige depto. primero" oninput="checkUbicacionStatus(); cargarVeredas()" onchange="cargarVeredas()">
+                  <datalist id="municipioList"></datalist>
+                </div>
+                <div class="field">
+                  <label>Vereda <span class="opt">(si se conoce)</span></label>
+                  <input type="text" id="formVereda" list="veredaList" placeholder="Elige municipio primero" autocomplete="off">
+                  <datalist id="veredaList"></datalist>
+                </div>
+              </div>
+              <label class="q5-chk" style="margin-top:8px;width:auto"><input type="checkbox" id="q5Ampliar"> Pendiente ampliar información</label>
+            </div>
           </div>
         </div>
 
         <!-- UBICACIÓN ADMINISTRATIVA -->
-        <div class="card status-empty" id="cardUbicacion">
+        <div class="card status-empty" id="cardUbicacion" style="display:none">
           <div class="card-head">
             <span class="card-icon">📍</span>
             <div class="card-title-wrap">
@@ -1228,23 +1342,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
             <span class="status-dot-mini" id="dotUbicacion"></span>
           </div>
           <div class="card-body">
-            <div class="field-grid cols-3">
-              <div class="field">
-                <label>Departamento <span class="req-star">*</span></label>
-                <select onchange="handleDeptoChange(this.value); checkUbicacionStatus();" id="formDepto">
-                  <option value="">Selecciona...</option>
-                </select>
-              </div>
-              <div class="field">
-                <label>Municipio <span class="req-star">*</span></label>
-                <input type="text" id="formMunicipio" list="municipioList" placeholder="Elige depto. primero" oninput="checkUbicacionStatus()">
-                <datalist id="municipioList"></datalist>
-              </div>
-              <div class="field">
-                <label>Vereda <span class="opt">(si se conoce)</span></label>
-                <input type="text" id="formVereda" placeholder="Nombre de la vereda">
-              </div>
-            </div>
+            <div class="upm-hint">Departamento, municipio y vereda se llenan en el recuadro Q5 de Datos generales.</div>
           </div>
         </div>
 
@@ -1259,6 +1357,7 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
             <span class="status-dot-mini"></span>
           </div>
           <div class="card-body">
+            <div class="field-grid grid3">
             <div class="field">
               <label>Recurso explotado <span class="req-star">*</span></label>
               <div class="chip-select" id="recursoSelect">
@@ -1276,9 +1375,6 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
                 <div class="chip-option" onclick="selectChip(this,'actividadSelect')">Cielo abierto</div>
                 <div class="chip-option" onclick="selectChip(this,'actividadSelect')">Mixta</div>
               </div>
-              <div class="nota-actividad" id="notaActividad" style="display:none"></div>
-              <div style="display:none">
-              </div>
             </div>
             <div class="field">
               <label>Cobertura vegetal <span class="opt">(descriptivo)</span></label>
@@ -1288,6 +1384,8 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
                 <div class="chip-option" onclick="selectChip(this,'coberturaSelect')">◻️ Sin vegetación</div>
               </div>
             </div>
+            </div>
+            <div class="nota-actividad" id="notaActividad" style="display:none"></div>
           </div>
         </div>
 
@@ -1539,60 +1637,6 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
 
       </div>
 
-      <!-- ============ REPORTE Q5 (ancho completo) ============ -->
-      <div class="card full status-neutral" id="cardQ5" style="display:none"><!-- Directriz vigente: del Q5 solo queda la acción sobre el material; los demás campos se ocultan y se conservan por si se reactivan. -->
-        <div class="card-head">
-          <span class="card-icon">📤</span>
-          <div class="card-title-wrap">
-            <span class="card-title">Reporte Q5 <span class="opt" style="text-transform:none;font-weight:400;">(para copiar y enviar)</span></span>
-            <span class="card-caption">El Q5 lleva el material afectado, el impacto operacional y el impacto ambiental. Sale listo en “Resultados”.</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="upm-hint" style="margin-bottom:10px">El <b>encabezado</b> y el <b>¿QUIÉN?</b> salen de <b>“Tropas participantes”</b>; el <b>nombre de la operación</b> (ej. SULAMITA) sale de <b>“Nombre de la operación”</b> (arriba). Aquí solo completas lo puntual.</div>
-          <div class="field-grid">
-            <div class="field"><label>N° de orden de operación <span class="opt">(ej. 037)</span></label><input type="text" id="q5NumOrden" placeholder="037"></div>
-            <div class="field"><label>Hora de la operación <span class="opt">(militar)</span></label><input type="time" id="q5Hora"></div>
-          </div>
-          <div class="field q5-keep" style="margin-bottom:0;max-width:320px">
-            <label>Acción sobre el material</label>
-            <select id="q5Accion">
-              <option>Destruido</option><option>Inutilizado</option><option>Inhabilitado</option>
-              <option>Intervenido</option><option>Incautado</option>
-            </select>
-          </div>
-          <div class="field" style="margin-bottom:10px">
-            <label>Fuerzas articuladas <span class="opt">(una o varias)</span></label>
-            <div class="chip-select" id="q5Fuerzas">
-              <label class="q5-chk"><input type="checkbox" class="q5fz" value="Fiscalía General de la Nación"> Fiscalía</label>
-              <label class="q5-chk"><input type="checkbox" class="q5fz" value="Policía Nacional"> Policía Nacional</label>
-              <label class="q5-chk"><input type="checkbox" class="q5fz" value="CAR (Corporación Autónoma)"> CAR</label>
-              <label class="q5-chk"><input type="checkbox" class="q5fz" value="Armada Nacional"> Armada</label>
-              <label class="q5-chk"><input type="checkbox" class="q5fz" value="Fuerza Aeroespacial"> Fuerza Aeroespacial</label>
-            </div>
-          </div>
-          <div class="field-grid">
-            <div class="field">
-              <label>Organización criminal afectada <span class="opt">(se escribe a mano)</span></label>
-              <input type="text" id="q5Gao" list="q5GaoList" placeholder="Ej: GAOR - FARC Frente 33">
-              <datalist id="q5GaoList">
-                <option>GAO Clan del Golfo</option><option>GAOR</option><option>FARC</option>
-                <option>ELN</option><option>Comando de Frontera</option>
-              </datalist>
-            </div>
-            <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
-              <button type="button" class="sbtn" onclick="q5Autozona()">📍 Autocompletar zona desde la coordenada</button>
-              <div class="upm-hint" id="q5Zona" style="margin-top:5px">Toma el punto del mapa y llena departamento y municipio. La vereda no siempre está en el mapa base; verifícala a mano.</div>
-            </div>
-          </div>
-          <div class="field" style="margin-top:4px">
-            <label>Relato de los hechos <span class="opt">(opcional · se mezcla en HECHOS)</span></label>
-            <textarea id="q5Relato" rows="3" placeholder="Escribe lo que pasó, en tercera persona. Ej: en desarrollo de patrullaje móvil observaron actividad de dragado sobre el río y procedieron a la verificación del área"></textarea>
-            <div class="upm-hint" style="margin-top:5px">Se intercala en el párrafo de HECHOS, entre el contexto y el resultado. El texto final es editable al copiar.</div>
-          </div>
-        </div>
-      </div>
-
       <!-- ============ CONTEXTO Y EVIDENCIA (ancho completo) ============ -->
       <div class="card full status-empty" id="cardEvidencia">
         <div class="card-head">
@@ -1679,7 +1723,32 @@ body.rec-carbon .lg-go, body.rec-carbon .sbtn.gold{ color:#15181B }
 </div></div>
 
 <style>
-  #cardQ5 .card-body > *:not(.q5-keep){display:none}
+  .field-grid.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .field-grid.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:900px){ .field-grid.grid4{grid-template-columns:1fr 1fr} .field-grid.grid3{grid-template-columns:1fr} }
+  .chip-select.as-dd{display:none !important}
+  select.chip-dd{width:100%}
+  .grid4 .readonly-code{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #tropaList:empty{display:none}
+  select.chip-dd option:disabled{color:#777}
+  /* Estado de llenado: lleno = verde suave con chulito; vacío = neutro */
+  #vIngreso .field > label{position:relative}
+  #vIngreso .field.lleno > label::after{content:'✓';margin-left:6px;font-size:11px;font-weight:700;color:#3fb27f;opacity:.9}
+  #vIngreso .field.lleno > input, #vIngreso .field.lleno > select, #vIngreso .field.lleno > textarea,
+  #vIngreso .field.lleno .unit-suffix input, #vIngreso .field.lleno .ac-wrap > input, #vIngreso .field.lleno .tag-input-row input{border-color:rgba(63,178,127,.55) !important;background-color:rgba(63,178,127,.06) !important}
+  .ac-wrap{position:relative}
+  .ac-list{position:absolute;left:0;right:0;top:calc(100% + 3px);z-index:80;max-height:240px;overflow-y:auto;
+    background:var(--bg-elevated,#1f2226);border:1px solid var(--border-default,#3a3f45);border-radius:8px;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);padding:4px;display:none}
+  .ac-list.on{display:block}
+  .ac-item{padding:6px 9px;border-radius:6px;font-size:13px;cursor:pointer;color:var(--text-secondary,#ccc)}
+  .ac-item b{color:var(--text-primary,#fff);font-weight:600}
+  .ac-item.sel,.ac-item:hover{background:rgba(63,178,127,.14);color:var(--text-primary,#fff)}
+  .ac-vacio{padding:6px 9px;font-size:12px;color:var(--text-tertiary,#888)}
+  .q5-pill{display:inline-block;font-size:10px;font-weight:700;line-height:1.5;padding:0 6px;border-radius:5px;background:#C9A227;color:#1b1b1b;letter-spacing:.05em;vertical-align:1px;margin-left:4px}
+  .q5-zone{margin-top:14px;border:1px dashed rgba(201,162,39,.55);border-radius:12px;padding:10px 14px 10px;background:rgba(201,162,39,.05)}
+  .q5-zone-head{font-size:12.5px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+  .q5-zone-head .q5-pill{margin-left:0}
   .q5-chk{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:5px 9px;border:1px solid var(--border,#333);border-radius:8px;cursor:pointer}
   .q5-chk input{accent-color:#C9A227}
   .q5-out{white-space:pre-wrap;word-wrap:break-word;font-family:var(--font-mono,monospace);font-size:12.5px;line-height:1.55;
@@ -1763,7 +1832,7 @@ const FOTO = {
     {n:'Clasificadora metal',    cap:0,   val:'8.000.000',     acpm:0,  co2:0,   ac:0,    per:3},
     {n:'Dragón',                 cap:200, val:'5.000.000.000', acpm:40, co2:107, ac:1,    per:4},
     {n:'Draga caperuza',         cap:30,  val:'500.000.000',   acpm:25, co2:67,  ac:0.6,  per:3},
-    {n:'Draga tipo buzo',        cap:8,   val:'12.000.000',    acpm:18, co2:48,  ac:0.4,  per:3},
+    {n:'Draga tipo buzo',        cap:8,   val:'32.000.000',    acpm:18, co2:48,  ac:0.4,  per:3},
     {n:'Cargador frontal',       cap:80,  val:'380.000.000',   acpm:20, co2:54,  ac:0.5,  per:2},
     {n:'Volqueta',               cap:0,   val:'250.000.000',   acpm:12, co2:32,  ac:0.3,  per:1},
     {n:'Motobombas (varias)',    cap:2,   val:'3.500.000',     acpm:3,  co2:8,   ac:0.05, per:1.5},
@@ -1959,1178 +2028,1197 @@ const FOTO = {
 
   // ---------- DEPARTAMENTOS Y MUNICIPIOS (Colombia, 33 divisiones) ----------
   const MUNICIPIOS = {
-  "Amazonas": [
-    "Leticia",
-    "Puerto Nariño"
-  ],
-  "Antioquia": [
-    "Abejorral",
-    "Abriaquí",
-    "Alejandría",
-    "Amagá",
-    "Amalfi",
-    "Andes",
-    "Angelópolis",
-    "Angostura",
-    "Anorí",
-    "Anzá",
-    "Apartadó",
-    "Arboletes",
-    "Argelia",
-    "Armenia",
-    "Barbosa",
-    "Bello",
-    "Belmira",
-    "Betania",
-    "Betulia",
-    "Briceño",
-    "Buriticá",
-    "Caicedo",
-    "Caldas",
-    "Campamento",
-    "Caracolí",
-    "Caramanta",
-    "Carepa",
-    "Carolina del Príncipe",
-    "Caucasia",
-    "Cañasgordas",
-    "Chigorodó",
-    "Cisneros",
-    "Ciudad Bolívar",
-    "Cocorná",
-    "Concepción",
-    "Concordia",
-    "Copacabana",
-    "Cáceres",
-    "Dabeiba",
-    "Donmatías",
-    "Ebéjico",
-    "El Bagre",
-    "El Carmen de Viboral",
-    "El Peñol",
-    "El Retiro",
-    "El Santuario",
-    "Entrerríos",
-    "Envigado",
-    "Fredonia",
-    "Frontino",
-    "Giraldo",
-    "Girardota",
-    "Granada",
-    "Guadalupe",
-    "Guarne",
-    "Guatapé",
-    "Gómez Plata",
-    "Heliconia",
-    "Hispania",
-    "Itagüí",
-    "Ituango",
-    "Jardín",
-    "Jericó",
-    "La Ceja",
-    "La Estrella",
-    "La Pintada",
-    "La Unión",
-    "Liborina",
-    "Maceo",
-    "Marinilla",
-    "Medellín",
-    "Montebello",
-    "Murindó",
-    "Mutatá",
-    "Nariño",
-    "Nechí",
-    "Necoclí",
-    "Olaya",
-    "Peque",
-    "Pueblorrico",
-    "Puerto Berrío",
-    "Puerto Nare",
-    "Puerto Triunfo",
-    "Remedios",
-    "Rionegro",
-    "Sabanalarga",
-    "Sabaneta",
-    "Salgar",
-    "San Andrés de Cuerquia",
-    "San Carlos",
-    "San Francisco",
-    "San Jerónimo",
-    "San José de la Montaña",
-    "San Juan de Urabá",
-    "San Luis",
-    "San Pedro de los Milagros",
-    "San Pedro de Urabá",
-    "San Rafael",
-    "San Roque",
-    "San Vicente",
-    "Santa Bárbara",
-    "Santa Fe de Antioquia",
-    "Santa Rosa de Osos",
-    "Santo Domingo",
-    "Segovia",
-    "Sonsón",
-    "Sopetrán",
-    "Tarazá",
-    "Tarso",
-    "Titiribí",
-    "Toledo",
-    "Turbo",
-    "Támesis",
-    "Uramita",
-    "Urrao",
-    "Valdivia",
-    "Valparaíso",
-    "Vegachí",
-    "Venecia",
-    "Vigía del Fuerte",
-    "Yalí",
-    "Yarumal",
-    "Yolombó",
-    "Yondó",
-    "Zaragoza"
-  ],
-  "Arauca": [
-    "Arauca",
-    "Arauquita",
-    "Cravo Norte",
-    "Fortul",
-    "Puerto Rondón",
-    "Saravena",
-    "Tame"
-  ],
-  "Atlántico": [
-    "Baranoa",
-    "Barranquilla",
-    "Campo de la Cruz",
-    "Candelaria",
-    "Galapa",
-    "Juan de Acosta",
-    "Luruaco",
-    "Malambo",
-    "Manatí",
-    "Palmar de Varela",
-    "Piojó",
-    "Polonuevo",
-    "Ponedera",
-    "Puerto Colombia",
-    "Repelón",
-    "Sabanagrande",
-    "Sabanalarga",
-    "Santa Lucía",
-    "Santo Tomás",
-    "Soledad",
-    "Suán",
-    "Tubará",
-    "Usiacurí"
-  ],
-  "Bolívar": [
-    "Achí",
-    "Altos del Rosario",
-    "Arenal",
-    "Arjona",
-    "Arroyohondo",
-    "Barranco de Loba",
-    "Brazuelo de Papayal",
-    "Calamar",
-    "Cantagallo",
-    "Cartagena de Indias",
-    "Cicuco",
-    "Clemencia",
-    "Córdoba",
-    "El Carmen de Bolívar",
-    "El Guamo",
-    "El Peñón",
-    "Hatillo de Loba",
-    "Magangué",
-    "Mahates",
-    "Margarita",
-    "María la Baja",
-    "Mompós",
-    "Montecristo",
-    "Morales",
-    "Norosí",
-    "Pinillos",
-    "Regidor",
-    "Río Viejo",
-    "San Cristóbal",
-    "San Estanislao",
-    "San Fernando",
-    "San Jacinto",
-    "San Jacinto del Cauca",
-    "San Juan Nepomuceno",
-    "San Martín de Loba",
-    "San Pablo",
-    "Santa Catalina",
-    "Santa Rosa",
-    "Santa Rosa del Sur",
-    "Simití",
-    "Soplaviento",
-    "Talaigua Nuevo",
-    "Tiquisio",
-    "Turbaco",
-    "Turbaná",
-    "Villanueva",
-    "Zambrano"
-  ],
-  "Boyacá": [
-    "Almeida",
-    "Aquitania",
-    "Arcabuco",
-    "Belén",
-    "Berbeo",
-    "Betéitiva",
-    "Boavita",
-    "Boyacá",
-    "Briceño",
-    "Buenavista",
-    "Busbanzá",
-    "Caldas",
-    "Campohermoso",
-    "Cerinza",
-    "Chinavita",
-    "Chiquinquirá",
-    "Chiscas",
-    "Chita",
-    "Chitaraque",
-    "Chivatá",
-    "Chivor",
-    "Chíquiza",
-    "Ciénega",
-    "Coper",
-    "Corrales",
-    "Covarachía",
-    "Cubará",
-    "Cucaita",
-    "Cuítiva",
-    "Cómbita",
-    "Duitama",
-    "El Cocuy",
-    "El Espino",
-    "Firavitoba",
-    "Floresta",
-    "Gachantivá",
-    "Garagoa",
-    "Guacamayas",
-    "Guateque",
-    "Guayatá",
-    "Gámeza",
-    "Güicán",
-    "Iza",
-    "Jenesano",
-    "Jericó",
-    "La Capilla",
-    "La Uvita",
-    "La Victoria",
-    "Labranzagrande",
-    "Macanal",
-    "Maripí",
-    "Miraflores",
-    "Mongua",
-    "Monguí",
-    "Moniquirá",
-    "Motavita",
-    "Muzo",
-    "Nobsa",
-    "Nuevo Colón",
-    "Oicatá",
-    "Otanche",
-    "Pachavita",
-    "Paipa",
-    "Pajarito",
-    "Panqueba",
-    "Pauna",
-    "Paya",
-    "Paz del Río",
-    "Pesca",
-    "Pisba",
-    "Puerto Boyacá",
-    "Páez",
-    "Quípama",
-    "Ramiriquí",
-    "Rondón",
-    "Ráquira",
-    "Saboyá",
-    "Samacá",
-    "San Eduardo",
-    "San José de Pare",
-    "San Luis de Gaceno",
-    "San Mateo",
-    "San Miguel de Sema",
-    "San Pablo de Borbur",
-    "Santa María",
-    "Santa Rosa de Viterbo",
-    "Santa Sofía",
-    "Santana",
-    "Sativanorte",
-    "Sativasur",
-    "Siachoque",
-    "Soatá",
-    "Socha",
-    "Socotá",
-    "Sogamoso",
-    "Somondoco",
-    "Sora",
-    "Soracá",
-    "Sotaquirá",
-    "Susacón",
-    "Sutamarchán",
-    "Sutatenza",
-    "Sáchica",
-    "Tasco",
-    "Tenza",
-    "Tibaná",
-    "Tibasosa",
-    "Tinjacá",
-    "Tipacoque",
-    "Toca",
-    "Togüí",
-    "Tota",
-    "Tunja",
-    "Tununguá",
-    "Turmequé",
-    "Tuta",
-    "Tutazá",
-    "Tópaga",
-    "Ventaquemada",
-    "Villa de Leyva",
-    "Viracachá",
-    "Zetaquira",
-    "Úmbita"
-  ],
-  "Caldas": [
-    "Aguadas",
-    "Anserma",
-    "Aranzazu",
-    "Belalcázar",
-    "Chinchiná",
-    "Filadelfia",
-    "La Dorada",
-    "La Merced",
-    "Manizales",
-    "Manzanares",
-    "Marmato",
-    "Marquetalia",
-    "Marulanda",
-    "Neira",
-    "Norcasia",
-    "Palestina",
-    "Pensilvania",
-    "Pácora",
-    "Riosucio",
-    "Risaralda",
-    "Salamina",
-    "Samaná",
-    "San José",
-    "Supía",
-    "Victoria",
-    "Villamaría",
-    "Viterbo"
-  ],
-  "Caquetá": [
-    "Albania",
-    "Belén de los Andaquíes",
-    "Cartagena del Chairá",
-    "Curillo",
-    "El Doncello",
-    "El Paujil",
-    "Florencia",
-    "La Montañita",
-    "Milán",
-    "Morelia",
-    "Puerto Rico",
-    "San José del Fragua",
-    "San Vicente del Caguán",
-    "Solano",
-    "Solita",
-    "Valparaíso"
-  ],
-  "Casanare": [
-    "Aguazul",
-    "Chámeza",
-    "Hato Corozal",
-    "La Salina",
-    "Maní",
-    "Monterrey",
-    "Nunchía",
-    "Orocué",
-    "Paz de Ariporo",
-    "Pore",
-    "Recetor",
-    "Sabanalarga",
-    "San Luis de Palenque",
-    "Sácama",
-    "Tauramena",
-    "Trinidad",
-    "Támara",
-    "Villanueva",
-    "Yopal"
-  ],
-  "Cauca": [
-    "Almaguer",
-    "Argelia",
-    "Balboa",
-    "Bolívar",
-    "Buenos Aires",
-    "Cajibío",
-    "Caldono",
-    "Caloto",
-    "Corinto",
-    "El Tambo",
-    "Florencia",
-    "Guachené",
-    "Guapí",
-    "Inzá",
-    "Jambaló",
-    "La Sierra",
-    "La Vega",
-    "López de Micay",
-    "Mercaderes",
-    "Miranda",
-    "Morales",
-    "Padilla",
-    "Patía",
-    "Piamonte",
-    "Piendamó",
-    "Popayán",
-    "Puerto Tejada",
-    "Puracé",
-    "Páez",
-    "Rosas",
-    "San Sebastián",
-    "Santa Rosa",
-    "Santander de Quilichao",
-    "Silvia",
-    "Sotará",
-    "Sucre",
-    "Suárez",
-    "Timbiquí",
-    "Timbío",
-    "Toribío",
-    "Totoró",
-    "Villa Rica"
-  ],
-  "Cesar": [
-    "Aguachica",
-    "Agustín Codazzi",
-    "Astrea",
-    "Becerril",
-    "Bosconia",
-    "Chimichagua",
-    "Chiriguaná",
-    "Curumaní",
-    "El Copey",
-    "El Paso",
-    "Gamarra",
-    "González",
-    "La Gloria (Cesar)",
-    "La Jagua de Ibirico",
-    "La Paz",
-    "Manaure Balcón del Cesar",
-    "Pailitas",
-    "Pelaya",
-    "Pueblo Bello",
-    "Río de Oro",
-    "San Alberto",
-    "San Diego",
-    "San Martín",
-    "Tamalameque",
-    "Valledupar"
-  ],
-  "Chocó": [
-    "Acandí",
-    "Alto Baudó",
-    "Bagadó",
-    "Bahía Solano",
-    "Bajo Baudó",
-    "Bojayá",
-    "Cantón de San Pablo",
-    "Condoto",
-    "Cértegui",
-    "El Atrato",
-    "El Carmen de Atrato",
-    "El Carmen del Darién",
-    "Istmina",
-    "Juradó",
-    "Litoral de San Juan",
-    "Lloró",
-    "Medio Atrato",
-    "Medio Baudó",
-    "Medio San Juan",
-    "Nuquí",
-    "Nóvita",
-    "Quibdó",
-    "Riosucio",
-    "Río Iró",
-    "Río Quito",
-    "San José del Palmar",
-    "Sipí",
-    "Tadó",
-    "Unguía",
-    "Unión Panamericana"
-  ],
-  "Cundinamarca": [
-    "Agua de Dios",
-    "Albán",
-    "Anapoima",
-    "Anolaima",
-    "Apulo",
-    "Arbeláez",
-    "Beltrán",
-    "Bituima",
-    "Bogotá",
-    "Bojacá",
-    "Cabrera",
-    "Cachipay",
-    "Cajicá",
-    "Caparrapí",
-    "Carmen de Carupa",
-    "Chaguaní",
-    "Chipaque",
-    "Choachí",
-    "Chocontá",
-    "Chía",
-    "Cogua",
-    "Cota",
-    "Cucunubá",
-    "Cáqueza",
-    "El Colegio",
-    "El Peñón",
-    "El Rosal",
-    "Facatativá",
-    "Fosca",
-    "Funza",
-    "Fusagasugá",
-    "Fómeque",
-    "Fúquene",
-    "Gachalá",
-    "Gachancipá",
-    "Gachetá",
-    "Gama",
-    "Girardot",
-    "Granada",
-    "Guachetá",
-    "Guaduas",
-    "Guasca",
-    "Guataquí",
-    "Guatavita",
-    "Guayabal de Síquima",
-    "Guayabetal",
-    "Gutiérrez",
-    "Jerusalén",
-    "Junín",
-    "La Calera",
-    "La Mesa",
-    "La Palma",
-    "La Peña",
-    "La Vega",
-    "Lenguazaque",
-    "Machetá",
-    "Madrid",
-    "Manta",
-    "Medina",
-    "Mosquera",
-    "Nariño",
-    "Nemocón",
-    "Nilo",
-    "Nimaima",
-    "Nocaima",
-    "Pacho",
-    "Paime",
-    "Pandi",
-    "Paratebueno",
-    "Pasca",
-    "Puerto Salgar",
-    "Pulí",
-    "Quebradanegra",
-    "Quetame",
-    "Quipile",
-    "Ricaurte",
-    "San Antonio del Tequendama",
-    "San Bernardo",
-    "San Cayetano",
-    "San Francisco",
-    "San Juan de Rioseco",
-    "Sasaima",
-    "Sesquilé",
-    "Sibaté",
-    "Silvania",
-    "Simijaca",
-    "Soacha",
-    "Sopó",
-    "Subachoque",
-    "Suesca",
-    "Supatá",
-    "Susa",
-    "Sutatausa",
-    "Tabio",
-    "Tausa",
-    "Tena",
-    "Tenjo",
-    "Tibacuy",
-    "Tibirita",
-    "Tocaima",
-    "Tocancipá",
-    "Topaipí",
-    "Ubalá",
-    "Ubaque",
-    "Ubaté",
-    "Une",
-    "Venecia",
-    "Vergara",
-    "Vianí",
-    "Villagómez",
-    "Villapinzón",
-    "Villeta",
-    "Viotá",
-    "Yacopí",
-    "Zipacón",
-    "Zipaquirá",
-    "Útica"
-  ],
-  "Córdoba": [
-    "Ayapel",
-    "Buenavista",
-    "Canalete",
-    "Cereté",
-    "Chimá",
-    "Chinú",
-    "Ciénaga de Oro",
-    "Cotorra",
-    "La Apartada",
-    "Lorica",
-    "Los Córdobas",
-    "Momil",
-    "Montelíbano",
-    "Montería",
-    "Moñitos",
-    "Planeta Rica",
-    "Pueblo Nuevo",
-    "Puerto Escondido",
-    "Puerto Libertador",
-    "Purísima",
-    "Sahagún",
-    "San Andrés de Sotavento",
-    "San Antero",
-    "San Bernardo del Viento",
-    "San Carlos",
-    "San José de Uré",
-    "San Pelayo",
-    "Tierralta",
-    "Tuchín",
-    "Valencia"
-  ],
-  "Guainía": [
-    "Inírida"
-  ],
-  "Guaviare": [
-    "Calamar",
-    "El Retorno",
-    "Miraflores",
-    "San José del Guaviare"
-  ],
-  "Huila": [
-    "Acevedo",
-    "Agrado",
-    "Aipe",
-    "Algeciras",
-    "Altamira",
-    "Baraya",
-    "Campoalegre",
-    "Colombia",
-    "El Pital",
-    "Elías",
-    "Garzón",
-    "Gigante",
-    "Guadalupe",
-    "Hobo",
-    "Isnos",
-    "La Argentina",
-    "La Plata",
-    "Neiva",
-    "Nátaga",
-    "Oporapa",
-    "Paicol",
-    "Palermo",
-    "Palestina",
-    "Pitalito",
-    "Rivera",
-    "Saladoblanco",
-    "San Agustín",
-    "Santa María",
-    "Suaza",
-    "Tarqui",
-    "Tello",
-    "Teruel",
-    "Tesalia",
-    "Timaná",
-    "Villavieja",
-    "Yaguará",
-    "Íquira"
-  ],
-  "La Guajira": [
-    "Albania",
-    "Barrancas",
-    "Dibulla",
-    "Distracción",
-    "El Molino",
-    "Fonseca",
-    "Hatonuevo",
-    "La Jagua del Pilar",
-    "Maicao",
-    "Manaure",
-    "Riohacha",
-    "San Juan del Cesar",
-    "Uribia",
-    "Urumita",
-    "Villanueva"
-  ],
-  "Magdalena": [
-    "Algarrobo",
-    "Aracataca",
-    "Ariguaní",
-    "Cerro de San Antonio",
-    "Chibolo",
-    "Chibolo",
-    "Ciénaga",
-    "Concordia",
-    "El Banco",
-    "El Piñón",
-    "El Retén",
-    "Fundación",
-    "Guamal",
-    "Nueva Granada",
-    "Pedraza",
-    "Pijiño del Carmen",
-    "Pivijay",
-    "Plato",
-    "Pueblo Viejo",
-    "Remolino",
-    "Sabanas de San Ángel",
-    "Salamina",
-    "San Sebastián de Buenavista",
-    "San Zenón",
-    "Santa Ana",
-    "Santa Bárbara de Pinto",
-    "Santa Marta",
-    "Sitionuevo",
-    "Tenerife",
-    "Zapayán",
-    "Zona Bananera"
-  ],
-  "Meta": [
-    "Acacías",
-    "Barranca de Upía",
-    "Cabuyaro",
-    "Castilla la Nueva",
-    "Cubarral",
-    "Cumaral",
-    "El Calvario",
-    "El Castillo",
-    "El Dorado",
-    "Fuente de Oro",
-    "Granada",
-    "Guamal",
-    "La Macarena",
-    "La Uribe",
-    "Lejanías",
-    "Mapiripán",
-    "Mesetas",
-    "Puerto Concordia",
-    "Puerto Gaitán",
-    "Puerto Lleras",
-    "Puerto López",
-    "Puerto Rico",
-    "Restrepo",
-    "San Carlos de Guaroa",
-    "San Juan de Arama",
-    "San Juanito",
-    "San Martín",
-    "Villavicencio",
-    "Vista Hermosa"
-  ],
-  "Nariño": [
-    "Aldana",
-    "Ancuyá",
-    "Arboleda",
-    "Barbacoas",
-    "Belén",
-    "Buesaco",
-    "Chachagüí",
-    "Colón",
-    "Consacá",
-    "Contadero",
-    "Cuaspud",
-    "Cumbal",
-    "Cumbitara",
-    "Córdoba",
-    "El Charco",
-    "El Peñol",
-    "El Rosario",
-    "El Tablón",
-    "El Tambo",
-    "Francisco Pizarro",
-    "Funes",
-    "Guachucal",
-    "Guaitarilla",
-    "Gualmatán",
-    "Iles",
-    "Imués",
-    "Ipiales",
-    "La Cruz",
-    "La Florida",
-    "La Llanada",
-    "La Tola",
-    "La Unión",
-    "Leiva",
-    "Linares",
-    "Los Andes",
-    "Magüí Payán",
-    "Mallama",
-    "Mosquera",
-    "Nariño",
-    "Olaya Herrera",
-    "Ospina",
-    "Pasto",
-    "Policarpa",
-    "Potosí",
-    "Providencia",
-    "Puerres",
-    "Pupiales",
-    "Ricaurte",
-    "Roberto Payán",
-    "Samaniego",
-    "San Bernardo",
-    "San José de Albán",
-    "San Lorenzo",
-    "San Pablo",
-    "San Pedro de Cartago",
-    "Sandoná",
-    "Santa Bárbara",
-    "Santacruz",
-    "Sapuyes",
-    "Taminango",
-    "Tangua",
-    "Tumaco",
-    "Túquerres",
-    "Yacuanquer"
-  ],
-  "Norte de Santander": [
-    "Arboledas",
-    "Bochalema",
-    "Bucarasica",
-    "Chinácota",
-    "Chitagá",
-    "Convención",
-    "Cucutilla",
-    "Cáchira",
-    "Cácota",
-    "Cúcuta",
-    "Duranía",
-    "El Carmen",
-    "El Tarra",
-    "El Zulia",
-    "Gramalote",
-    "Hacarí",
-    "Herrán",
-    "La Esperanza",
-    "La Playa de Belén",
-    "Labateca",
-    "Los Patios",
-    "Lourdes",
-    "Mutiscua",
-    "Ocaña",
-    "Pamplona",
-    "Pamplonita",
-    "Puerto Santander",
-    "Ragonvalia",
-    "Salazar de Las Palmas",
-    "San Calixto",
-    "San Cayetano",
-    "Santiago",
-    "Santo Domingo de Silos",
-    "Sardinata",
-    "Teorama",
-    "Tibú",
-    "Toledo",
-    "Villa Caro",
-    "Villa del Rosario",
-    "Ábrego"
-  ],
-  "Putumayo": [
-    "Colón",
-    "Mocoa",
-    "Orito",
-    "Puerto Asís",
-    "Puerto Caicedo",
-    "Puerto Guzmán",
-    "Puerto Leguízamo",
-    "San Francisco",
-    "San Miguel",
-    "Santiago",
-    "Sibundoy",
-    "Valle del Guamuez",
-    "Villagarzón"
-  ],
-  "Quindío": [
-    "Armenia",
-    "Buenavista",
-    "Calarcá",
-    "Circasia",
-    "Córdoba",
-    "Filandia",
-    "Génova",
-    "La Tebaida",
-    "Montenegro",
-    "Pijao",
-    "Quimbaya",
-    "Salento"
-  ],
-  "Risaralda": [
-    "Apía",
-    "Balboa",
-    "Belén de Umbría",
-    "Dosquebradas",
-    "Guática",
-    "La Celia",
-    "La Virginia",
-    "Marsella",
-    "Mistrató",
-    "Pereira",
-    "Pueblo Rico",
-    "Quinchía",
-    "Santa Rosa de Cabal",
-    "Santuario"
-  ],
-  "San Andrés y Providencia": [
-    "Providencia y Santa Catalina Islas",
-    "San Andrés"
-  ],
-  "Santander": [
-    "Aguada",
-    "Albania",
-    "Aratoca",
-    "Barbosa",
-    "Barichara",
-    "Barrancabermeja",
-    "Betulia",
-    "Bolívar",
-    "Bucaramanga",
-    "Cabrera",
-    "California",
-    "Capitanejo",
-    "Carcasí",
-    "Cepitá",
-    "Cerrito",
-    "Charalá",
-    "Charta",
-    "Chima",
-    "Chipatá",
-    "Cimitarra",
-    "Concepción",
-    "Confines",
-    "Contratación",
-    "Coromoro",
-    "Curití",
-    "El Carmen de Chucurí",
-    "El Guacamayo",
-    "El Peñón",
-    "El Playón",
-    "El Socorro",
-    "Encino",
-    "Enciso",
-    "Floridablanca",
-    "Florián",
-    "Galán",
-    "Girón",
-    "Guaca",
-    "Guadalupe",
-    "Guapotá",
-    "Guavatá",
-    "Gámbita",
-    "Güepsa",
-    "Hato",
-    "Jesús María",
-    "Jordán",
-    "La Belleza",
-    "La Paz",
-    "Landázuri",
-    "Lebrija",
-    "Los Santos",
-    "Macaravita",
-    "Matanza",
-    "Mogotes",
-    "Molagavita",
-    "Málaga",
-    "Ocamonte",
-    "Oiba",
-    "Onzaga",
-    "Palmar",
-    "Palmas del Socorro",
-    "Piedecuesta",
-    "Pinchote",
-    "Puente Nacional",
-    "Puerto Parra",
-    "Puerto Wilches",
-    "Páramo",
-    "Rionegro",
-    "Sabana de Torres",
-    "San Andrés",
-    "San Benito",
-    "San Gil",
-    "San Joaquín",
-    "San José de Miranda",
-    "San Miguel",
-    "San Vicente de Chucurí",
-    "Santa Bárbara",
-    "Santa Helena del Opón",
-    "Simacota",
-    "Suaita",
-    "Sucre",
-    "Suratá",
-    "Tona",
-    "Valle de San José",
-    "Vetas",
-    "Villanueva",
-    "Vélez",
-    "Zapatoca"
-  ],
-  "Sucre": [
-    "Buenavista",
-    "Caimito",
-    "Chalán",
-    "Colosó",
-    "Corozal",
-    "Coveñas",
-    "El Roble",
-    "Galeras",
-    "Guaranda",
-    "La Unión",
-    "Los Palmitos",
-    "Majagual",
-    "Morroa",
-    "Ovejas",
-    "Sampués",
-    "San Antonio de Palmito",
-    "San Benito Abad",
-    "San Juan de Betulia",
-    "San Marcos",
-    "San Onofre",
-    "San Pedro",
-    "Sincelejo",
-    "Sincé",
-    "Sucre",
-    "Tolú",
-    "Tolú Viejo"
-  ],
-  "Tolima": [
-    "Alpujarra",
-    "Alvarado",
-    "Ambalema",
-    "Anzoátegui",
-    "Armero",
-    "Ataco",
-    "Cajamarca",
-    "Carmen de Apicalá",
-    "Casabianca",
-    "Chaparral",
-    "Coello",
-    "Coyaima",
-    "Cunday",
-    "Dolores",
-    "El Espinal",
-    "Falán",
-    "Flandes",
-    "Fresno",
-    "Guamo",
-    "Herveo",
-    "Honda",
-    "Ibagué",
-    "Icononzo",
-    "Lérida",
-    "Líbano",
-    "Mariquita",
-    "Melgar",
-    "Murillo",
-    "Natagaima",
-    "Ortega",
-    "Palocabildo",
-    "Piedras",
-    "Planadas",
-    "Prado",
-    "Purificación",
-    "Rioblanco",
-    "Roncesvalles",
-    "Rovira",
-    "Saldaña",
-    "San Antonio",
-    "San Luis",
-    "Santa Isabel",
-    "Suárez",
-    "Valle de San Juan",
-    "Venadillo",
-    "Villahermosa",
-    "Villarrica"
-  ],
-  "Valle del Cauca": [
-    "Alcalá",
-    "Andalucía",
-    "Ansermanuevo",
-    "Argelia",
-    "Bolívar",
-    "Buenaventura",
-    "Buga",
-    "Bugalagrande",
-    "Caicedonia",
-    "Cali",
-    "Calima",
-    "Candelaria",
-    "Cartago",
-    "Dagua",
-    "El Cairo",
-    "El Cerrito",
-    "El Dovio",
-    "El Águila",
-    "Florida",
-    "Ginebra",
-    "Guacarí",
-    "Jamundí",
-    "La Cumbre",
-    "La Unión",
-    "La Victoria",
-    "Obando",
-    "Palmira",
-    "Pradera",
-    "Restrepo",
-    "Riofrío",
-    "Roldanillo",
-    "San Pedro",
-    "Sevilla",
-    "Toro",
-    "Trujillo",
-    "Tuluá",
-    "Ulloa",
-    "Versalles",
-    "Vijes",
-    "Yotoco",
-    "Yumbo",
-    "Zarzal"
-  ],
-  "Vaupés": [
-    "Carurú",
-    "Mitú",
-    "Taraira"
-  ],
-  "Vichada": [
-    "Cumaribo",
-    "La Primavera",
-    "Puerto Carreño",
-    "Santa Rosalía"
-  ],
-  "Bogotá D.C.": [
-    "Bogotá D.C."
-  ]
-};
+    "Amazonas": [
+      "El Encanto",
+      "La Chorrera",
+      "La Pedrera",
+      "La Victoria",
+      "Leticia",
+      "Mirití-Paraná",
+      "Puerto Alegría",
+      "Puerto Arica",
+      "Puerto Nariño",
+      "Puerto Santander",
+      "Tarapacá"
+    ],
+    "Antioquia": [
+      "Abejorral",
+      "Abriaquí",
+      "Alejandría",
+      "Amagá",
+      "Amalfi",
+      "Andes",
+      "Angelópolis",
+      "Angostura",
+      "Anorí",
+      "Anzá",
+      "Apartadó",
+      "Arboletes",
+      "Argelia",
+      "Armenia",
+      "Barbosa",
+      "Bello",
+      "Belmira",
+      "Betania",
+      "Betulia",
+      "Briceño",
+      "Buriticá",
+      "Cáceres",
+      "Caicedo",
+      "Caldas",
+      "Campamento",
+      "Cañasgordas",
+      "Caracolí",
+      "Caramanta",
+      "Carepa",
+      "Carolina del Príncipe",
+      "Caucasia",
+      "Chigorodó",
+      "Cisneros",
+      "Ciudad Bolívar",
+      "Cocorná",
+      "Concepción",
+      "Concordia",
+      "Copacabana",
+      "Dabeiba",
+      "Donmatías",
+      "Ebéjico",
+      "El Bagre",
+      "El Carmen de Viboral",
+      "El Peñol",
+      "El Retiro",
+      "El Santuario",
+      "Entrerríos",
+      "Envigado",
+      "Fredonia",
+      "Frontino",
+      "Giraldo",
+      "Girardota",
+      "Gómez Plata",
+      "Granada",
+      "Guadalupe",
+      "Guarne",
+      "Guatapé",
+      "Heliconia",
+      "Hispania",
+      "Itagüí",
+      "Ituango",
+      "Jardín",
+      "Jericó",
+      "La Ceja",
+      "La Estrella",
+      "La Pintada",
+      "La Unión",
+      "Liborina",
+      "Maceo",
+      "Marinilla",
+      "Medellín",
+      "Montebello",
+      "Murindó",
+      "Mutatá",
+      "Nariño",
+      "Nechí",
+      "Necoclí",
+      "Olaya",
+      "Peque",
+      "Pueblorrico",
+      "Puerto Berrío",
+      "Puerto Nare",
+      "Puerto Triunfo",
+      "Remedios",
+      "Rionegro",
+      "Sabanalarga",
+      "Sabaneta",
+      "Salgar",
+      "San Andrés de Cuerquia",
+      "San Carlos",
+      "San Francisco",
+      "San Jerónimo",
+      "San José de la Montaña",
+      "San Juan de Urabá",
+      "San Luis",
+      "San Pedro de los Milagros",
+      "San Pedro de Urabá",
+      "San Rafael",
+      "San Roque",
+      "Santa Bárbara",
+      "Santa Fe de Antioquia",
+      "Santa Rosa de Osos",
+      "Santo Domingo",
+      "San Vicente",
+      "Segovia",
+      "Sonsón",
+      "Sopetrán",
+      "Támesis",
+      "Tarazá",
+      "Tarso",
+      "Titiribí",
+      "Toledo",
+      "Turbo",
+      "Uramita",
+      "Urrao",
+      "Valdivia",
+      "Valparaíso",
+      "Vegachí",
+      "Venecia",
+      "Vigía del Fuerte",
+      "Yalí",
+      "Yarumal",
+      "Yolombó",
+      "Yondó",
+      "Zaragoza"
+    ],
+    "Arauca": [
+      "Arauca",
+      "Arauquita",
+      "Cravo Norte",
+      "Fortul",
+      "Puerto Rondón",
+      "Saravena",
+      "Tame"
+    ],
+    "Atlántico": [
+      "Baranoa",
+      "Barranquilla",
+      "Campo de la Cruz",
+      "Candelaria",
+      "Galapa",
+      "Juan de Acosta",
+      "Luruaco",
+      "Malambo",
+      "Manatí",
+      "Palmar de Varela",
+      "Piojó",
+      "Polonuevo",
+      "Ponedera",
+      "Puerto Colombia",
+      "Repelón",
+      "Sabanagrande",
+      "Sabanalarga",
+      "Santa Lucía",
+      "Santo Tomás",
+      "Soledad",
+      "Suán",
+      "Tubará",
+      "Usiacurí"
+    ],
+    "Bolívar": [
+      "Achí",
+      "Altos del Rosario",
+      "Arenal",
+      "Arjona",
+      "Arroyohondo",
+      "Barranco de Loba",
+      "Calamar",
+      "Cantagallo",
+      "Cartagena de Indias",
+      "Cicuco",
+      "Clemencia",
+      "Córdoba",
+      "El Carmen de Bolívar",
+      "El Guamo",
+      "El Peñón",
+      "Hatillo de Loba",
+      "Magangué",
+      "Mahates",
+      "Margarita",
+      "María la Baja",
+      "Mompós",
+      "Montecristo",
+      "Morales",
+      "Norosí",
+      "Pinillos",
+      "Regidor",
+      "Río Viejo",
+      "San Cristóbal",
+      "San Estanislao",
+      "San Fernando",
+      "San Jacinto",
+      "San Jacinto del Cauca",
+      "San Juan Nepomuceno",
+      "San Martín de Loba",
+      "San Pablo",
+      "Santa Catalina",
+      "Santa Rosa",
+      "Santa Rosa del Sur",
+      "Simití",
+      "Soplaviento",
+      "Talaigua Nuevo",
+      "Tiquisio",
+      "Turbaco",
+      "Turbaná",
+      "Villanueva",
+      "Zambrano"
+    ],
+    "Boyacá": [
+      "Almeida",
+      "Aquitania",
+      "Arcabuco",
+      "Belén",
+      "Berbeo",
+      "Betéitiva",
+      "Boavita",
+      "Boyacá",
+      "Briceño",
+      "Buenavista",
+      "Busbanzá",
+      "Caldas",
+      "Campohermoso",
+      "Cerinza",
+      "Chinavita",
+      "Chiquinquirá",
+      "Chíquiza",
+      "Chiscas",
+      "Chita",
+      "Chitaraque",
+      "Chivatá",
+      "Chivor",
+      "Ciénega",
+      "Cómbita",
+      "Coper",
+      "Corrales",
+      "Covarachía",
+      "Cubará",
+      "Cucaita",
+      "Cuítiva",
+      "Duitama",
+      "El Cocuy",
+      "El Espino",
+      "Firavitoba",
+      "Floresta",
+      "Gachantivá",
+      "Gámeza",
+      "Garagoa",
+      "Guacamayas",
+      "Guateque",
+      "Guayatá",
+      "Güicán",
+      "Iza",
+      "Jenesano",
+      "Jericó",
+      "Labranzagrande",
+      "La Capilla",
+      "La Uvita",
+      "La Victoria",
+      "Macanal",
+      "Maripí",
+      "Miraflores",
+      "Mongua",
+      "Monguí",
+      "Moniquirá",
+      "Motavita",
+      "Muzo",
+      "Nobsa",
+      "Nuevo Colón",
+      "Oicatá",
+      "Otanche",
+      "Pachavita",
+      "Páez",
+      "Paipa",
+      "Pajarito",
+      "Panqueba",
+      "Pauna",
+      "Paya",
+      "Paz del Río",
+      "Pesca",
+      "Pisba",
+      "Puerto Boyacá",
+      "Quípama",
+      "Ramiriquí",
+      "Ráquira",
+      "Rondón",
+      "Saboyá",
+      "Sáchica",
+      "Samacá",
+      "San Eduardo",
+      "San José de Pare",
+      "San Luis de Gaceno",
+      "San Mateo",
+      "San Miguel de Sema",
+      "San Pablo de Borbur",
+      "Santa María",
+      "Santana",
+      "Santa Rosa de Viterbo",
+      "Santa Sofía",
+      "Sativanorte",
+      "Sativasur",
+      "Siachoque",
+      "Soatá",
+      "Socha",
+      "Socotá",
+      "Sogamoso",
+      "Somondoco",
+      "Sora",
+      "Soracá",
+      "Sotaquirá",
+      "Susacón",
+      "Sutamarchán",
+      "Sutatenza",
+      "Tasco",
+      "Tenza",
+      "Tibaná",
+      "Tibasosa",
+      "Tinjacá",
+      "Tipacoque",
+      "Toca",
+      "Togüí",
+      "Tópaga",
+      "Tota",
+      "Tunja",
+      "Tununguá",
+      "Turmequé",
+      "Tuta",
+      "Tutazá",
+      "Úmbita",
+      "Ventaquemada",
+      "Villa de Leyva",
+      "Viracachá",
+      "Zetaquira"
+    ],
+    "Caldas": [
+      "Aguadas",
+      "Anserma",
+      "Aranzazu",
+      "Belalcázar",
+      "Chinchiná",
+      "Filadelfia",
+      "La Dorada",
+      "La Merced",
+      "Manizales",
+      "Manzanares",
+      "Marmato",
+      "Marquetalia",
+      "Marulanda",
+      "Neira",
+      "Norcasia",
+      "Pácora",
+      "Palestina",
+      "Pensilvania",
+      "Riosucio",
+      "Risaralda",
+      "Salamina",
+      "Samaná",
+      "San José",
+      "Supía",
+      "Victoria",
+      "Villamaría",
+      "Viterbo"
+    ],
+    "Caquetá": [
+      "Albania",
+      "Belén de los Andaquíes",
+      "Cartagena del Chairá",
+      "Curillo",
+      "El Doncello",
+      "El Paujil",
+      "Florencia",
+      "La Montañita",
+      "Milán",
+      "Morelia",
+      "Puerto Rico",
+      "San José del Fragua",
+      "San Vicente del Caguán",
+      "Solano",
+      "Solita",
+      "Valparaíso"
+    ],
+    "Casanare": [
+      "Aguazul",
+      "Chámeza",
+      "Hato Corozal",
+      "La Salina",
+      "Maní",
+      "Monterrey",
+      "Nunchía",
+      "Orocué",
+      "Paz de Ariporo",
+      "Pore",
+      "Recetor",
+      "Sabanalarga",
+      "Sácama",
+      "San Luis de Palenque",
+      "Támara",
+      "Tauramena",
+      "Trinidad",
+      "Villanueva",
+      "Yopal"
+    ],
+    "Cauca": [
+      "Almaguer",
+      "Argelia",
+      "Balboa",
+      "Bolívar",
+      "Buenos Aires",
+      "Cajibío",
+      "Caldono",
+      "Caloto",
+      "Corinto",
+      "El Tambo",
+      "Florencia",
+      "Guachené",
+      "Guapí",
+      "Inzá",
+      "Jambaló",
+      "La Sierra",
+      "La Vega",
+      "López de Micay",
+      "Mercaderes",
+      "Miranda",
+      "Morales",
+      "Padilla",
+      "Páez",
+      "Patía",
+      "Piamonte",
+      "Piendamó",
+      "Popayán",
+      "Puerto Tejada",
+      "Puracé",
+      "Rosas",
+      "San Sebastián",
+      "Santander de Quilichao",
+      "Santa Rosa",
+      "Silvia",
+      "Sotará",
+      "Suárez",
+      "Sucre",
+      "Timbío",
+      "Timbiquí",
+      "Toribío",
+      "Totoró",
+      "Villa Rica"
+    ],
+    "Cesar": [
+      "Aguachica",
+      "Agustín Codazzi",
+      "Astrea",
+      "Becerril",
+      "Bosconia",
+      "Chimichagua",
+      "Chiriguaná",
+      "Curumaní",
+      "El Copey",
+      "El Paso",
+      "Gamarra",
+      "González",
+      "La Gloria (Cesar)",
+      "La Jagua de Ibirico",
+      "La Paz",
+      "Manaure Balcón del Cesar",
+      "Pailitas",
+      "Pelaya",
+      "Pueblo Bello",
+      "Río de Oro",
+      "San Alberto",
+      "San Diego",
+      "San Martín",
+      "Tamalameque",
+      "Valledupar"
+    ],
+    "Chocó": [
+      "Acandí",
+      "Alto Baudó",
+      "Bagadó",
+      "Bahía Solano",
+      "Bajo Baudó",
+      "Belén de Bajirá",
+      "Bojayá",
+      "Cantón de San Pablo",
+      "Cértegui",
+      "Condoto",
+      "El Atrato",
+      "El Carmen de Atrato",
+      "El Carmen del Darién",
+      "Istmina",
+      "Juradó",
+      "Litoral de San Juan",
+      "Lloró",
+      "Medio Atrato",
+      "Medio Baudó",
+      "Medio San Juan",
+      "Nóvita",
+      "Nuquí",
+      "Quibdó",
+      "Río Iró",
+      "Río Quito",
+      "Riosucio",
+      "San José del Palmar",
+      "Sipí",
+      "Tadó",
+      "Unguía",
+      "Unión Panamericana"
+    ],
+    "Cundinamarca": [
+      "Agua de Dios",
+      "Albán",
+      "Anapoima",
+      "Anolaima",
+      "Apulo",
+      "Arbeláez",
+      "Beltrán",
+      "Bituima",
+      "Bojacá",
+      "Cabrera",
+      "Cachipay",
+      "Cajicá",
+      "Caparrapí",
+      "Cáqueza",
+      "Carmen de Carupa",
+      "Chaguaní",
+      "Chía",
+      "Chipaque",
+      "Choachí",
+      "Chocontá",
+      "Cogua",
+      "Cota",
+      "Cucunubá",
+      "El Colegio",
+      "El Peñón",
+      "El Rosal",
+      "Facatativá",
+      "Fómeque",
+      "Fosca",
+      "Funza",
+      "Fúquene",
+      "Fusagasugá",
+      "Gachalá",
+      "Gachancipá",
+      "Gachetá",
+      "Gama",
+      "Girardot",
+      "Granada",
+      "Guachetá",
+      "Guaduas",
+      "Guasca",
+      "Guataquí",
+      "Guatavita",
+      "Guayabal de Síquima",
+      "Guayabetal",
+      "Gutiérrez",
+      "Jerusalén",
+      "Junín",
+      "La Calera",
+      "La Mesa",
+      "La Palma",
+      "La Peña",
+      "La Vega",
+      "Lenguazaque",
+      "Machetá",
+      "Madrid",
+      "Manta",
+      "Medina",
+      "Mosquera",
+      "Nariño",
+      "Nemocón",
+      "Nilo",
+      "Nimaima",
+      "Nocaima",
+      "Pacho",
+      "Paime",
+      "Pandi",
+      "Paratebueno",
+      "Pasca",
+      "Puerto Salgar",
+      "Pulí",
+      "Quebradanegra",
+      "Quetame",
+      "Quipile",
+      "Ricaurte",
+      "San Antonio del Tequendama",
+      "San Bernardo",
+      "San Cayetano",
+      "San Francisco",
+      "San Juan de Rioseco",
+      "Sasaima",
+      "Sesquilé",
+      "Sibaté",
+      "Silvania",
+      "Simijaca",
+      "Soacha",
+      "Sopó",
+      "Subachoque",
+      "Suesca",
+      "Supatá",
+      "Susa",
+      "Sutatausa",
+      "Tabio",
+      "Tausa",
+      "Tena",
+      "Tenjo",
+      "Tibacuy",
+      "Tibirita",
+      "Tocaima",
+      "Tocancipá",
+      "Topaipí",
+      "Ubalá",
+      "Ubaque",
+      "Ubaté",
+      "Une",
+      "Útica",
+      "Venecia",
+      "Vergara",
+      "Vianí",
+      "Villagómez",
+      "Villapinzón",
+      "Villeta",
+      "Viotá",
+      "Yacopí",
+      "Zipacón",
+      "Zipaquirá"
+    ],
+    "Córdoba": [
+      "Ayapel",
+      "Buenavista",
+      "Canalete",
+      "Cereté",
+      "Chimá",
+      "Chinú",
+      "Ciénaga de Oro",
+      "Cotorra",
+      "La Apartada",
+      "Lorica",
+      "Los Córdobas",
+      "Momil",
+      "Moñitos",
+      "Montelíbano",
+      "Montería",
+      "Planeta Rica",
+      "Pueblo Nuevo",
+      "Puerto Escondido",
+      "Puerto Libertador",
+      "Purísima",
+      "Sahagún",
+      "San Andrés de Sotavento",
+      "San Antero",
+      "San Bernardo del Viento",
+      "San Carlos",
+      "San José de Uré",
+      "San Pelayo",
+      "Tierralta",
+      "Tuchín",
+      "Valencia"
+    ],
+    "Guainía": [
+      "Barrancominas",
+      "Cacahual",
+      "Inírida",
+      "La Guadalupe",
+      "Morichal",
+      "Pana Pana",
+      "Puerto Colombia",
+      "San Felipe"
+    ],
+    "Guaviare": [
+      "Calamar",
+      "El Retorno",
+      "Miraflores",
+      "San José del Guaviare"
+    ],
+    "Huila": [
+      "Acevedo",
+      "Agrado",
+      "Aipe",
+      "Algeciras",
+      "Altamira",
+      "Baraya",
+      "Campoalegre",
+      "Colombia",
+      "Elías",
+      "El Pital",
+      "Garzón",
+      "Gigante",
+      "Guadalupe",
+      "Hobo",
+      "Íquira",
+      "Isnos",
+      "La Argentina",
+      "La Plata",
+      "Nátaga",
+      "Neiva",
+      "Oporapa",
+      "Paicol",
+      "Palermo",
+      "Palestina",
+      "Pitalito",
+      "Rivera",
+      "Saladoblanco",
+      "San Agustín",
+      "Santa María",
+      "Suaza",
+      "Tarqui",
+      "Tello",
+      "Teruel",
+      "Tesalia",
+      "Timaná",
+      "Villavieja",
+      "Yaguará"
+    ],
+    "La Guajira": [
+      "Albania",
+      "Barrancas",
+      "Dibulla",
+      "Distracción",
+      "El Molino",
+      "Fonseca",
+      "Hatonuevo",
+      "La Jagua del Pilar",
+      "Maicao",
+      "Manaure",
+      "Riohacha",
+      "San Juan del Cesar",
+      "Uribia",
+      "Urumita",
+      "Villanueva"
+    ],
+    "Magdalena": [
+      "Algarrobo",
+      "Aracataca",
+      "Ariguaní",
+      "Cerro de San Antonio",
+      "Chibolo",
+      "Ciénaga",
+      "Concordia",
+      "El Banco",
+      "El Piñón",
+      "El Retén",
+      "Fundación",
+      "Guamal",
+      "Nueva Granada",
+      "Pedraza",
+      "Pijiño del Carmen",
+      "Pivijay",
+      "Plato",
+      "Pueblo Viejo",
+      "Remolino",
+      "Sabanas de San Ángel",
+      "Salamina",
+      "San Sebastián de Buenavista",
+      "Santa Ana",
+      "Santa Bárbara de Pinto",
+      "Santa Marta",
+      "San Zenón",
+      "Sitionuevo",
+      "Tenerife",
+      "Zapayán",
+      "Zona Bananera"
+    ],
+    "Meta": [
+      "Acacías",
+      "Barranca de Upía",
+      "Cabuyaro",
+      "Castilla la Nueva",
+      "Cubarral",
+      "Cumaral",
+      "El Calvario",
+      "El Castillo",
+      "El Dorado",
+      "Fuente de Oro",
+      "Granada",
+      "Guamal",
+      "La Macarena",
+      "La Uribe",
+      "Lejanías",
+      "Mapiripán",
+      "Mesetas",
+      "Puerto Concordia",
+      "Puerto Gaitán",
+      "Puerto Lleras",
+      "Puerto López",
+      "Puerto Rico",
+      "Restrepo",
+      "San Carlos de Guaroa",
+      "San Juan de Arama",
+      "San Juanito",
+      "San Martín",
+      "Villavicencio",
+      "Vista Hermosa"
+    ],
+    "Nariño": [
+      "Aldana",
+      "Ancuyá",
+      "Arboleda",
+      "Barbacoas",
+      "Belén",
+      "Buesaco",
+      "Chachagüí",
+      "Colón",
+      "Consacá",
+      "Contadero",
+      "Córdoba",
+      "Cuaspud",
+      "Cumbal",
+      "Cumbitara",
+      "El Charco",
+      "El Peñol",
+      "El Rosario",
+      "El Tablón",
+      "El Tambo",
+      "Francisco Pizarro",
+      "Funes",
+      "Guachucal",
+      "Guaitarilla",
+      "Gualmatán",
+      "Iles",
+      "Imués",
+      "Ipiales",
+      "La Cruz",
+      "La Florida",
+      "La Llanada",
+      "La Tola",
+      "La Unión",
+      "Leiva",
+      "Linares",
+      "Los Andes",
+      "Magüí Payán",
+      "Mallama",
+      "Mosquera",
+      "Nariño",
+      "Olaya Herrera",
+      "Ospina",
+      "Pasto",
+      "Policarpa",
+      "Potosí",
+      "Providencia",
+      "Puerres",
+      "Pupiales",
+      "Ricaurte",
+      "Roberto Payán",
+      "Samaniego",
+      "San Bernardo",
+      "Sandoná",
+      "San José de Albán",
+      "San Lorenzo",
+      "San Pablo",
+      "San Pedro de Cartago",
+      "Santa Bárbara",
+      "Santacruz",
+      "Sapuyes",
+      "Taminango",
+      "Tangua",
+      "Tumaco",
+      "Túquerres",
+      "Yacuanquer"
+    ],
+    "Norte de Santander": [
+      "Ábrego",
+      "Arboledas",
+      "Bochalema",
+      "Bucarasica",
+      "Cáchira",
+      "Cácota",
+      "Chinácota",
+      "Chitagá",
+      "Convención",
+      "Cúcuta",
+      "Cucutilla",
+      "Duranía",
+      "El Carmen",
+      "El Tarra",
+      "El Zulia",
+      "Gramalote",
+      "Hacarí",
+      "Herrán",
+      "Labateca",
+      "La Esperanza",
+      "La Playa de Belén",
+      "Los Patios",
+      "Lourdes",
+      "Mutiscua",
+      "Ocaña",
+      "Pamplona",
+      "Pamplonita",
+      "Puerto Santander",
+      "Ragonvalia",
+      "Salazar de Las Palmas",
+      "San Calixto",
+      "San Cayetano",
+      "Santiago",
+      "Santo Domingo de Silos",
+      "Sardinata",
+      "Teorama",
+      "Tibú",
+      "Toledo",
+      "Villa Caro",
+      "Villa del Rosario"
+    ],
+    "Putumayo": [
+      "Colón",
+      "Mocoa",
+      "Orito",
+      "Puerto Asís",
+      "Puerto Caicedo",
+      "Puerto Guzmán",
+      "Puerto Leguízamo",
+      "San Francisco",
+      "San Miguel",
+      "Santiago",
+      "Sibundoy",
+      "Valle del Guamuez",
+      "Villagarzón"
+    ],
+    "Quindío": [
+      "Armenia",
+      "Buenavista",
+      "Calarcá",
+      "Circasia",
+      "Córdoba",
+      "Filandia",
+      "Génova",
+      "La Tebaida",
+      "Montenegro",
+      "Pijao",
+      "Quimbaya",
+      "Salento"
+    ],
+    "Risaralda": [
+      "Apía",
+      "Balboa",
+      "Belén de Umbría",
+      "Dosquebradas",
+      "Guática",
+      "La Celia",
+      "La Virginia",
+      "Marsella",
+      "Mistrató",
+      "Pereira",
+      "Pueblo Rico",
+      "Quinchía",
+      "Santa Rosa de Cabal",
+      "Santuario"
+    ],
+    "San Andrés y Providencia": [
+      "Providencia y Santa Catalina Islas",
+      "San Andrés"
+    ],
+    "Santander": [
+      "Aguada",
+      "Albania",
+      "Aratoca",
+      "Barbosa",
+      "Barichara",
+      "Barrancabermeja",
+      "Betulia",
+      "Bolívar",
+      "Bucaramanga",
+      "Cabrera",
+      "California",
+      "Capitanejo",
+      "Carcasí",
+      "Cepitá",
+      "Cerrito",
+      "Charalá",
+      "Charta",
+      "Chima",
+      "Chipatá",
+      "Cimitarra",
+      "Concepción",
+      "Confines",
+      "Contratación",
+      "Coromoro",
+      "Curití",
+      "El Carmen de Chucurí",
+      "El Guacamayo",
+      "El Peñón",
+      "El Playón",
+      "El Socorro",
+      "Encino",
+      "Enciso",
+      "Florián",
+      "Floridablanca",
+      "Galán",
+      "Gámbita",
+      "Girón",
+      "Guaca",
+      "Guadalupe",
+      "Guapotá",
+      "Guavatá",
+      "Güepsa",
+      "Hato",
+      "Jesús María",
+      "Jordán",
+      "La Belleza",
+      "Landázuri",
+      "La Paz",
+      "Lebrija",
+      "Los Santos",
+      "Macaravita",
+      "Málaga",
+      "Matanza",
+      "Mogotes",
+      "Molagavita",
+      "Ocamonte",
+      "Oiba",
+      "Onzaga",
+      "Palmar",
+      "Palmas del Socorro",
+      "Páramo",
+      "Piedecuesta",
+      "Pinchote",
+      "Puente Nacional",
+      "Puerto Parra",
+      "Puerto Wilches",
+      "Rionegro",
+      "Sabana de Torres",
+      "San Andrés",
+      "San Benito",
+      "San Gil",
+      "San Joaquín",
+      "San José de Miranda",
+      "San Miguel",
+      "Santa Bárbara",
+      "Santa Helena del Opón",
+      "San Vicente de Chucurí",
+      "Simacota",
+      "Suaita",
+      "Sucre",
+      "Suratá",
+      "Tona",
+      "Valle de San José",
+      "Vélez",
+      "Vetas",
+      "Villanueva",
+      "Zapatoca"
+    ],
+    "Sucre": [
+      "Buenavista",
+      "Caimito",
+      "Chalán",
+      "Colosó",
+      "Corozal",
+      "Coveñas",
+      "El Roble",
+      "Galeras",
+      "Guaranda",
+      "La Unión",
+      "Los Palmitos",
+      "Majagual",
+      "Morroa",
+      "Ovejas",
+      "Sampués",
+      "San Antonio de Palmito",
+      "San Benito Abad",
+      "San Juan de Betulia",
+      "San Marcos",
+      "San Onofre",
+      "San Pedro",
+      "Sincé",
+      "Sincelejo",
+      "Sucre",
+      "Tolú",
+      "Tolú Viejo"
+    ],
+    "Tolima": [
+      "Alpujarra",
+      "Alvarado",
+      "Ambalema",
+      "Anzoátegui",
+      "Armero",
+      "Ataco",
+      "Cajamarca",
+      "Carmen de Apicalá",
+      "Casabianca",
+      "Chaparral",
+      "Coello",
+      "Coyaima",
+      "Cunday",
+      "Dolores",
+      "El Espinal",
+      "Falán",
+      "Flandes",
+      "Fresno",
+      "Guamo",
+      "Herveo",
+      "Honda",
+      "Ibagué",
+      "Icononzo",
+      "Lérida",
+      "Líbano",
+      "Mariquita",
+      "Melgar",
+      "Murillo",
+      "Natagaima",
+      "Ortega",
+      "Palocabildo",
+      "Piedras",
+      "Planadas",
+      "Prado",
+      "Purificación",
+      "Rioblanco",
+      "Roncesvalles",
+      "Rovira",
+      "Saldaña",
+      "San Antonio",
+      "San Luis",
+      "Santa Isabel",
+      "Suárez",
+      "Valle de San Juan",
+      "Venadillo",
+      "Villahermosa",
+      "Villarrica"
+    ],
+    "Valle del Cauca": [
+      "Alcalá",
+      "Andalucía",
+      "Ansermanuevo",
+      "Argelia",
+      "Bolívar",
+      "Buenaventura",
+      "Buga",
+      "Bugalagrande",
+      "Caicedonia",
+      "Cali",
+      "Calima",
+      "Candelaria",
+      "Cartago",
+      "Dagua",
+      "El Águila",
+      "El Cairo",
+      "El Cerrito",
+      "El Dovio",
+      "Florida",
+      "Ginebra",
+      "Guacarí",
+      "Jamundí",
+      "La Cumbre",
+      "La Unión",
+      "La Victoria",
+      "Obando",
+      "Palmira",
+      "Pradera",
+      "Restrepo",
+      "Riofrío",
+      "Roldanillo",
+      "San Pedro",
+      "Sevilla",
+      "Toro",
+      "Trujillo",
+      "Tuluá",
+      "Ulloa",
+      "Versalles",
+      "Vijes",
+      "Yotoco",
+      "Yumbo",
+      "Zarzal"
+    ],
+    "Vaupés": [
+      "Carurú",
+      "Mitú",
+      "Pacoa",
+      "Papunaua",
+      "Taraira",
+      "Yavaraté"
+    ],
+    "Vichada": [
+      "Cumaribo",
+      "La Primavera",
+      "Puerto Carreño",
+      "Santa Rosalía"
+    ],
+    "Bogotá D.C.": [
+      "Bogotá D.C."
+    ]
+  };
+  // Código DIVIPOLA (DANE) de cada municipio, "Departamento|Municipio" → código. 1.122 entidades: municipios + áreas no municipalizadas.
+  const MUNI_COD = {"Antioquia|Medellín":"05001","Antioquia|Abejorral":"05002","Antioquia|Abriaquí":"05004","Antioquia|Alejandría":"05021","Antioquia|Amagá":"05030","Antioquia|Amalfi":"05031","Antioquia|Andes":"05034","Antioquia|Angelópolis":"05036","Antioquia|Angostura":"05038","Antioquia|Anorí":"05040","Antioquia|Santa Fe de Antioquia":"05042","Antioquia|Anzá":"05044","Antioquia|Apartadó":"05045","Antioquia|Arboletes":"05051","Antioquia|Argelia":"05055","Antioquia|Armenia":"05059","Antioquia|Barbosa":"05079","Antioquia|Belmira":"05086","Antioquia|Bello":"05088","Antioquia|Betania":"05091","Antioquia|Betulia":"05093","Antioquia|Ciudad Bolívar":"05101","Antioquia|Briceño":"05107","Antioquia|Buriticá":"05113","Antioquia|Cáceres":"05120","Antioquia|Caicedo":"05125","Antioquia|Caldas":"05129","Antioquia|Campamento":"05134","Antioquia|Cañasgordas":"05138","Antioquia|Caracolí":"05142","Antioquia|Caramanta":"05145","Antioquia|Carepa":"05147","Antioquia|El Carmen de Viboral":"05148","Antioquia|Carolina del Príncipe":"05150","Antioquia|Caucasia":"05154","Antioquia|Chigorodó":"05172","Antioquia|Cisneros":"05190","Antioquia|Cocorná":"05197","Antioquia|Concepción":"05206","Antioquia|Concordia":"05209","Antioquia|Copacabana":"05212","Antioquia|Dabeiba":"05234","Antioquia|Donmatías":"05237","Antioquia|Ebéjico":"05240","Antioquia|El Bagre":"05250","Antioquia|Entrerríos":"05264","Antioquia|Envigado":"05266","Antioquia|Fredonia":"05282","Antioquia|Frontino":"05284","Antioquia|Giraldo":"05306","Antioquia|Girardota":"05308","Antioquia|Gómez Plata":"05310","Antioquia|Granada":"05313","Antioquia|Guadalupe":"05315","Antioquia|Guarne":"05318","Antioquia|Guatapé":"05321","Antioquia|Heliconia":"05347","Antioquia|Hispania":"05353","Antioquia|Itagüí":"05360","Antioquia|Ituango":"05361","Antioquia|Jardín":"05364","Antioquia|Jericó":"05368","Antioquia|La Ceja":"05376","Antioquia|La Estrella":"05380","Antioquia|La Pintada":"05390","Antioquia|La Unión":"05400","Antioquia|Liborina":"05411","Antioquia|Maceo":"05425","Antioquia|Marinilla":"05440","Antioquia|Montebello":"05467","Antioquia|Murindó":"05475","Antioquia|Mutatá":"05480","Antioquia|Nariño":"05483","Antioquia|Necoclí":"05490","Antioquia|Nechí":"05495","Antioquia|Olaya":"05501","Antioquia|El Peñol":"05541","Antioquia|Peque":"05543","Antioquia|Pueblorrico":"05576","Antioquia|Puerto Berrío":"05579","Antioquia|Puerto Nare":"05585","Antioquia|Puerto Triunfo":"05591","Antioquia|Remedios":"05604","Antioquia|El Retiro":"05607","Antioquia|Rionegro":"05615","Antioquia|Sabanalarga":"05628","Antioquia|Sabaneta":"05631","Antioquia|Salgar":"05642","Antioquia|San Andrés de Cuerquia":"05647","Antioquia|San Carlos":"05649","Antioquia|San Francisco":"05652","Antioquia|San Jerónimo":"05656","Antioquia|San José de la Montaña":"05658","Antioquia|San Juan de Urabá":"05659","Antioquia|San Luis":"05660","Antioquia|San Pedro de los Milagros":"05664","Antioquia|San Pedro de Urabá":"05665","Antioquia|San Rafael":"05667","Antioquia|San Roque":"05670","Antioquia|San Vicente":"05674","Antioquia|Santa Bárbara":"05679","Antioquia|Santa Rosa de Osos":"05686","Antioquia|Santo Domingo":"05690","Antioquia|El Santuario":"05697","Antioquia|Segovia":"05736","Antioquia|Sonsón":"05756","Antioquia|Sopetrán":"05761","Antioquia|Támesis":"05789","Antioquia|Tarazá":"05790","Antioquia|Tarso":"05792","Antioquia|Titiribí":"05809","Antioquia|Toledo":"05819","Antioquia|Turbo":"05837","Antioquia|Uramita":"05842","Antioquia|Urrao":"05847","Antioquia|Valdivia":"05854","Antioquia|Valparaíso":"05856","Antioquia|Vegachí":"05858","Antioquia|Venecia":"05861","Antioquia|Vigía del Fuerte":"05873","Antioquia|Yalí":"05885","Antioquia|Yarumal":"05887","Antioquia|Yolombó":"05890","Antioquia|Yondó":"05893","Antioquia|Zaragoza":"05895","Atlántico|Barranquilla":"08001","Atlántico|Baranoa":"08078","Atlántico|Campo de la Cruz":"08137","Atlántico|Candelaria":"08141","Atlántico|Galapa":"08296","Atlántico|Juan de Acosta":"08372","Atlántico|Luruaco":"08421","Atlántico|Malambo":"08433","Atlántico|Manatí":"08436","Atlántico|Palmar de Varela":"08520","Atlántico|Piojó":"08549","Atlántico|Polonuevo":"08558","Atlántico|Ponedera":"08560","Atlántico|Puerto Colombia":"08573","Atlántico|Repelón":"08606","Atlántico|Sabanagrande":"08634","Atlántico|Sabanalarga":"08638","Atlántico|Santa Lucía":"08675","Atlántico|Santo Tomás":"08685","Atlántico|Soledad":"08758","Atlántico|Suán":"08770","Atlántico|Tubará":"08832","Atlántico|Usiacurí":"08849","Bogotá D.C.|Bogotá D.C.":"11001","Bolívar|Cartagena de Indias":"13001","Bolívar|Achí":"13006","Bolívar|Altos del Rosario":"13030","Bolívar|Arenal":"13042","Bolívar|Arjona":"13052","Bolívar|Arroyohondo":"13062","Bolívar|Barranco de Loba":"13074","Bolívar|Calamar":"13140","Bolívar|Cantagallo":"13160","Bolívar|Cicuco":"13188","Bolívar|Córdoba":"13212","Bolívar|Clemencia":"13222","Bolívar|El Carmen de Bolívar":"13244","Bolívar|El Guamo":"13248","Bolívar|El Peñón":"13268","Bolívar|Hatillo de Loba":"13300","Bolívar|Magangué":"13430","Bolívar|Mahates":"13433","Bolívar|Margarita":"13440","Bolívar|María la Baja":"13442","Bolívar|Montecristo":"13458","Bolívar|Mompós":"13468","Bolívar|Morales":"13473","Bolívar|Norosí":"13490","Bolívar|Pinillos":"13549","Bolívar|Regidor":"13580","Bolívar|Río Viejo":"13600","Bolívar|San Cristóbal":"13620","Bolívar|San Estanislao":"13647","Bolívar|San Fernando":"13650","Bolívar|San Jacinto":"13654","Bolívar|San Jacinto del Cauca":"13655","Bolívar|San Juan Nepomuceno":"13657","Bolívar|San Martín de Loba":"13667","Bolívar|San Pablo":"13670","Bolívar|Santa Catalina":"13673","Bolívar|Santa Rosa":"13683","Bolívar|Santa Rosa del Sur":"13688","Bolívar|Simití":"13744","Bolívar|Soplaviento":"13760","Bolívar|Talaigua Nuevo":"13780","Bolívar|Tiquisio":"13810","Bolívar|Turbaco":"13836","Bolívar|Turbaná":"13838","Bolívar|Villanueva":"13873","Bolívar|Zambrano":"13894","Boyacá|Tunja":"15001","Boyacá|Almeida":"15022","Boyacá|Aquitania":"15047","Boyacá|Arcabuco":"15051","Boyacá|Belén":"15087","Boyacá|Berbeo":"15090","Boyacá|Betéitiva":"15092","Boyacá|Boavita":"15097","Boyacá|Boyacá":"15104","Boyacá|Briceño":"15106","Boyacá|Buenavista":"15109","Boyacá|Busbanzá":"15114","Boyacá|Caldas":"15131","Boyacá|Campohermoso":"15135","Boyacá|Cerinza":"15162","Boyacá|Chinavita":"15172","Boyacá|Chiquinquirá":"15176","Boyacá|Chiscas":"15180","Boyacá|Chita":"15183","Boyacá|Chitaraque":"15185","Boyacá|Chivatá":"15187","Boyacá|Ciénega":"15189","Boyacá|Cómbita":"15204","Boyacá|Coper":"15212","Boyacá|Corrales":"15215","Boyacá|Covarachía":"15218","Boyacá|Cubará":"15223","Boyacá|Cucaita":"15224","Boyacá|Cuítiva":"15226","Boyacá|Chíquiza":"15232","Boyacá|Chivor":"15236","Boyacá|Duitama":"15238","Boyacá|El Cocuy":"15244","Boyacá|El Espino":"15248","Boyacá|Firavitoba":"15272","Boyacá|Floresta":"15276","Boyacá|Gachantivá":"15293","Boyacá|Gámeza":"15296","Boyacá|Garagoa":"15299","Boyacá|Guacamayas":"15317","Boyacá|Guateque":"15322","Boyacá|Guayatá":"15325","Boyacá|Güicán":"15332","Boyacá|Iza":"15362","Boyacá|Jenesano":"15367","Boyacá|Jericó":"15368","Boyacá|Labranzagrande":"15377","Boyacá|La Capilla":"15380","Boyacá|La Victoria":"15401","Boyacá|La Uvita":"15403","Boyacá|Villa de Leyva":"15407","Boyacá|Macanal":"15425","Boyacá|Maripí":"15442","Boyacá|Miraflores":"15455","Boyacá|Mongua":"15464","Boyacá|Monguí":"15466","Boyacá|Moniquirá":"15469","Boyacá|Motavita":"15476","Boyacá|Muzo":"15480","Boyacá|Nobsa":"15491","Boyacá|Nuevo Colón":"15494","Boyacá|Oicatá":"15500","Boyacá|Otanche":"15507","Boyacá|Pachavita":"15511","Boyacá|Páez":"15514","Boyacá|Paipa":"15516","Boyacá|Pajarito":"15518","Boyacá|Panqueba":"15522","Boyacá|Pauna":"15531","Boyacá|Paya":"15533","Boyacá|Paz del Río":"15537","Boyacá|Pesca":"15542","Boyacá|Pisba":"15550","Boyacá|Puerto Boyacá":"15572","Boyacá|Quípama":"15580","Boyacá|Ramiriquí":"15599","Boyacá|Ráquira":"15600","Boyacá|Rondón":"15621","Boyacá|Saboyá":"15632","Boyacá|Sáchica":"15638","Boyacá|Samacá":"15646","Boyacá|San Eduardo":"15660","Boyacá|San José de Pare":"15664","Boyacá|San Luis de Gaceno":"15667","Boyacá|San Mateo":"15673","Boyacá|San Miguel de Sema":"15676","Boyacá|San Pablo de Borbur":"15681","Boyacá|Santana":"15686","Boyacá|Santa María":"15690","Boyacá|Santa Rosa de Viterbo":"15693","Boyacá|Santa Sofía":"15696","Boyacá|Sativanorte":"15720","Boyacá|Sativasur":"15723","Boyacá|Siachoque":"15740","Boyacá|Soatá":"15753","Boyacá|Socotá":"15755","Boyacá|Socha":"15757","Boyacá|Sogamoso":"15759","Boyacá|Somondoco":"15761","Boyacá|Sora":"15762","Boyacá|Sotaquirá":"15763","Boyacá|Soracá":"15764","Boyacá|Susacón":"15774","Boyacá|Sutamarchán":"15776","Boyacá|Sutatenza":"15778","Boyacá|Tasco":"15790","Boyacá|Tenza":"15798","Boyacá|Tibaná":"15804","Boyacá|Tibasosa":"15806","Boyacá|Tinjacá":"15808","Boyacá|Tipacoque":"15810","Boyacá|Toca":"15814","Boyacá|Togüí":"15816","Boyacá|Tópaga":"15820","Boyacá|Tota":"15822","Boyacá|Tununguá":"15832","Boyacá|Turmequé":"15835","Boyacá|Tuta":"15837","Boyacá|Tutazá":"15839","Boyacá|Úmbita":"15842","Boyacá|Ventaquemada":"15861","Boyacá|Viracachá":"15879","Boyacá|Zetaquira":"15897","Caldas|Manizales":"17001","Caldas|Aguadas":"17013","Caldas|Anserma":"17042","Caldas|Aranzazu":"17050","Caldas|Belalcázar":"17088","Caldas|Chinchiná":"17174","Caldas|Filadelfia":"17272","Caldas|La Dorada":"17380","Caldas|La Merced":"17388","Caldas|Manzanares":"17433","Caldas|Marmato":"17442","Caldas|Marquetalia":"17444","Caldas|Marulanda":"17446","Caldas|Neira":"17486","Caldas|Norcasia":"17495","Caldas|Pácora":"17513","Caldas|Palestina":"17524","Caldas|Pensilvania":"17541","Caldas|Riosucio":"17614","Caldas|Risaralda":"17616","Caldas|Salamina":"17653","Caldas|Samaná":"17662","Caldas|San José":"17665","Caldas|Supía":"17777","Caldas|Victoria":"17867","Caldas|Villamaría":"17873","Caldas|Viterbo":"17877","Caquetá|Florencia":"18001","Caquetá|Albania":"18029","Caquetá|Belén de los Andaquíes":"18094","Caquetá|Cartagena del Chairá":"18150","Caquetá|Curillo":"18205","Caquetá|El Doncello":"18247","Caquetá|El Paujil":"18256","Caquetá|La Montañita":"18410","Caquetá|Milán":"18460","Caquetá|Morelia":"18479","Caquetá|Puerto Rico":"18592","Caquetá|San José del Fragua":"18610","Caquetá|San Vicente del Caguán":"18753","Caquetá|Solano":"18756","Caquetá|Solita":"18785","Caquetá|Valparaíso":"18860","Cauca|Popayán":"19001","Cauca|Almaguer":"19022","Cauca|Argelia":"19050","Cauca|Balboa":"19075","Cauca|Bolívar":"19100","Cauca|Buenos Aires":"19110","Cauca|Cajibío":"19130","Cauca|Caldono":"19137","Cauca|Caloto":"19142","Cauca|Corinto":"19212","Cauca|El Tambo":"19256","Cauca|Florencia":"19290","Cauca|Guachené":"19300","Cauca|Guapí":"19318","Cauca|Inzá":"19355","Cauca|Jambaló":"19364","Cauca|La Sierra":"19392","Cauca|La Vega":"19397","Cauca|López de Micay":"19418","Cauca|Mercaderes":"19450","Cauca|Miranda":"19455","Cauca|Morales":"19473","Cauca|Padilla":"19513","Cauca|Páez":"19517","Cauca|Patía":"19532","Cauca|Piamonte":"19533","Cauca|Piendamó":"19548","Cauca|Puerto Tejada":"19573","Cauca|Puracé":"19585","Cauca|Rosas":"19622","Cauca|San Sebastián":"19693","Cauca|Santander de Quilichao":"19698","Cauca|Santa Rosa":"19701","Cauca|Silvia":"19743","Cauca|Sotará":"19760","Cauca|Suárez":"19780","Cauca|Sucre":"19785","Cauca|Timbío":"19807","Cauca|Timbiquí":"19809","Cauca|Toribío":"19821","Cauca|Totoró":"19824","Cauca|Villa Rica":"19845","Cesar|Valledupar":"20001","Cesar|Aguachica":"20011","Cesar|Agustín Codazzi":"20013","Cesar|Astrea":"20032","Cesar|Becerril":"20045","Cesar|Bosconia":"20060","Cesar|Chimichagua":"20175","Cesar|Chiriguaná":"20178","Cesar|Curumaní":"20228","Cesar|El Copey":"20238","Cesar|El Paso":"20250","Cesar|Gamarra":"20295","Cesar|González":"20310","Cesar|La Gloria (Cesar)":"20383","Cesar|La Jagua de Ibirico":"20400","Cesar|Manaure Balcón del Cesar":"20443","Cesar|Pailitas":"20517","Cesar|Pelaya":"20550","Cesar|Pueblo Bello":"20570","Cesar|Río de Oro":"20614","Cesar|La Paz":"20621","Cesar|San Alberto":"20710","Cesar|San Diego":"20750","Cesar|San Martín":"20770","Cesar|Tamalameque":"20787","Córdoba|Montería":"23001","Córdoba|Ayapel":"23068","Córdoba|Buenavista":"23079","Córdoba|Canalete":"23090","Córdoba|Cereté":"23162","Córdoba|Chimá":"23168","Córdoba|Chinú":"23182","Córdoba|Ciénaga de Oro":"23189","Córdoba|Cotorra":"23300","Córdoba|La Apartada":"23350","Córdoba|Lorica":"23417","Córdoba|Los Córdobas":"23419","Córdoba|Momil":"23464","Córdoba|Montelíbano":"23466","Córdoba|Moñitos":"23500","Córdoba|Planeta Rica":"23555","Córdoba|Pueblo Nuevo":"23570","Córdoba|Puerto Escondido":"23574","Córdoba|Puerto Libertador":"23580","Córdoba|Purísima":"23586","Córdoba|Sahagún":"23660","Córdoba|San Andrés de Sotavento":"23670","Córdoba|San Antero":"23672","Córdoba|San Bernardo del Viento":"23675","Córdoba|San Carlos":"23678","Córdoba|San José de Uré":"23682","Córdoba|San Pelayo":"23686","Córdoba|Tierralta":"23807","Córdoba|Tuchín":"23815","Córdoba|Valencia":"23855","Cundinamarca|Agua de Dios":"25001","Cundinamarca|Albán":"25019","Cundinamarca|Anapoima":"25035","Cundinamarca|Anolaima":"25040","Cundinamarca|Arbeláez":"25053","Cundinamarca|Beltrán":"25086","Cundinamarca|Bituima":"25095","Cundinamarca|Bojacá":"25099","Cundinamarca|Cabrera":"25120","Cundinamarca|Cachipay":"25123","Cundinamarca|Cajicá":"25126","Cundinamarca|Caparrapí":"25148","Cundinamarca|Cáqueza":"25151","Cundinamarca|Carmen de Carupa":"25154","Cundinamarca|Chaguaní":"25168","Cundinamarca|Chía":"25175","Cundinamarca|Chipaque":"25178","Cundinamarca|Choachí":"25181","Cundinamarca|Chocontá":"25183","Cundinamarca|Cogua":"25200","Cundinamarca|Cota":"25214","Cundinamarca|Cucunubá":"25224","Cundinamarca|El Colegio":"25245","Cundinamarca|El Peñón":"25258","Cundinamarca|El Rosal":"25260","Cundinamarca|Facatativá":"25269","Cundinamarca|Fómeque":"25279","Cundinamarca|Fosca":"25281","Cundinamarca|Funza":"25286","Cundinamarca|Fúquene":"25288","Cundinamarca|Fusagasugá":"25290","Cundinamarca|Gachalá":"25293","Cundinamarca|Gachancipá":"25295","Cundinamarca|Gachetá":"25297","Cundinamarca|Gama":"25299","Cundinamarca|Girardot":"25307","Cundinamarca|Granada":"25312","Cundinamarca|Guachetá":"25317","Cundinamarca|Guaduas":"25320","Cundinamarca|Guasca":"25322","Cundinamarca|Guataquí":"25324","Cundinamarca|Guatavita":"25326","Cundinamarca|Guayabal de Síquima":"25328","Cundinamarca|Guayabetal":"25335","Cundinamarca|Gutiérrez":"25339","Cundinamarca|Jerusalén":"25368","Cundinamarca|Junín":"25372","Cundinamarca|La Calera":"25377","Cundinamarca|La Mesa":"25386","Cundinamarca|La Palma":"25394","Cundinamarca|La Peña":"25398","Cundinamarca|La Vega":"25402","Cundinamarca|Lenguazaque":"25407","Cundinamarca|Machetá":"25426","Cundinamarca|Madrid":"25430","Cundinamarca|Manta":"25436","Cundinamarca|Medina":"25438","Cundinamarca|Mosquera":"25473","Cundinamarca|Nariño":"25483","Cundinamarca|Nemocón":"25486","Cundinamarca|Nilo":"25488","Cundinamarca|Nimaima":"25489","Cundinamarca|Nocaima":"25491","Cundinamarca|Venecia":"25506","Cundinamarca|Pacho":"25513","Cundinamarca|Paime":"25518","Cundinamarca|Pandi":"25524","Cundinamarca|Paratebueno":"25530","Cundinamarca|Pasca":"25535","Cundinamarca|Puerto Salgar":"25572","Cundinamarca|Pulí":"25580","Cundinamarca|Quebradanegra":"25592","Cundinamarca|Quetame":"25594","Cundinamarca|Quipile":"25596","Cundinamarca|Apulo":"25599","Cundinamarca|Ricaurte":"25612","Cundinamarca|San Antonio del Tequendama":"25645","Cundinamarca|San Bernardo":"25649","Cundinamarca|San Cayetano":"25653","Cundinamarca|San Francisco":"25658","Cundinamarca|San Juan de Rioseco":"25662","Cundinamarca|Sasaima":"25718","Cundinamarca|Sesquilé":"25736","Cundinamarca|Sibaté":"25740","Cundinamarca|Silvania":"25743","Cundinamarca|Simijaca":"25745","Cundinamarca|Soacha":"25754","Cundinamarca|Sopó":"25758","Cundinamarca|Subachoque":"25769","Cundinamarca|Suesca":"25772","Cundinamarca|Supatá":"25777","Cundinamarca|Susa":"25779","Cundinamarca|Sutatausa":"25781","Cundinamarca|Tabio":"25785","Cundinamarca|Tausa":"25793","Cundinamarca|Tena":"25797","Cundinamarca|Tenjo":"25799","Cundinamarca|Tibacuy":"25805","Cundinamarca|Tibirita":"25807","Cundinamarca|Tocaima":"25815","Cundinamarca|Tocancipá":"25817","Cundinamarca|Topaipí":"25823","Cundinamarca|Ubalá":"25839","Cundinamarca|Ubaque":"25841","Cundinamarca|Ubaté":"25843","Cundinamarca|Une":"25845","Cundinamarca|Útica":"25851","Cundinamarca|Vergara":"25862","Cundinamarca|Vianí":"25867","Cundinamarca|Villagómez":"25871","Cundinamarca|Villapinzón":"25873","Cundinamarca|Villeta":"25875","Cundinamarca|Viotá":"25878","Cundinamarca|Yacopí":"25885","Cundinamarca|Zipacón":"25898","Cundinamarca|Zipaquirá":"25899","Chocó|Quibdó":"27001","Chocó|Acandí":"27006","Chocó|Alto Baudó":"27025","Chocó|El Atrato":"27050","Chocó|Bagadó":"27073","Chocó|Bahía Solano":"27075","Chocó|Bajo Baudó":"27077","Chocó|Belén de Bajirá":"27086","Chocó|Bojayá":"27099","Chocó|Cantón de San Pablo":"27135","Chocó|El Carmen del Darién":"27150","Chocó|Cértegui":"27160","Chocó|Condoto":"27205","Chocó|El Carmen de Atrato":"27245","Chocó|Litoral de San Juan":"27250","Chocó|Istmina":"27361","Chocó|Juradó":"27372","Chocó|Lloró":"27413","Chocó|Medio Atrato":"27425","Chocó|Medio Baudó":"27430","Chocó|Medio San Juan":"27450","Chocó|Nóvita":"27491","Chocó|Nuquí":"27495","Chocó|Río Iró":"27580","Chocó|Río Quito":"27600","Chocó|Riosucio":"27615","Chocó|San José del Palmar":"27660","Chocó|Sipí":"27745","Chocó|Tadó":"27787","Chocó|Unguía":"27800","Chocó|Unión Panamericana":"27810","Huila|Neiva":"41001","Huila|Acevedo":"41006","Huila|Agrado":"41013","Huila|Aipe":"41016","Huila|Algeciras":"41020","Huila|Altamira":"41026","Huila|Baraya":"41078","Huila|Campoalegre":"41132","Huila|Colombia":"41206","Huila|Elías":"41244","Huila|Garzón":"41298","Huila|Gigante":"41306","Huila|Guadalupe":"41319","Huila|Hobo":"41349","Huila|Íquira":"41357","Huila|Isnos":"41359","Huila|La Argentina":"41378","Huila|La Plata":"41396","Huila|Nátaga":"41483","Huila|Oporapa":"41503","Huila|Paicol":"41518","Huila|Palermo":"41524","Huila|Palestina":"41530","Huila|El Pital":"41548","Huila|Pitalito":"41551","Huila|Rivera":"41615","Huila|Saladoblanco":"41660","Huila|San Agustín":"41668","Huila|Santa María":"41676","Huila|Suaza":"41770","Huila|Tarqui":"41791","Huila|Tesalia":"41797","Huila|Tello":"41799","Huila|Teruel":"41801","Huila|Timaná":"41807","Huila|Villavieja":"41872","Huila|Yaguará":"41885","La Guajira|Riohacha":"44001","La Guajira|Albania":"44035","La Guajira|Barrancas":"44078","La Guajira|Dibulla":"44090","La Guajira|Distracción":"44098","La Guajira|El Molino":"44110","La Guajira|Fonseca":"44279","La Guajira|Hatonuevo":"44378","La Guajira|La Jagua del Pilar":"44420","La Guajira|Maicao":"44430","La Guajira|Manaure":"44560","La Guajira|San Juan del Cesar":"44650","La Guajira|Uribia":"44847","La Guajira|Urumita":"44855","La Guajira|Villanueva":"44874","Magdalena|Santa Marta":"47001","Magdalena|Algarrobo":"47030","Magdalena|Aracataca":"47053","Magdalena|Ariguaní":"47058","Magdalena|Cerro de San Antonio":"47161","Magdalena|Chibolo":"47170","Magdalena|Ciénaga":"47189","Magdalena|Concordia":"47205","Magdalena|El Banco":"47245","Magdalena|El Piñón":"47258","Magdalena|El Retén":"47268","Magdalena|Fundación":"47288","Magdalena|Guamal":"47318","Magdalena|Nueva Granada":"47460","Magdalena|Pedraza":"47541","Magdalena|Pijiño del Carmen":"47545","Magdalena|Pivijay":"47551","Magdalena|Plato":"47555","Magdalena|Pueblo Viejo":"47570","Magdalena|Remolino":"47605","Magdalena|Sabanas de San Ángel":"47660","Magdalena|Salamina":"47675","Magdalena|San Sebastián de Buenavista":"47692","Magdalena|San Zenón":"47703","Magdalena|Santa Ana":"47707","Magdalena|Santa Bárbara de Pinto":"47720","Magdalena|Sitionuevo":"47745","Magdalena|Tenerife":"47798","Magdalena|Zapayán":"47960","Magdalena|Zona Bananera":"47980","Meta|Villavicencio":"50001","Meta|Acacías":"50006","Meta|Barranca de Upía":"50110","Meta|Cabuyaro":"50124","Meta|Castilla la Nueva":"50150","Meta|Cubarral":"50223","Meta|Cumaral":"50226","Meta|El Calvario":"50245","Meta|El Castillo":"50251","Meta|El Dorado":"50270","Meta|Fuente de Oro":"50287","Meta|Granada":"50313","Meta|Guamal":"50318","Meta|Mapiripán":"50325","Meta|Mesetas":"50330","Meta|La Macarena":"50350","Meta|La Uribe":"50370","Meta|Lejanías":"50400","Meta|Puerto Concordia":"50450","Meta|Puerto Gaitán":"50568","Meta|Puerto López":"50573","Meta|Puerto Lleras":"50577","Meta|Puerto Rico":"50590","Meta|Restrepo":"50606","Meta|San Carlos de Guaroa":"50680","Meta|San Juan de Arama":"50683","Meta|San Juanito":"50686","Meta|San Martín":"50689","Meta|Vista Hermosa":"50711","Nariño|Pasto":"52001","Nariño|San José de Albán":"52019","Nariño|Aldana":"52022","Nariño|Ancuyá":"52036","Nariño|Arboleda":"52051","Nariño|Barbacoas":"52079","Nariño|Belén":"52083","Nariño|Buesaco":"52110","Nariño|Colón":"52203","Nariño|Consacá":"52207","Nariño|Contadero":"52210","Nariño|Córdoba":"52215","Nariño|Cuaspud":"52224","Nariño|Cumbal":"52227","Nariño|Cumbitara":"52233","Nariño|Chachagüí":"52240","Nariño|El Charco":"52250","Nariño|El Peñol":"52254","Nariño|El Rosario":"52256","Nariño|El Tablón":"52258","Nariño|El Tambo":"52260","Nariño|Funes":"52287","Nariño|Guachucal":"52317","Nariño|Guaitarilla":"52320","Nariño|Gualmatán":"52323","Nariño|Iles":"52352","Nariño|Imués":"52354","Nariño|Ipiales":"52356","Nariño|La Cruz":"52378","Nariño|La Florida":"52381","Nariño|La Llanada":"52385","Nariño|La Tola":"52390","Nariño|La Unión":"52399","Nariño|Leiva":"52405","Nariño|Linares":"52411","Nariño|Los Andes":"52418","Nariño|Magüí Payán":"52427","Nariño|Mallama":"52435","Nariño|Mosquera":"52473","Nariño|Nariño":"52480","Nariño|Olaya Herrera":"52490","Nariño|Ospina":"52506","Nariño|Francisco Pizarro":"52520","Nariño|Policarpa":"52540","Nariño|Potosí":"52560","Nariño|Providencia":"52565","Nariño|Puerres":"52573","Nariño|Pupiales":"52585","Nariño|Ricaurte":"52612","Nariño|Roberto Payán":"52621","Nariño|Samaniego":"52678","Nariño|Sandoná":"52683","Nariño|San Bernardo":"52685","Nariño|San Lorenzo":"52687","Nariño|San Pablo":"52693","Nariño|San Pedro de Cartago":"52694","Nariño|Santa Bárbara":"52696","Nariño|Santacruz":"52699","Nariño|Sapuyes":"52720","Nariño|Taminango":"52786","Nariño|Tangua":"52788","Nariño|Tumaco":"52835","Nariño|Túquerres":"52838","Nariño|Yacuanquer":"52885","Norte de Santander|Cúcuta":"54001","Norte de Santander|Ábrego":"54003","Norte de Santander|Arboledas":"54051","Norte de Santander|Bochalema":"54099","Norte de Santander|Bucarasica":"54109","Norte de Santander|Cácota":"54125","Norte de Santander|Cáchira":"54128","Norte de Santander|Chinácota":"54172","Norte de Santander|Chitagá":"54174","Norte de Santander|Convención":"54206","Norte de Santander|Cucutilla":"54223","Norte de Santander|Duranía":"54239","Norte de Santander|El Carmen":"54245","Norte de Santander|El Tarra":"54250","Norte de Santander|El Zulia":"54261","Norte de Santander|Gramalote":"54313","Norte de Santander|Hacarí":"54344","Norte de Santander|Herrán":"54347","Norte de Santander|Labateca":"54377","Norte de Santander|La Esperanza":"54385","Norte de Santander|La Playa de Belén":"54398","Norte de Santander|Los Patios":"54405","Norte de Santander|Lourdes":"54418","Norte de Santander|Mutiscua":"54480","Norte de Santander|Ocaña":"54498","Norte de Santander|Pamplona":"54518","Norte de Santander|Pamplonita":"54520","Norte de Santander|Puerto Santander":"54553","Norte de Santander|Ragonvalia":"54599","Norte de Santander|Salazar de Las Palmas":"54660","Norte de Santander|San Calixto":"54670","Norte de Santander|San Cayetano":"54673","Norte de Santander|Santiago":"54680","Norte de Santander|Sardinata":"54720","Norte de Santander|Santo Domingo de Silos":"54743","Norte de Santander|Teorama":"54800","Norte de Santander|Tibú":"54810","Norte de Santander|Toledo":"54820","Norte de Santander|Villa Caro":"54871","Norte de Santander|Villa del Rosario":"54874","Quindío|Armenia":"63001","Quindío|Buenavista":"63111","Quindío|Calarcá":"63130","Quindío|Circasia":"63190","Quindío|Córdoba":"63212","Quindío|Filandia":"63272","Quindío|Génova":"63302","Quindío|La Tebaida":"63401","Quindío|Montenegro":"63470","Quindío|Pijao":"63548","Quindío|Quimbaya":"63594","Quindío|Salento":"63690","Risaralda|Pereira":"66001","Risaralda|Apía":"66045","Risaralda|Balboa":"66075","Risaralda|Belén de Umbría":"66088","Risaralda|Dosquebradas":"66170","Risaralda|Guática":"66318","Risaralda|La Celia":"66383","Risaralda|La Virginia":"66400","Risaralda|Marsella":"66440","Risaralda|Mistrató":"66456","Risaralda|Pueblo Rico":"66572","Risaralda|Quinchía":"66594","Risaralda|Santa Rosa de Cabal":"66682","Risaralda|Santuario":"66687","Santander|Bucaramanga":"68001","Santander|Aguada":"68013","Santander|Albania":"68020","Santander|Aratoca":"68051","Santander|Barbosa":"68077","Santander|Barichara":"68079","Santander|Barrancabermeja":"68081","Santander|Betulia":"68092","Santander|Bolívar":"68101","Santander|Cabrera":"68121","Santander|California":"68132","Santander|Capitanejo":"68147","Santander|Carcasí":"68152","Santander|Cepitá":"68160","Santander|Cerrito":"68162","Santander|Charalá":"68167","Santander|Charta":"68169","Santander|Chima":"68176","Santander|Chipatá":"68179","Santander|Cimitarra":"68190","Santander|Concepción":"68207","Santander|Confines":"68209","Santander|Contratación":"68211","Santander|Coromoro":"68217","Santander|Curití":"68229","Santander|El Carmen de Chucurí":"68235","Santander|El Guacamayo":"68245","Santander|El Peñón":"68250","Santander|El Playón":"68255","Santander|Encino":"68264","Santander|Enciso":"68266","Santander|Florián":"68271","Santander|Floridablanca":"68276","Santander|Galán":"68296","Santander|Gámbita":"68298","Santander|Girón":"68307","Santander|Guaca":"68318","Santander|Guadalupe":"68320","Santander|Guapotá":"68322","Santander|Guavatá":"68324","Santander|Güepsa":"68327","Santander|Hato":"68344","Santander|Jesús María":"68368","Santander|Jordán":"68370","Santander|La Belleza":"68377","Santander|Landázuri":"68385","Santander|La Paz":"68397","Santander|Lebrija":"68406","Santander|Los Santos":"68418","Santander|Macaravita":"68425","Santander|Málaga":"68432","Santander|Matanza":"68444","Santander|Mogotes":"68464","Santander|Molagavita":"68468","Santander|Ocamonte":"68498","Santander|Oiba":"68500","Santander|Onzaga":"68502","Santander|Palmar":"68522","Santander|Palmas del Socorro":"68524","Santander|Páramo":"68533","Santander|Piedecuesta":"68547","Santander|Pinchote":"68549","Santander|Puente Nacional":"68572","Santander|Puerto Parra":"68573","Santander|Puerto Wilches":"68575","Santander|Rionegro":"68615","Santander|Sabana de Torres":"68655","Santander|San Andrés":"68669","Santander|San Benito":"68673","Santander|San Gil":"68679","Santander|San Joaquín":"68682","Santander|San José de Miranda":"68684","Santander|San Miguel":"68686","Santander|San Vicente de Chucurí":"68689","Santander|Santa Bárbara":"68705","Santander|Santa Helena del Opón":"68720","Santander|Simacota":"68745","Santander|El Socorro":"68755","Santander|Suaita":"68770","Santander|Sucre":"68773","Santander|Suratá":"68780","Santander|Tona":"68820","Santander|Valle de San José":"68855","Santander|Vélez":"68861","Santander|Vetas":"68867","Santander|Villanueva":"68872","Santander|Zapatoca":"68895","Sucre|Sincelejo":"70001","Sucre|Buenavista":"70110","Sucre|Caimito":"70124","Sucre|Colosó":"70204","Sucre|Corozal":"70215","Sucre|Coveñas":"70221","Sucre|Chalán":"70230","Sucre|El Roble":"70233","Sucre|Galeras":"70235","Sucre|Guaranda":"70265","Sucre|La Unión":"70400","Sucre|Los Palmitos":"70418","Sucre|Majagual":"70429","Sucre|Morroa":"70473","Sucre|Ovejas":"70508","Sucre|San Antonio de Palmito":"70523","Sucre|Sampués":"70670","Sucre|San Benito Abad":"70678","Sucre|San Juan de Betulia":"70702","Sucre|San Marcos":"70708","Sucre|San Onofre":"70713","Sucre|San Pedro":"70717","Sucre|Sincé":"70742","Sucre|Sucre":"70771","Sucre|Tolú":"70820","Sucre|Tolú Viejo":"70823","Tolima|Ibagué":"73001","Tolima|Alpujarra":"73024","Tolima|Alvarado":"73026","Tolima|Ambalema":"73030","Tolima|Anzoátegui":"73043","Tolima|Armero":"73055","Tolima|Ataco":"73067","Tolima|Cajamarca":"73124","Tolima|Carmen de Apicalá":"73148","Tolima|Casabianca":"73152","Tolima|Chaparral":"73168","Tolima|Coello":"73200","Tolima|Coyaima":"73217","Tolima|Cunday":"73226","Tolima|Dolores":"73236","Tolima|El Espinal":"73268","Tolima|Falán":"73270","Tolima|Flandes":"73275","Tolima|Fresno":"73283","Tolima|Guamo":"73319","Tolima|Herveo":"73347","Tolima|Honda":"73349","Tolima|Icononzo":"73352","Tolima|Lérida":"73408","Tolima|Líbano":"73411","Tolima|Mariquita":"73443","Tolima|Melgar":"73449","Tolima|Murillo":"73461","Tolima|Natagaima":"73483","Tolima|Ortega":"73504","Tolima|Palocabildo":"73520","Tolima|Piedras":"73547","Tolima|Planadas":"73555","Tolima|Prado":"73563","Tolima|Purificación":"73585","Tolima|Rioblanco":"73616","Tolima|Roncesvalles":"73622","Tolima|Rovira":"73624","Tolima|Saldaña":"73671","Tolima|San Antonio":"73675","Tolima|San Luis":"73678","Tolima|Santa Isabel":"73686","Tolima|Suárez":"73770","Tolima|Valle de San Juan":"73854","Tolima|Venadillo":"73861","Tolima|Villahermosa":"73870","Tolima|Villarrica":"73873","Valle del Cauca|Cali":"76001","Valle del Cauca|Alcalá":"76020","Valle del Cauca|Andalucía":"76036","Valle del Cauca|Ansermanuevo":"76041","Valle del Cauca|Argelia":"76054","Valle del Cauca|Bolívar":"76100","Valle del Cauca|Buenaventura":"76109","Valle del Cauca|Buga":"76111","Valle del Cauca|Bugalagrande":"76113","Valle del Cauca|Caicedonia":"76122","Valle del Cauca|Calima":"76126","Valle del Cauca|Candelaria":"76130","Valle del Cauca|Cartago":"76147","Valle del Cauca|Dagua":"76233","Valle del Cauca|El Águila":"76243","Valle del Cauca|El Cairo":"76246","Valle del Cauca|El Cerrito":"76248","Valle del Cauca|El Dovio":"76250","Valle del Cauca|Florida":"76275","Valle del Cauca|Ginebra":"76306","Valle del Cauca|Guacarí":"76318","Valle del Cauca|Jamundí":"76364","Valle del Cauca|La Cumbre":"76377","Valle del Cauca|La Unión":"76400","Valle del Cauca|La Victoria":"76403","Valle del Cauca|Obando":"76497","Valle del Cauca|Palmira":"76520","Valle del Cauca|Pradera":"76563","Valle del Cauca|Restrepo":"76606","Valle del Cauca|Riofrío":"76616","Valle del Cauca|Roldanillo":"76622","Valle del Cauca|San Pedro":"76670","Valle del Cauca|Sevilla":"76736","Valle del Cauca|Toro":"76823","Valle del Cauca|Trujillo":"76828","Valle del Cauca|Tuluá":"76834","Valle del Cauca|Ulloa":"76845","Valle del Cauca|Versalles":"76863","Valle del Cauca|Vijes":"76869","Valle del Cauca|Yotoco":"76890","Valle del Cauca|Yumbo":"76892","Valle del Cauca|Zarzal":"76895","Arauca|Arauca":"81001","Arauca|Arauquita":"81065","Arauca|Cravo Norte":"81220","Arauca|Fortul":"81300","Arauca|Puerto Rondón":"81591","Arauca|Saravena":"81736","Arauca|Tame":"81794","Casanare|Yopal":"85001","Casanare|Aguazul":"85010","Casanare|Chámeza":"85015","Casanare|Hato Corozal":"85125","Casanare|La Salina":"85136","Casanare|Maní":"85139","Casanare|Monterrey":"85162","Casanare|Nunchía":"85225","Casanare|Orocué":"85230","Casanare|Paz de Ariporo":"85250","Casanare|Pore":"85263","Casanare|Recetor":"85279","Casanare|Sabanalarga":"85300","Casanare|Sácama":"85315","Casanare|San Luis de Palenque":"85325","Casanare|Támara":"85400","Casanare|Tauramena":"85410","Casanare|Trinidad":"85430","Casanare|Villanueva":"85440","Putumayo|Mocoa":"86001","Putumayo|Colón":"86219","Putumayo|Orito":"86320","Putumayo|Puerto Asís":"86568","Putumayo|Puerto Caicedo":"86569","Putumayo|Puerto Guzmán":"86571","Putumayo|Puerto Leguízamo":"86573","Putumayo|Sibundoy":"86749","Putumayo|San Francisco":"86755","Putumayo|San Miguel":"86757","Putumayo|Santiago":"86760","Putumayo|Valle del Guamuez":"86865","Putumayo|Villagarzón":"86885","San Andrés y Providencia|San Andrés":"88001","San Andrés y Providencia|Providencia y Santa Catalina Islas":"88564","Amazonas|Leticia":"91001","Amazonas|El Encanto":"91263","Amazonas|La Chorrera":"91405","Amazonas|La Pedrera":"91407","Amazonas|La Victoria":"91430","Amazonas|Mirití-Paraná":"91460","Amazonas|Puerto Alegría":"91530","Amazonas|Puerto Arica":"91536","Amazonas|Puerto Nariño":"91540","Amazonas|Puerto Santander":"91669","Amazonas|Tarapacá":"91798","Guainía|Inírida":"94001","Guainía|Barrancominas":"94343","Guainía|San Felipe":"94883","Guainía|Puerto Colombia":"94884","Guainía|La Guadalupe":"94885","Guainía|Cacahual":"94886","Guainía|Pana Pana":"94887","Guainía|Morichal":"94888","Guaviare|San José del Guaviare":"95001","Guaviare|Calamar":"95015","Guaviare|El Retorno":"95025","Guaviare|Miraflores":"95200","Vaupés|Mitú":"97001","Vaupés|Carurú":"97161","Vaupés|Pacoa":"97511","Vaupés|Taraira":"97666","Vaupés|Papunaua":"97777","Vaupés|Yavaraté":"97889","Vichada|Puerto Carreño":"99001","Vichada|La Primavera":"99524","Vichada|Santa Rosalía":"99624","Vichada|Cumaribo":"99773"}
 
   const deptoSelect = document.getElementById('formDepto');
   Object.keys(MUNICIPIOS).sort((a,b)=>a.localeCompare(b,'es')).forEach(dep=>{
@@ -3146,6 +3234,117 @@ const FOTO = {
     const input = document.getElementById('formMunicipio');
     input.placeholder = list.length ? "Escribe o elige un municipio" : "Elige depto. primero";
     input.value = '';
+    if(typeof cargarVeredas==='function') cargarVeredas();
+  }
+
+  // ---------- AUTOCOMPLETAR PROPIO (sin tildes, busca en cualquier parte del nombre) ----------
+  // Reemplaza el desplegable nativo del navegador, que exige escribir exacto y con tildes.
+  const acNorm = t => String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  function autocompletar(inputId, fuente, alElegir){
+    const inp = document.getElementById(inputId); if(!inp || inp.dataset.ac) return;
+    inp.dataset.ac = '1'; inp.removeAttribute('list'); inp.setAttribute('autocomplete','off');
+    const wrap = document.createElement('div'); wrap.className = 'ac-wrap';
+    inp.parentNode.insertBefore(wrap, inp); wrap.appendChild(inp);
+    const box = document.createElement('div'); box.className = 'ac-list'; wrap.appendChild(box);
+    let items = [], sel = -1;
+    const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    function pintar(){
+      const q = acNorm(inp.value.trim()), todos = fuente() || [];
+      if(!todos.length){ box.classList.remove('on'); return; }
+      const emp = [], con = [];
+      todos.forEach(x=>{ const n = acNorm(x), k = n.indexOf(q);
+        if(!q || k===0 || n.includes(' '+q)) emp.push(x); else if(k>0) con.push(x); });
+      items = emp.concat(con).slice(0,200); sel = items.length ? 0 : -1;
+      box.innerHTML = items.length ? items.map((x,i)=>{
+          const n = acNorm(x), k = q ? n.indexOf(q) : -1;
+          const h = k>=0 ? esc(x.slice(0,k))+'<b>'+esc(x.slice(k,k+q.length))+'</b>'+esc(x.slice(k+q.length)) : esc(x);
+          return `<div class="ac-item${i===sel?' sel':''}" data-i="${i}">${h}</div>`; }).join('')
+        : '<div class="ac-vacio">No aparece en la lista · puedes dejarlo escrito</div>';
+      box.classList.add('on');
+    }
+    function elegir(i){
+      if(i<0 || !items[i]) return;
+      inp.value = items[i]; box.classList.remove('on');
+      inp.dispatchEvent(new Event('input',{bubbles:true})); inp.dispatchEvent(new Event('change',{bubbles:true}));
+      if(alElegir) alElegir(items[i]);
+    }
+    function marcar(){ [...box.children].forEach((c,i)=>c.classList.toggle('sel', i===sel));
+      const c = box.children[sel]; if(c && c.scrollIntoView) c.scrollIntoView({block:'nearest'}); }
+    inp.addEventListener('focus', pintar);
+    inp.addEventListener('input', e=>{ if(e.isTrusted) pintar(); });
+    inp.addEventListener('keydown', e=>{
+      if(!box.classList.contains('on')) { if(e.key==='ArrowDown') pintar(); return; }
+      if(e.key==='ArrowDown'){ e.preventDefault(); sel=Math.min(items.length-1, sel+1); marcar(); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); sel=Math.max(0, sel-1); marcar(); }
+      else if(e.key==='Enter'){ if(sel>=0){ e.preventDefault(); elegir(sel); } }
+      else if(e.key==='Escape' || e.key==='Tab'){ box.classList.remove('on'); }
+    });
+    box.addEventListener('mousedown', e=>{ const it = e.target.closest('.ac-item'); if(it){ e.preventDefault(); elegir(+it.dataset.i); } });
+    inp.addEventListener('blur', ()=>setTimeout(()=>box.classList.remove('on'), 120));
+    inp._acPintar = pintar;
+  }
+  document.addEventListener('DOMContentLoaded', ()=>{
+    autocompletar('formMunicipio', ()=> MUNICIPIOS[document.getElementById('formDepto')?.value] || []);
+    autocompletar('formVereda', ()=> { const c = document.getElementById('formVereda')?.dataset.cod; return (c && VEREDAS_MEM[c]) || []; });
+  });
+
+  // ---------- VEREDAS (DANE · nivel de referencia de veredas, servicio abierto de Esri Colombia) ----------
+  // Se consultan por código DIVIPOLA del municipio cuando hay internet y se guardan en este navegador,
+  // así la próxima vez salen aunque no haya conexión.
+  const VEREDAS_URL = 'https://ags.esri.co/arcgis/rest/services/DatosAbiertos/VEREDAS_2016/MapServer/0/query';
+  const VEREDAS_MEM = {};
+  function muniCodigo(depto, muni){
+    if(!depto || !muni) return '';
+    const k = depto+'|'+muni; if(MUNI_COD[k]) return MUNI_COD[k];
+    const n = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+    const hit = Object.keys(MUNI_COD).find(x => { const [d,m]=x.split('|'); return n(d)===n(depto) && n(m)===n(muni); });
+    return hit ? MUNI_COD[hit] : '';
+  }
+  function veredaTitulo(t){
+    const peq = ['de','del','la','las','los','y','el','e'];
+    return String(t||'').toLowerCase().split(' ').map((w,i)=> i>0 && peq.includes(w) ? w : w.charAt(0).toUpperCase()+w.slice(1)).join(' ').trim();
+  }
+  function veredasJSONP(url){
+    return new Promise((ok,ko)=>{
+      const cb = 'vcb'+Date.now()+Math.floor(Math.random()*1e4), sc = document.createElement('script');
+      const fin = ()=>{ delete window[cb]; sc.remove(); };
+      window[cb] = d=>{ fin(); ok(d); };
+      sc.onerror = ()=>{ fin(); ko(new Error('jsonp')); };
+      sc.src = url+'&callback='+cb; document.head.appendChild(sc);
+      setTimeout(()=>{ if(window[cb]){ fin(); ko(new Error('timeout')); } }, 15000);
+    });
+  }
+  async function veredasDe(cod){
+    if(VEREDAS_MEM[cod]) return VEREDAS_MEM[cod];
+    try{ const g = JSON.parse(localStorage.getItem('sicpro_ver_'+cod)||'null'); if(g && g.length){ VEREDAS_MEM[cod]=g; return g; } }catch(e){}
+    const url = VEREDAS_URL+"?where="+encodeURIComponent("DPTOMPIO='"+cod+"'")+"&outFields=NOMBRE_VER&returnGeometry=false&orderByFields=NOMBRE_VER&resultRecordCount=2000&f=json";
+    let d;
+    try{ d = await fetch(url).then(r=>r.json()); }catch(e){ d = await veredasJSONP(url); }
+    const lista = [...new Set((d.features||[]).map(f=>veredaTitulo(f.attributes.NOMBRE_VER)).filter(x=>x && !/^null$/i.test(x)))];
+    VEREDAS_MEM[cod] = lista;
+    try{ localStorage.setItem('sicpro_ver_'+cod, JSON.stringify(lista)); }catch(e){}
+    return lista;
+  }
+  let veredaPend = 0;
+  async function cargarVeredas(){
+    const dl = document.getElementById('veredaList'), inp = document.getElementById('formVereda');
+    if(!dl || !inp) return;
+    const cod = muniCodigo(document.getElementById('formDepto')?.value||'', (document.getElementById('formMunicipio')?.value||'').trim());
+    if(!cod){ dl.innerHTML=''; inp.placeholder = 'Elige municipio primero'; inp.dataset.cod=''; return; }
+    if(inp.dataset.cod===cod) return;
+    inp.dataset.cod = cod; const yo = ++veredaPend;
+    inp.placeholder = 'Cargando veredas…';
+    try{
+      const lista = await veredasDe(cod);
+      if(yo!==veredaPend) return;
+      dl.innerHTML = lista.map(v=>`<option value="${v.replace(/"/g,'&quot;')}">`).join('');
+      inp.placeholder = lista.length ? `Escribe o elige · ${lista.length} veredas` : 'Sin veredas en la base · escríbela';
+      if(document.activeElement===inp && inp._acPintar) inp._acPintar();
+    }catch(e){
+      if(yo!==veredaPend) return;
+      dl.innerHTML=''; inp.dataset.cod='';
+      inp.placeholder = 'Sin conexión · escribe la vereda';
+    }
   }
 
   // ---------- ESTADO POR TARJETA (colores sutiles) ----------
@@ -4530,32 +4729,27 @@ function renderBarraPrecios(){
   const clase = PRECIO_ESTADO.startsWith('En vivo') ? 'ok'
               : PRECIO_ESTADO.startsWith('Sin')     ? 'error'
               : PRECIO_ESTADO.startsWith('Parcial') ? 'parcial' : '';
+  const corto = PRECIO_ESTADO.split('·')[0].trim();
   b.innerHTML = `
-    <div class="bprecios">
-      <span class="bp-tit">💱 Precios de hoy</span>
-      <div class="bp-campo">
+    <div class="bprecios bp-compacta">
+      <span class="bp-tit">💱 Precios<br>de hoy</span>
+      <div class="bp-filas"><div class="bp-fila">
+      <div class="bp-campo" title="${PRECIO_FUENTE.trm||''}">
         <label>Dólar · TRM</label>
-        <div class="bp-in"><span>$</span>
-          <input type="number" step="any" id="bTrm" value="${t}" onchange="aplicarDesdeBarra()">
-          <span class="bp-u">COP/USD</span></div>
-        <span class="bp-src">${PRECIO_FUENTE.trm}</span>
+        <div class="bp-in"><span>$</span><input type="number" step="any" id="bTrm" value="${t}" onchange="aplicarDesdeBarra()"><span class="bp-u">COP/USD</span></div>
       </div>
-      <div class="bp-campo">
+      <div class="bp-campo" title="${PRECIO_FUENTE.oro||''}">
         <label>Oro por gramo</label>
-        <div class="bp-in"><span>US$</span>
-          <input type="number" step="any" id="bOro" value="${g}" onchange="aplicarDesdeBarra()">
-          <span class="bp-u">/g</span></div>
-        <span class="bp-src">${PRECIO_FUENTE.oro}</span>
+        <div class="bp-in"><span>US$</span><input type="number" step="any" id="bOro" value="${g}" onchange="aplicarDesdeBarra()"><span class="bp-u">/g</span></div>
       </div>
-      <div class="bp-campo derivado">
+      <div class="bp-campo derivado" title="$${F.n(g*1000*t)} COP/kg">
         <label>Equivale a</label>
-        <div class="bp-val">$${F.n(g*t)} <span class="bp-u">COP/gramo</span></div>
-        <span class="bp-src">$${F.n(g*1000*t)} COP/kg</span>
+        <span class="bp-eq">$${F.n(g*t)} <span class="bp-u">COP/g</span></span>
       </div>
-      ${otrosPrecios()}
-      <div class="bp-acc">
-        <span class="pricestamp ${clase}">${PRECIO_ESTADO}</span>
-        <button class="sbtn" onclick="actualizarPrecios()">↻ Actualizar</button>
+      </div><div class="bp-fila">${otrosPrecios()}</div></div>
+      <div class="bp-lado">
+        <span class="bp-estado ${clase}" title="${PRECIO_ESTADO}"><i></i>${corto}</span>
+        <button class="bp-ref" onclick="actualizarPrecios()" title="Actualizar precios">↻ Actualizar</button>
       </div>
     </div>`;
 }
@@ -4564,7 +4758,7 @@ function renderBarraPrecios(){
 function otrosPrecios(){
   const rec = (typeof getSelectedChipText==='function' && getSelectedChipText('recursoSelect')) || '';
   const otros = ['Carbón','Esmeraldas','Arenas / gravas'];
-  const mostrar = otros.includes(rec) ? [rec] : otros;
+  const mostrar = otros;
   return mostrar.map(r=>{
     const k = 'precio_'+r, p = PARAMS[k];
     if(!p) return '';
@@ -4574,8 +4768,7 @@ function otrosPrecios(){
       <div class="bp-in"><span>$</span>
         <input type="number" step="any" data-precio="${k}" value="${p.v}"
                onchange="aplicarOtroPrecio('${k}',this.value)">
-        <span class="bp-u">${p.u.replace('COP/','/ ')}</span></div>
-      <span class="bp-src">${foco?'recurso de esta operación':'valor manual'}</span>
+        <span class="bp-u">${p.u.replace('COP/','/')}</span></div>
     </div>`;
   }).join('');
 }
@@ -4716,77 +4909,155 @@ async function q5Autozona(){
     if(muni && mEl) mEl.value=muni;
     if(vereda && vEl && !vEl.value) vEl.value=vereda;
     if(typeof checkUbicacionStatus==='function') checkUbicacionStatus();
+    if(typeof cargarVeredas==='function') cargarVeredas();
     zona.innerHTML=`✅ Zona detectada: <b>${[vereda,muni,depto].filter(Boolean).join(' · ')||'sin datos'}</b>. La vereda no siempre está en el mapa base — verifícala a mano.`;
   }catch(e){ zona.innerHTML='No se pudo consultar la zona (sin conexión o servicio no disponible). Escribe la ubicación a mano.'; }
 }
 
 // Arma el texto del Q5 a partir de una operación ya creada.
-// Directriz vigente: el Q5 lleva el material afectado, el impacto operacional y el impacto ambiental, resumidos.
-// Lleva: material destruido/incautado + impacto operacional + impacto ambiental.
-// (Línea de mando, ¿qué?, ¿quién?, ¿cuándo?, ¿dónde? y hechos ya no van.)
+// Directriz vigente: formato de la circular del Ejército (ejemplo de resultado positivo, minería):
+//   Mi general: · línea de mando, fecha, hora y lugar, resultado y GAO · balance preliminar ·
+//   impacto (afectación en maquinaria + afectación mensual y producción de oro) · Patria Honor Lealtad.
+// El impacto ambiental es opcional (casilla en Resultados).
+const Q5_MES_MIN=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const Q5_PLURAL={'Retroexcavadora':'Retroexcavadoras','Excavadora':'Excavadoras','Motobomba minera':'Motobombas mineras',
+  'Clasificadora metal':'Clasificadoras metal','Dragón':'Dragones','Draga caperuza':'Dragas caperuza','Draga tipo buzo':'Dragas tipo buzo',
+  'Cargador frontal':'Cargadores frontales','Volqueta':'Volquetas','Motor pequeño':'Motores pequeños','Motor industrial':'Motores industriales',
+  'Motor tipo Cummins':'Motores tipo Cummins','Clasificadora de madera':'Clasificadoras de madera','Planta 1 HP':'Plantas 1 HP',
+  'Planta de 3.5':'Plantas de 3.5','Planta de 100':'Plantas de 100','Motosierra':'Motosierras','Martillo neumático':'Martillos neumáticos',
+  'Motobomba':'Motobombas','Bulldozer':'Bulldozers'};
+function q5Plural(n,q){
+  if(q<=1) return n;
+  if(Q5_PLURAL[n]) return Q5_PLURAL[n];
+  const w=n.split(' '); const a=w[0];
+  if(/s$/i.test(a)) return n;
+  w[0]= /ón$/.test(a) ? a.replace(/ón$/,'ones') : /[aeiouáéó]$/i.test(a) ? a+'s' : a+'es';
+  return w.join(' ');
+}
+function q5Fecha(f){ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(f||''); return m?`${+m[3]} de ${Q5_MES_MIN[+m[2]-1]}`:'[fecha]'; }
+function q5Sigla(gao){
+  const g=(gao||'').toLowerCase();
+  if(g.includes('clan del golfo')) return 'GAO CG';
+  if(/\beln\b/.test(g)) return 'GAO ELN';
+  return gao;
+}
 function buildQ5Text(o){
   const R=(o.calc&&o.calc.R)||{};
-  const sistema=q5Sistema(o.actividad);
-  const pos=x=>isFinite(x)&&x>0;
+  const q=o.q5||{};
   const nf=(x,d)=>(+x).toLocaleString('es-CO',{maximumFractionDigits:d||0});
+  const cap=t=>t?t.charAt(0).toUpperCase()+t.slice(1):t;
 
-  // ── IMPACTO OPERACIONAL ──
+  // ── 1-4. Línea de mando, día-hora-lugar, resultado y estructura criminal ──
+  const div=q.div?cap(q.div):'[División]';
+  const br=q.br||'';
+  const uts=(o.tropas||[]).filter(t=>t&&t.toUpperCase()!==br);
+  const mando=[br?`la ${br}`:''].concat(uts.map(t=>`el ${t}`)).filter(Boolean);
+  const conQuien=mando.length?`, con ${q5Lista(mando)},`:'';
+  const hora=q.hora?` a las ${q.hora} horas`:'';
+  const muni=(o.municipio&&o.municipio!=='—')?o.municipio:'[municipio]';
+  const dep=(o.depto&&o.depto!=='—')?o.depto:'[departamento]';
+  const tipo=(o.tipoOp||'').toLowerCase();
+  const incaut=o.soloIncautacion||tipo.includes('incaut'), mixta=tipo.includes('mixta');
+  const upm=+o.upm||0;
+  let resultado;
+  if(upm>0) resultado=`la ubicación${mixta?', destrucción e incautación':incaut?' e incautación':' y destrucción'} de ${q5Pad2(upm)} UPM`;
+  else resultado=`la ${incaut?'incautación':mixta?'destrucción e incautación':'destrucción'} de material para la explotación ilícita de yacimientos mineros`;
+  const gao=[q.gao,q.se].filter(Boolean).join(' ');
+  let p1=`La ${div}${conQuien} el ${q5Fecha(o.fecha)}${hora}, en desarrollo de operación en el municipio de ${muni}, departamento de ${dep}, logró ${resultado}${gao?' del '+gao:''}.`;
+
+  // ── 5. Balance consolidado e incautaciones principales ──
+  const mat=[];
+  (o.maquinaria||[]).forEach(m=>{ const nm=(o.maqSnap||MAQUINARIA)[m.i]; if(nm&&m.q>0) mat.push(`${q5Pad2(m.q)} ${q5Plural(nm.n,m.q)}`); });
+  (o.materialExtra||'').split('\n').map(x=>x.trim().replace(/\.$/,'')).filter(Boolean).forEach(l=>mat.push(l));
+  const h=o.hallado||{};
+  if(h.acpm>0)      mat.push(`${nf(h.acpm)} galones de ACPM`);
+  if(h.gasolina>0)  mat.push(`${nf(h.gasolina)} galones de gasolina`);
+  if(h.aceite>0)    mat.push(`${nf(h.aceite)} galones de aceite`);
+  if(h.mercurio>0)  mat.push(`${nf(h.mercurio,2)} kg de mercurio`);
+  if(h.cianuro>0)   mat.push(`${nf(h.cianuro,2)} kg de cianuro`);
+  if(h.explosivos>0)mat.push(`${nf(h.explosivos,2)} kg de explosivos`);
+  if(h.madera>0)    mat.push(`${nf(h.madera,1)} m³ de madera`);
+  const inc=o.incautado||{};
+  if(inc.oro>0)        mat.push(`${nf(inc.oro,3)} kg de oro`);
+  if(inc.esmeraldas>0) mat.push(`${nf(inc.esmeraldas)} ct de esmeraldas`);
+  if(inc.coltan>0)     mat.push(`${nf(inc.coltan,2)} kg de coltán`);
+  if(inc.carbon>0)     mat.push(`${nf(inc.carbon)} kg de carbón`);
+
+  // ── 6. Impacto estratégico (sale del cálculo) ──
   const valMaq=R.valorMaquinaria||0, valMes=R.valorMes||0;
   const esOro=(o.recurso==='Oro');
+  const gr=Math.round((R.produccionMes||0)*1000);
   const prodTxt=esOro
-     ? `${Math.round((R.produccionMes||0)*1000).toLocaleString('es-CO')} gramos de oro mensuales`
+     ? (gr>=1000?`${nf(gr/1000,1)} kg de oro mensuales`:`${gr.toLocaleString('es-CO')} gramos de oro mensuales`)
      : `${nf(R.produccionMes||0,1)} ${R.unidad||''} de ${(o.recurso||'').toLowerCase()} mensuales`;
+  const sigla=q5Sigla(q.gao);
+  const neutra=`neutralizando las economías ilegales${sigla?' del '+sigla:''}`;
   const partes=[];
   if(valMaq>0) partes.push(`una afectación de ${q5COP(valMaq)} en maquinaria y equipos`);
   if(valMes>0) partes.push(`una afectación económica directa de ${q5COP(valMes)} mensuales, correspondiente a una producción aproximada de ${prodTxt}`);
-  let impacto = partes.length
-    ? `Con este resultado se logra ${q5Lista(partes)}, generando una disminución en los ingresos ilícitos derivados de la explotación ilícita de yacimientos mineros${sistema?(' mediante el sistema de explotación '+sistema):''}.`
-    : 'Con este resultado se afectan directamente las economías ilícitas derivadas de la explotación ilícita de yacimientos mineros.';
+  const impacto = partes.length
+    ? `Con esta operación se logra ${q5Lista(partes)}, ${neutra}.`
+    : `Con esta operación se afectan las finanzas derivadas de la explotación ilícita de yacimientos mineros, ${neutra}.`;
   const valInc=R.valorIncautado||0;
-  const incClause=valInc>0?`El material e insumos incautados representan un valor económico aproximado de ${q5COP(valInc)}.`:'';
   const oroEv=R.oroEvitadoGr||0, valOroEv=R.valorOroEvitado||0;
-  const oroEvClause=oroEv>0?`Con la incautación del combustible se evita la extracción ilícita de aproximadamente ${Math.round(oroEv).toLocaleString('es-CO')} gramos de oro, avaluados en ${q5COP(valOroEv)}.`:'';
 
-  // ── IMPACTO AMBIENTAL · lo que se evita en un año ──
-  const amb=[];
-  if(pos(R.haAno))       amb.push(`La deforestación de aproximadamente ${nf(R.haAno,1)} hectáreas de bosque.`);
-  if(R.usaMercurio && pos(R.hgAno)) amb.push(`El uso de ${nf(R.hgAno)} kg de mercurio, que dejan de verterse a las fuentes hídricas.`);
-  if(pos(R.aguaAno))     amb.push(`La afectación de ${nf(R.aguaAno)} m³ de agua${R.usaMercurio?' por remoción de suelo y contaminación con mercurio':' por remoción de suelo'}.`);
-  if(pos(R.co2Ano))      amb.push(`La emisión de ${nf(R.co2Ano)} toneladas de CO₂.`);
-  const ambiental = amb.length
-    ? 'Con esta intervención se evita, en un año de operación:\n'+amb.map(x=>'• '+x).join('\n')
-    : 'Se evita la contaminación de suelos y fuentes hídricas asociada al uso de los insumos incautados.';
-
-  // ── MATERIAL DESTRUIDO / INCAUTADO (solo cantidades) ──
-  const q=o.q5||{};
-  // La acción sale del "Tipo de operación" de Datos generales (Destrucción / Incautación / Mixta)
-  const tipo=(o.tipoOp||'').toLowerCase();
-  const accionUpper = o.soloIncautacion || tipo.includes('incaut') ? 'INCAUTADO'
-                    : tipo.includes('mixta') ? 'DESTRUIDO E INCAUTADO' : 'DESTRUIDO';
-  const mat=[];
-  (o.maquinaria||[]).forEach(m=>{ const nm=(o.maqSnap||MAQUINARIA)[m.i]; if(nm&&m.q>0) mat.push(`${q5Pad2(m.q)} ${nm.n}`); });
-  (o.materialExtra||'').split('\n').map(x=>x.trim()).filter(Boolean).forEach(l=>mat.push(l));
-  const h=o.hallado||{};
-  if(h.acpm>0)      mat.push(`${Math.round(h.acpm)} galones de ACPM`);
-  if(h.gasolina>0)  mat.push(`${Math.round(h.gasolina)} galones de gasolina`);
-  if(h.aceite>0)    mat.push(`${Math.round(h.aceite)} galones de aceite`);
-  if(h.mercurio>0)  mat.push(`${h.mercurio} kg de mercurio`);
-  if(h.cianuro>0)   mat.push(`${h.cianuro} kg de cianuro`);
-  if(h.explosivos>0)mat.push(`${h.explosivos} kg de explosivos`);
-  if(h.madera>0)    mat.push(`${h.madera} m³ de madera`);
-  const inc=o.incautado||{};
-  if(inc.oro>0)        mat.push(`${inc.oro} kg de oro`);
-  if(inc.esmeraldas>0) mat.push(`${inc.esmeraldas} ct de esmeraldas`);
-  if(inc.coltan>0)     mat.push(`${inc.coltan} kg de coltán`);
-  if(inc.carbon>0)     mat.push(`${inc.carbon} kg de carbón`);
-
-  const L=[];
-  if(mat.length){ L.push(`✅ MATERIAL ${accionUpper}`); mat.forEach(m=>L.push('• '+m)); L.push(''); }
-  L.push('✅ IMPACTO OPERACIONAL',impacto);
-  if(incClause) L.push('',incClause);
-  if(oroEvClause) L.push('',oroEvClause);
-  L.push('','✅ IMPACTO AMBIENTAL',ambiental);
+  const L=['🟢 Mi general:','',p1];
+  if(mat.length){ L.push('','El balance preliminar es el siguiente:'); mat.forEach(m=>L.push('• '+m+'.')); }
+  L.push('',impacto);
+  if(valInc>0) L.push('',`El material e insumos incautados representan un valor aproximado de ${q5COP(valInc)}.`);
+  if(oroEv>0)  L.push('',`Con la incautación del combustible se evita la extracción ilícita de aproximadamente ${Math.round(oroEv).toLocaleString('es-CO')} gramos de oro, avaluados en ${q5COP(valOroEv)}.`);
+  if(q.amb){
+    const amb=[];
+    if(R.haAno>0) amb.push(`la deforestación de ${nf(R.haAno,1)} hectáreas de bosque`);
+    if(R.usaMercurio && R.hgAno>0) amb.push(`el vertimiento de ${nf(R.hgAno)} kg de mercurio a las fuentes hídricas`);
+    if(R.co2Ano>0) amb.push(`la emisión de ${nf(R.co2Ano)} toneladas de CO₂`);
+    if(amb.length) L.push('',`En el aspecto ambiental, se evita en un año ${q5Lista(amb)}.`);
+  }
+  if(q.ampliar) L.push('','De ser necesario, se ampliará la información.');
+  L.push('','Patria Honor Lealtad.');
   return L.join('\n');
+}
+/* Desplegables: cada grupo de chips se muestra como <select>; al elegir se "clickea" el chip,
+   así sigue corriendo toda la lógica que ya existe (tema del recurso, esmeraldas → subterránea, etc.). */
+function chipsADesplegable(id){
+  const g=document.getElementById(id); if(!g||g.dataset.dd) return;
+  g.dataset.dd='1'; g.classList.add('as-dd');
+  const sel=document.createElement('select'); sel.className='chip-dd'; sel.id=id+'DD';
+  const sync=()=>{
+    const ch=[...g.children];
+    sel.innerHTML='<option value="">Selecciona…</option>'+ch.map((c,k)=>
+      `<option value="${k}" ${c.classList.contains('bloqueado')?'disabled':''}>${c.textContent.trim()}</option>`).join('');
+    const k=ch.findIndex(c=>c.classList.contains('selected')); sel.value=k>=0?String(k):'';
+    marcarLlenos();
+  };
+  sel.addEventListener('change',()=>{ const c=g.children[+sel.value]; if(c) c.click(); else [...g.children].forEach(x=>x.classList.remove('selected')); sync(); });
+  g.parentNode.insertBefore(sel,g);
+  new MutationObserver(sync).observe(g,{subtree:true,attributes:true,attributeFilter:['class']});
+  sync();
+}
+function marcarLlenos(){
+  const v=document.getElementById('vIngreso'); if(!v) return;
+  v.querySelectorAll('.field').forEach(f=>{
+    if(f.querySelector('.field-grid')) return;                 // contenedores
+    const ctl=f.querySelector(':scope > input:not([type=checkbox]), :scope > select, :scope > textarea, .ac-wrap > input, .unit-suffix input, .tag-input-row input');
+    if(!ctl){ f.classList.remove('lleno'); return; }
+    const val=(ctl.value||'').trim();
+    let ok = val!=='' && (ctl.tagName==='SELECT' || val!=='0');
+    if(ctl.id==='tropaInput') ok = ok || !!document.querySelector('#tropaList .tag-chip');
+    f.classList.toggle('lleno',ok);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  ['tipoOpSelect','estadoSelect','recursoSelect','actividadSelect','coberturaSelect'].forEach(chipsADesplegable);
+  const v=document.getElementById('vIngreso');
+  if(v){ ['input','change','click'].forEach(ev=>v.addEventListener(ev,()=>setTimeout(marcarLlenos,0))); }
+  setInterval(marcarLlenos,1500);   // por si un valor se llena desde código (zona, edición)
+  marcarLlenos();
+});
+
+function q5ToggleAmb(on){
+  if(!ACTUAL) return; ACTUAL.q5=ACTUAL.q5||{}; ACTUAL.q5.amb=on;
+  const el=document.getElementById('q5Out'); if(el) el.textContent=buildQ5Text(ACTUAL);
 }
 
 function copiarQ5(){
@@ -4803,7 +5074,7 @@ function q5CopyFallback(t){
 }
 
 /* ---------- Crear operación (reemplaza la original) ---------- */
-function crearOperacion(){
+function crearOperacion(soloVista){
   const act  = getSelectedChipText('actividadSelect');
   const esSub = act === 'Subterránea';
   const ha   = parseNum(document.getElementById('inputHectareas').value);
@@ -4822,7 +5093,8 @@ function crearOperacion(){
   // Una operación "normal" tiene maquinaria o área; si no hay nada de eso, es SOLO incautación.
   const esOperacion = maquinaria.length>0 || ha>0 || prof>0 || seccion>0 || longitud>0;
 
-  if(esOperacion){
+  if(soloVista){ /* vista previa: sin validar */ }
+  else if(esOperacion){
     if(!maquinaria.length){ toast('Registra al menos un equipo de maquinaria (o deja la operación vacía y reporta solo la incautación)'); return; }
     // Área, profundidad y medidas del socavón son OPCIONALES: los cálculos mensuales salen de la maquinaria.
     // La profundidad (o el alto del túnel) solo afina la proyección de deforestación; el área, la ya causada.
@@ -4841,7 +5113,7 @@ function crearOperacion(){
   const tropasCap = tropasTags.filter(Boolean);
 
   const op = {
-    codigo:'OP-2026-'+String(SEQ++), 
+    codigo: soloVista ? 'VISTA' : 'OP-2026-'+String(SEQ++), 
     nombre:(nombreEl&&nombreEl.value.trim())||'(sin nombre)',
     depto:document.getElementById('formDepto').value||'—',
     municipio:document.getElementById('formMunicipio').value||'—',
@@ -4851,12 +5123,13 @@ function crearOperacion(){
     soloIncautacion:!esOperacion,
     tipoOp:(getSelectedChipText('tipoOpSelect')||'').replace(/^[^A-Za-zÁÉÍÓÚáéíóú]+/,'').trim(),
     coords:leerCoordsOp(),
-    q5:{ hora:(document.getElementById('q5Hora')?.value||'').trim(),
-         numOrden:(document.getElementById('q5NumOrden')?.value||'').trim(),
-         relato:(document.getElementById('q5Relato')?.value||'').trim(),
-         accion:(document.getElementById('q5Accion')?.value||'Destruido'),
+    q5:{ div:(document.getElementById('q5Div')?.value||'').trim(),
+         br:(document.getElementById('q5Br')?.value||'').trim().toUpperCase(),
+         hora:(document.getElementById('q5Hora')?.value||'').trim(),
          gao:(document.getElementById('q5Gao')?.value||'').trim(),
-         fuerzas:[...document.querySelectorAll('.q5fz:checked')].map(x=>x.value) },
+         se:(document.getElementById('q5Se')?.value||'').trim(),
+         ampliar:!!document.getElementById('q5Ampliar')?.checked,
+         amb:false },
     recurso:getSelectedChipText('recursoSelect')||'Oro',
     actividad:getSelectedChipText('actividadSelect')||'Aluvial',
     cobertura:getSelectedChipText('coberturaSelect')||'—',
@@ -4882,6 +5155,7 @@ function crearOperacion(){
     fuentePrecio: JSON.parse(JSON.stringify(PRECIO_FUENTE))
   };
   op.calc = calcularSICPRO(op, op.params);
+  if(soloVista) return op;
   OPS.unshift(op); ACTUAL = op;
   toast(op.codigo+' creada — informe generado automáticamente');
   go('vResultados');
@@ -4918,6 +5192,7 @@ function renderResultados(){
   <div class="q5-panel no-print" style="margin:0 0 20px;border:1px solid #C9A227;border-radius:12px;padding:14px 16px;background:rgba(201,162,39,.06)">
     <div class="sbar" style="margin:0 0 10px;align-items:center">
       <span style="margin-right:auto;font-weight:600;font-size:13px">📤 Mensaje Q5 · listo para copiar y enviar</span>
+      <label class="q5-chk" style="font-size:12px;margin-right:8px"><input type="checkbox" ${(o.q5&&o.q5.amb)?'checked':''} onchange="q5ToggleAmb(this.checked)"> + impacto ambiental</label>
       <button class="sbtn gold" onclick="copiarQ5()">📋 Copiar Q5</button>
     </div>
     <pre id="q5Out" class="q5-out">${q5txt}</pre>
@@ -5689,6 +5964,8 @@ let PASO = 0;
       <span class="n"><span>${i+1}</span></span><span class="tt"><b>${p.t}</b><span>${p.s}</span></span></button>`).join('')}</nav>
     <div class="wiz-body"></div><aside class="wiz-sum" id="wizSum"></aside>`;
   layout.parentNode.insertBefore(wiz, layout);
+  { const bp = document.getElementById('barraPrecios'), sn = document.getElementById('sicNav');
+    if(bp && sn){ sn.insertBefore(bp, sn.querySelector('.me')); } }
   const body = wiz.querySelector('.wiz-body');
   PASOS.forEach((p,i)=>{
     const sec = document.createElement('section'); sec.className = 'wiz-step'; sec.dataset.i = i;
@@ -5722,7 +5999,14 @@ let PASO = 0;
   }
   vi.classList.add('wiz-on');
   irPaso(0, true);
-  ['input','change','click'].forEach(ev=>vi.addEventListener(ev, ()=>requestAnimationFrame(actualizarResumen)));
+  // Resumen lateral: título + UPM/MAICA (las mismas cajas, movidas) + parte dinámica
+  const sum = document.getElementById('wizSum');
+  sum.innerHTML = '<h3>Resumen en vivo</h3><div class="ws-cajas" id="wsCajas"></div><div class="ws-dyn" id="wsDyn"></div>';
+  const cajas = document.getElementById('wsCajas');
+  ['.upm-box','.maica-box'].forEach(sel=>{ const b=document.querySelector('#cardMaquinaria '+sel)||document.querySelector(sel);
+    if(b){ const h=b.querySelector('.upm-hint'); if(h){ b.title=h.textContent.trim(); } cajas.appendChild(b); } });
+  let rafRes=0;
+  ['input','change','click'].forEach(ev=>vi.addEventListener(ev, ()=>{ cancelAnimationFrame(rafRes); rafRes=requestAnimationFrame(actualizarResumen); }));
   actualizarResumen();
 })();
 
@@ -5741,9 +6025,8 @@ function irPaso(i, silencioso){
 }
 
 function actualizarResumen(){
-  const box = document.getElementById('wizSum'); if(!box) return;
+  const box = document.getElementById('wsDyn'); if(!box) return;
   const v = id => (document.getElementById(id)?.value||'').trim();
-  const txt = id => (document.getElementById(id)?.textContent||'0');
   const act = getSelectedChipText('actividadSelect') || 'Aluvial';
   let valMaq = 0, oroMes = 0, equipos = 0;
   MAQUINARIA.forEach((m,i)=>{ const q = maqValues[i]||0; if(!q) return; equipos += q;
@@ -5758,23 +6041,53 @@ function actualizarResumen(){
     ['Lugar (opcional)', !!(v('formDepto') && v('formMunicipio')), 1],
     ['Área y profundidad (opcional)', geoOk, 0],
   ];
-  // Paso completo = sus chequeos completos
   const okPaso = [checks[0][1] && checks[1][1] && checks[2][1], false];
   document.querySelectorAll('.wiz-tab').forEach(t=>t.classList.toggle('ok', okPaso[+t.dataset.i] && +t.dataset.i!==PASO));
+
+  // Datos de la operación elegidos
+  const tropas=[...document.querySelectorAll('#tropaList .tag-chip')].map(c=>(c.childNodes[0]&&c.childNodes[0].nodeValue||'').trim()).filter(Boolean);
+  const fch=v('formFecha'); const fTxt=fch?fch.split('-').reverse().join('/'):'';
+  const lugar=[v('formMunicipio'),v('formDepto')].filter(Boolean).join(', ');
+  const datos=[
+    ['Tipo', getSelectedChipText('tipoOpSelect'),0], ['Estado', getSelectedChipText('estadoSelect'),0],
+    ['Fecha', fTxt,0], ['Recurso', getSelectedChipText('recursoSelect'),0],
+    ['Actividad', getSelectedChipText('actividadSelect'),0], ['Cobertura', (getSelectedChipText('coberturaSelect')||'').replace(/^[^A-Za-zÁÉÍÓÚ]+/,''),0],
+    ['Lugar', lugar,0],
+    ['División', v('q5Div'),0], ['Brigada · UT', [v('q5Br').toUpperCase()].concat(tropas).filter(Boolean).join(' · '),0],
+    ['Hora', v('q5Hora'),0], ['GAO', [v('q5Gao'),v('q5Se')].filter(Boolean).join(' '),0],
+  ];
+  const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  // Vista previa del Q5 con lo que hay hasta ahora
+  let q5='';
+  try{ const op=crearOperacion(true); if(op) q5=buildQ5Text(op); }catch(e){ q5='(La vista previa aparece cuando haya datos suficientes.)'; }
+  window.Q5_VISTA=q5;
+  const abierto = document.getElementById('wsQ5Det') ? document.getElementById('wsQ5Det').open : true;
+  const scrollQ5 = document.getElementById('wsQ5Txt')?.scrollTop||0;
+
   box.innerHTML = `
-    <h3>Resumen en vivo</h3>
-    <div class="ws-kpis">
-      <div class="ws-k"><b>${txt('upmBadge').replace(/\D+/g,'')||0}</b><span>UPM</span></div>
-      <div class="ws-k"><b>${txt('maicaBadge').replace(/\D+/g,'')||0}</b><span>MAICA</span></div>
-      <div class="ws-k"><b>${txt('dragaArt')}</b><span>Dragas</span></div>
-    </div>
     <div class="ws-row"><span>Equipos</span><b>${equipos}</b></div>
     <div class="ws-row"><span>Valor maquinaria</span><b>$${(valMaq/1e6).toLocaleString('es-CO',{maximumFractionDigits:0})} M</b></div>
     <div class="ws-row"><span>Oro estimado / mes</span><b class="gold">${equipos?oroTxt:'—'}</b></div>
     <div class="ws-sep"></div>
+    <div class="ws-sub">Operación</div>
+    <div class="ws-datos">${datos.map(([l,val,p])=>`<div class="${val?'ok':''}" onclick="irPaso(${p})"><span>${l}</span><b>${val?esc(val):'—'}</b></div>`).join('')}</div>
+    <div class="ws-sep"></div>
+    <details class="ws-q5" id="wsQ5Det" ${abierto?'open':''}>
+      <summary><span class="q5-pill">Q5</span> Así va quedando <button type="button" class="ws-copy" onclick="event.preventDefault();copiarQ5Vista()">Copiar</button></summary>
+      <pre id="wsQ5Txt">${esc(q5)}</pre>
+    </details>
+    <div class="ws-sep"></div>
     <div class="ws-check">${checks.map(([l,ok,p])=>`<div class="${ok?'ok':''}" onclick="irPaso(${p})">${l}</div>`).join('')}</div>
     <button type="button" class="wbtn gold" onclick="crearOperacion()">✓ Crear operación</button>
     <div class="ws-note">Nada se guarda hasta crear la operación</div>`;
+  const pre=document.getElementById('wsQ5Txt'); if(pre) pre.scrollTop=scrollQ5;
+}
+function copiarQ5Vista(){
+  const t=window.Q5_VISTA||''; if(!t) return;
+  const done=()=>toast('Q5 copiado (vista previa)');
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done,()=>q5CopyFallback(t)); }
+  else q5CopyFallback(t);
 }
 </script>
 
